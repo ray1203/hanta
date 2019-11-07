@@ -19,7 +19,7 @@ CircleCollider::CircleCollider(Transform& transform, float x, float y, float rad
 
 Collider::Circle CircleCollider::GetTransformedCircle()
 {
-	return Circle(boundingCircle.center,boundingCircle.radius);
+	return Circle(boundingCircle.center + transform.position, boundingCircle.radius);
 }
 
 Vector2 CircleCollider::GetCenterOnScreen()

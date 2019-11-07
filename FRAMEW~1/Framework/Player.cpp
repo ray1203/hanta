@@ -33,8 +33,8 @@ Player::Player()
 	//사운드 사용하기
 	//SoundEvent클래스를 생성합니다.
 	//SoundEvent객체 하나는 하나의 음악 파일을 담당합니다.
-	se = new SoundEvent();		//se = new SoundEvent(L"test.wav"); 처럼 사용할 수도 있습니다.
-	se->LoadFile(L"test.wav");		
+	//se = new SoundEvent();		//se = new SoundEvent(L"test.wav"); 처럼 사용할 수도 있습니다.
+	//se->LoadFile(L"test.wav");		
 
 	//객체의 위치, 각도, 크기조정은 transform에 등록되어있습니다. Transform.h, GameObject.h 참고
 	transform->SetPosition(300.0f, 300.0f);	//Player의 초기 위치 설정

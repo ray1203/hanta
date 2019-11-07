@@ -4,6 +4,7 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <time.h>
 
 //다이렉트x 관련 헤더
 #include <d2d1.h>

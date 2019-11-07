@@ -37,7 +37,7 @@ bool WinApp::Initialize(const wchar_t* title, int width, int height, bool isFull
 	wc.cbClsExtra = 0;							//윈도우 클래스 예약 영역 사용 X
 	wc.cbWndExtra = 0;							//윈도우 클래스 예약 영역 사용 X
 	wc.hInstance = GetModuleHandle(NULL);		//윈도우 핸들 받아옴
-	wc.hbrBackground = NULL;					//배경색 지정
+	wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);					//배경색 지정
 	wc.lpszMenuName = NULL;						//메뉴 지정 x
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);	//마우스 커서 기본커서
 	wc.lpszClassName = title;					//윈도우 클래스 이름 지정

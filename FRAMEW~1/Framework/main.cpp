@@ -6,6 +6,6 @@
 int main()
 {
 	Framework& f = Framework::GetInstance();
-	f.Run(new GameScene(),L"≈∏¿Ã∆≤", 640, 415, false);
+	f.Run(new GameScene(),L"HanTa", 1280, 800, false);
 	return 0;
 }

@@ -16,14 +16,14 @@ void Framework::Run(Scene* startScene, const wchar_t* title, int width, int heig
 		{
 			if (d2dApp.Initialize())
 			{
-				bool audioInitialized=Audio::GetInstance()->Initialize();
+				bool audioInitialized = false;// Audio::GetInstance()->Initialize();
 				Scene::currentScene = startScene;
 				Scene::currentScene->Initialize();
 				StartGameLoop();
 				SAFE_DELETE(Scene::currentScene);
 				SAFE_DELETE(Scene::nextScene);
-				if (audioInitialized)
-					Audio::GetInstance()->Uninitialize();
+				//if (audioInitialized)
+					//Audio::GetInstance()->Uninitialize();
 				d2dApp.Uninitialize();
 			}
 		}
@@ -35,9 +35,7 @@ void Framework::StartGameLoop()
 {
 	MSG msg;
 	ZeroMemory(&msg, sizeof(MSG));
-
-	d2dApp.LoadBitmapFromFile(L"a.png", 400, 0, &d2dApp.example);
-
+	
 	while (msg.message != WM_QUIT) {
 		if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
 		{
