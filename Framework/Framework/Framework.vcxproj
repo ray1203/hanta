@@ -129,6 +129,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationRenderer.cpp" />
     <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="TestObject.cpp" />
     <ClCompile Include="TestScene2.cpp" />
     <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="Tower.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WinApp.cpp" />
   </ItemGroup>
@@ -159,6 +161,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationRenderer.h" />
     <ClInclude Include="Audio.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Collision.h" />
@@ -182,6 +185,7 @@
     <ClInclude Include="TestObject.h" />
     <ClInclude Include="TestScene2.h" />
     <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="Tower.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="WinApp.h" />
   </ItemGroup>

@@ -94,6 +94,8 @@
     <ClCompile Include="TestScene2.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyGenerater.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -171,6 +173,8 @@
     <ClInclude Include="TestScene2.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyGenerater.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Tower.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

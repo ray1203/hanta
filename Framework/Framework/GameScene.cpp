@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "GameObject.h"
 #include "EnemyGenerater.h"
+#include "Button.h"
 void GameScene::Initialize()
 {
 	for (int x = 0; x < 32; x++) {
@@ -19,6 +20,8 @@ void GameScene::Initialize()
 		}
 	}
 	EnemyGenerater* e = (EnemyGenerater*)PushBackGameObject(new EnemyGenerater());
+
+	Button* b = (Button*)PushBackGameObject(new Button(L"Button.png", 9, 17));
 	//TestObject* t = (TestObject*)PushBackGameObject(new TestObject());		//테스트용 오브젝트입니다.
 	//t->transform->SetPosition(200.0f,100.0f);
 
