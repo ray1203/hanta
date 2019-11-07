@@ -7,6 +7,7 @@
 class Renderer :
 	public Component
 {
+	int width, height;
 public:
 	Renderer();
 	Renderer(Sprite* startSprite, float alpha = 1.0f);
@@ -17,6 +18,8 @@ protected:
 
 public:
 	bool GetInitialized();
+	int GetWidth();
+	int GetHeight();
 	Sprite& GetSprite();
 	virtual void Update() {}
 	virtual void Render(ID2D1HwndRenderTarget& renderTarget, Transform& transform);
