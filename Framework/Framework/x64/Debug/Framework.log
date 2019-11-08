@@ -1,8 +1,2 @@
-﻿  Button.cpp
-C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(10,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(10,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(23,111): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(23,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(27,111): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(27,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Framework.vcxproj -> C:\Users\Administrator\Desktop\project\hanta\Framework\x64\Debug\Framework.exe
+﻿  Bullet.cpp
+  Framework.vcxproj -> C:\Users\HP\Documents\디콘\hanta\Framework\x64\Debug\Framework.exe

@@ -88,7 +88,7 @@ void Scene::Render()
 
 GameObject* Scene::PushBackGameObject(GameObject* gameObject)
 {
-	printf("오");
+	//printf("오");
 	//게임 오브젝트에 집어넣음
 	gameObjectList.push_back(gameObject);
 	//렌더러에 이미지가 있을경우

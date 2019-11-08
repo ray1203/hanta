@@ -96,6 +96,7 @@
     <ClCompile Include="EnemyGenerater.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Tower.cpp" />
+    <ClCompile Include="Bullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -175,6 +176,7 @@
     <ClInclude Include="EnemyGenerater.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Tower.h" />
+    <ClInclude Include="Bullet.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

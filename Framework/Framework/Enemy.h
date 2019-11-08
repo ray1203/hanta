@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "AABBCollider.h"
+#include <vector>
 class Enemy :
 	public GameObject
 {
@@ -9,6 +10,7 @@ class Enemy :
 	float speed = 5.0;
 	
 public:
+	int age;
 	Enemy(const wchar_t* path, int bx, int by);
 	~Enemy();
 	AABBCollider* col;

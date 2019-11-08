@@ -1,6 +1,8 @@
 #pragma once
+#include "stdafx.h"
 #include "GameObject.h"
 #include "GameScene.h"
+#include "Enemy.h"
 class EnemyGenerater :
 	public GameObject,public GameScene
 {
@@ -9,5 +11,8 @@ class EnemyGenerater :
 	double currentTime;
 public:
 	void Update();
+	std::vector<Enemy*> enemyList;
+	std::vector<Enemy*> getList();
+	Enemy* getValue(int i);
+	void delFirst();
 };
-

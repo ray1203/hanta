@@ -38,8 +38,11 @@ float CircleCollider::GetYOnScreen()
 }
 
 bool CircleCollider::Intersected(Collider& col)
+
 {
-	return col.Intersected(boundingCircle);
+
+	return col.Intersected(GetTransformedCircle());
+
 }
 
 bool CircleCollider::Intersected(const AABBBox& box)

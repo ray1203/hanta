@@ -1,16 +1,19 @@
 #include "stdafx.h"
 #include "Enemy.h"
 #include "GameScene.h"
-
+#include "EnemyGenerater.h"
+#include <vector>
 Enemy::Enemy(const wchar_t* path,int bx,int by)
 	:GameObject(path),bx(bx),by(by)
 {
-	speed = 20.0f;
+	age = 0;
+	speed = 5.0f;
 	Vector2 vec;
 	col = new AABBCollider(*transform, renderer->GetWidth(),renderer->GetHeight());
 }
 Enemy::~Enemy() {
 	printf("À¸¾ÓµÚÁü");
+	
 	SAFE_DELETE(col);
 }
 void Enemy::Update() {
@@ -31,6 +34,7 @@ void Enemy::Update() {
 					ay = by;
 					bx += dx[i];
 					by += dy[i];
+					age++;
 					break;
 				}
 			}

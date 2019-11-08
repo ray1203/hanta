@@ -19,7 +19,8 @@ void Button::Update()
 	}
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col2.Intersected(InputManager::GetMouseVector2())) {
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
-		tower = (Tower*)scene.PushBackGameObject(new Tower());
+		tower = (Tower*)scene.PushBackGameObject(new Tower(L"Tower.png",1,1000,600,0.01f));
+		tower->enemyGenerater = enemyGenerater;
 		tower->transform->SetPosition(InputManager::GetMouseX() / 40 * 40 + 20, InputManager::GetMouseY() / 40 * 40 + 20);
 		flag = 1;
 	}
