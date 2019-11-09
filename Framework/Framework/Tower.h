@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "CircleCollider.h"
+#include "BulletManager.h"	
 #include "EnemyGenerater.h"
 class Tower :
 	public GameObject
@@ -9,7 +10,7 @@ class Tower :
 public:
 	CircleCollider* col;
 	EnemyGenerater* enemyGenerater;
-	Tower(const wchar_t* path, int damage,int speed,int range,float rate);
+	Tower(const wchar_t* path, int damage,int speed,int range,float rate, BulletManager* bm);
 	int damage;
 	int speed;
 	int range;
@@ -17,5 +18,6 @@ public:
 	float time;
 	void Update();
 	void Shoot();
+	BulletManager* bm;
 	
 };

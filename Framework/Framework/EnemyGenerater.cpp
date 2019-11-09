@@ -1,23 +1,27 @@
 #include "stdafx.h"
 #include "EnemyGenerater.h"
 #include "GameObject.h"
+EnemyGenerater::EnemyGenerater(BulletManager* bm):bm(bm)
+{
+}
 void EnemyGenerater::Update() {
 	currentTime = clock();
 	if ((pastTime == 0 || currentTime - pastTime >= 1000) && i < 30) {
 		i++;
 		Scene& s = Scene::GetCurrentScene();
-		Enemy* e = (Enemy*)s.PushBackGameObject(new Enemy(L"R.png", 0, 1));
+		Enemy* e = (Enemy*)s.PushBackGameObject(new Enemy(L"R.png", 0, 1,bm));
 		e->transform->SetPosition(20, 60);
 		//e->generater = this;
 		enemyList.push_back(e);
 		pastTime = currentTime;
 		for (int i = 0; i < enemyList.size(); i++) {
 			if (enemyList[i]->age <0)enemyList.erase(enemyList.begin() + i);
-			std::cout << enemyList[i]->age<<" ";
+			//std::cout << enemyList[i]->age<<" ";
 		}
-		std::cout << std::endl;
+		//std::cout << std::endl;
 	}
 }
+
 std::vector<Enemy*> EnemyGenerater::getList() {
 	return enemyList;
 }

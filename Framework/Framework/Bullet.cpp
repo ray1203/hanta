@@ -5,18 +5,16 @@
 #define PI 3.141592f
 
 Bullet::Bullet(const wchar_t* path, float speed, float damage)
-	:GameObject(path), speed(speed), damage(damage),angle(0.0f)
+	:GameObject(path), speed(speed), damage(damage),angle(0.0f),bulletCol(*transform, renderer->GetWidth() * 0.5f)
 {
 	this->speed = speed;
-	col = new CircleCollider(
-		*transform, renderer->GetWidth() * 0.5f);
+	//bulletCol = new CircleCollider(*transform, renderer->GetWidth() * 0.5f);
 }
 Bullet::Bullet(const wchar_t* path,float speed,float angle,float damage)
-	:GameObject(path),speed(speed),angle(angle),damage(damage)
+	:GameObject(path),speed(speed),angle(angle),damage(damage), bulletCol(*transform, renderer->GetWidth() * 0.5f)
 {
 	this->speed = speed;
-	col = new CircleCollider(
-		*transform, renderer->GetWidth() * 0.5f);
+	//bulletCol = new CircleCollider(*transform, renderer->GetWidth() * 0.5f);
 }
 
 
@@ -28,10 +26,7 @@ void Bullet::Update()
 {
 	//std::cout << angle;
 	Move();
-	if (CheckOutOfScreen()) {
-		SAFE_DELETE(col);
-		Scene::GetCurrentScene().Destroy(this);
-	}
+	CheckOutOfScreen();
 }
 void Bullet::setPos(float towerX, float towerY, float enemyX, float enemyY) {
 	angle = (enemyY - towerY) / (enemyX - towerX);

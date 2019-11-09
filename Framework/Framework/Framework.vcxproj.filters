@@ -97,6 +97,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -177,6 +178,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

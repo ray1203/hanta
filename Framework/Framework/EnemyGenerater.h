@@ -10,7 +10,9 @@ class EnemyGenerater :
 	double pastTime = 0.0f;
 	double currentTime;
 public:
+	EnemyGenerater(BulletManager* bm);
 	void Update();
+	BulletManager* bm;
 	std::vector<Enemy*> enemyList;
 	std::vector<Enemy*> getList();
 	Enemy* getValue(int i);

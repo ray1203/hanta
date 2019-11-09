@@ -3,18 +3,29 @@
 #include "GameScene.h"
 #include "EnemyGenerater.h"
 #include <vector>
-Enemy::Enemy(const wchar_t* path,int bx,int by)
-	:GameObject(path),bx(bx),by(by)
+#include "InputManager.h"
+Enemy::Enemy(const wchar_t* path, int bx, int by, BulletManager* bm)
+	:GameObject(path), bx(bx), by(by), hp(1), col(*transform, renderer->GetWidth(), renderer->GetHeight()),bm(bm)
+{
+	//std::cout << "A"<<bullet->angle;
+	age = 0;
+	speed = 5.0f;
+	Vector2 vec;
+	//col = new AABBCollider(*transform, renderer->GetWidth(),renderer->GetHeight());
+}
+Enemy::Enemy(const wchar_t* path, int bx, int by,int hp, BulletManager* bm)
+	:GameObject(path), bx(bx), by(by),hp(hp),col(*transform, renderer->GetWidth(), renderer->GetHeight()),bm(bm)
 {
 	age = 0;
 	speed = 5.0f;
 	Vector2 vec;
-	col = new AABBCollider(*transform, renderer->GetWidth(),renderer->GetHeight());
+	//col = new AABBCollider(*transform, renderer->GetWidth(), renderer->GetHeight());
+	
 }
 Enemy::~Enemy() {
 	printf("À¸¾ÓµÚÁü");
 	
-	SAFE_DELETE(col);
+	//SAFE_DELETE(col);
 }
 void Enemy::Update() {
 	
@@ -59,3 +70,20 @@ void Enemy::Update() {
 	}
 }
 
+void Enemy::LateUpdate()
+{
+	//std::cout << "bulletcount:" << bm->towerBullets.size() << " ";
+	for (auto& i : bm->towerBullets) {
+		if (col.Intersected(i->bulletCol)) {
+			bm->Destroy(i);
+			
+			hp -= i->damage;
+			if (hp <= 0) {
+				std::cout << "À¸¾Æ ¸Â¾Ò´Ù";
+				Scene::GetCurrentScene().Destroy(this);
+				break;
+			}
+			
+		}
+	}
+}

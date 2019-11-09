@@ -130,6 +130,7 @@
     <ClCompile Include="AnimationRenderer.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="AnimationRenderer.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />

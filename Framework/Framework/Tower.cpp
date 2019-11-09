@@ -6,16 +6,22 @@
 #include "Enemy.h"
 #include "TimeManager.h"
 #include <vector>
-Tower::Tower(const wchar_t* path, int damage, int speed,int range,float rate):damage(damage),speed(speed),range(range),rate(rate),GameObject(path) {
+Tower::Tower(const wchar_t* path, int damage, int speed,int range,float rate,BulletManager *bm):damage(damage),speed(speed),range(range),rate(rate),GameObject(path),bm(bm) {
 
 	col = new CircleCollider(*transform, range);
 	time = 0;
 }
+int c=0;
 void Tower::Update() {
 	time += TimeManager::GetDeltaTime();
 	if (time >= rate) {
 		Shoot();
 		time = 0;
+		c++;
+	}
+	if (c > 100) {
+		c = 0;
+		std::cout << "bullet:" << bm->towerBullets.size() << std::endl;
 	}
 	//std::cout << col->GetXOnScreen() << " ";
 }
@@ -47,9 +53,10 @@ void Tower::Shoot()
 		}
 	}
 		if (listSize != 0&&enemyList.size()!=0) {
-	Bullet* b = new Bullet(L"bullet.png", speed, damage);
 	//std::cout << frontX << ' ' << frontY <<' '<<transform->position.x<<' '<<transform->position.y<< std::endl;
-	Scene::GetCurrentScene().PushBackGameObject(b);
+	
+			
+	Bullet* b = bm->PushBackTowerBullet(new Bullet(L"bullet.png", speed, damage));
 	b->setPos(transform->position.x, transform->position.y, frontX,frontY);
 	b->transform->SetPosition(transform->position.x, transform->position.y);
 

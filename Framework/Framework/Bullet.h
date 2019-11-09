@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "CircleCollider.h"			//여기 추가
+#include "AABBCollider.h"
 class Bullet :
 	public GameObject
 {
@@ -14,7 +15,7 @@ public:
 	void setPos(float towerX, float towerY, float enemyX, float enemyY);
 	bool CheckOutOfScreen();
 
-	CircleCollider* col;			//여기도
+	CircleCollider bulletCol;			//여기도
 
 
 	virtual void Update();
