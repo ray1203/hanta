@@ -19,6 +19,7 @@ void Button::Update()
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
 		tower = (Tower*)scene.PushBackGameObject(new Tower(L"Tower.png", 1, 1000, 600, 0.1f));
 		tower->transform->SetPosition(InputManager::GetMouseX() / 40 * 40 + 20, InputManager::GetMouseY() / 40 * 40 + 20);
+		tower->renderer->changeAlpha(0.5f);
 		flag = 1;
 	}
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == 2 && flag) {
@@ -33,6 +34,7 @@ void Button::Update()
 		}
 		else {
 			tower->activation = 1;
+			tower->renderer->changeAlpha(1.0f);
 		}
 	}
 }

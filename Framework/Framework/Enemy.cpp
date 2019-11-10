@@ -15,7 +15,6 @@ Enemy::~Enemy() {
 }
 
 void Enemy::Update() {
-	
 	/*ax ay:이전 위치 
 	bx by: 목표 위치 
 	cx cy: 현재 위치를 40당 1 치환해서 정수값으로 바꾼거 
@@ -64,6 +63,14 @@ void Enemy::Destroy()
 			bm->Destroy(i);
 		}
 	}
+
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	std::vector<Enemy*>::iterator iter = s.GetEM()->enemyList.begin();
+	for (int i = 0; i < s.GetEM()->enemyList.size(); i++) {
+		if (s.GetEM()->enemyList[i] == this) {
+			s.GetEM()->enemyList.erase(iter + i);
+		}
+	}
+
 	Scene::GetCurrentScene().Destroy(this);
-	//bm->Remove();
 }

@@ -23,5 +23,6 @@ public:
 	Sprite& GetSprite();
 	virtual void Update() {}
 	virtual void Render(ID2D1HwndRenderTarget& renderTarget, Transform& transform);
+	void changeAlpha(float ap);
 };
 

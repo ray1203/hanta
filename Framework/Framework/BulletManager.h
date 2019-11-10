@@ -4,6 +4,8 @@
 class BulletManager :
 	public GameObject
 {
+	std::list<Bullet*> destroyed;
+
 public:
 	BulletManager();
 	~BulletManager();
@@ -18,7 +20,5 @@ public:
 	
 	float checkRate=5.0f;
 	float time = 0.0f;
-private:
-	std::list<Bullet*> destroyed;
 };
 

@@ -69,3 +69,7 @@ void Renderer::Render(ID2D1HwndRenderTarget& renderTarget, Transform& transform)
 	renderTarget.DrawBitmap(currentSprite->bitmap, &rect, alpha, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, NULL);
 
 }
+void Renderer::changeAlpha(float ap)
+{
+	alpha = ap;
+}
