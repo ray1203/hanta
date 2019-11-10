@@ -1,22 +1,15 @@
 #include "stdafx.h"
+#include "GameScene.h"
 #include "Bullet.h"
 #include "TimeManager.h"
 #include "Framework.h"
 #define PI 3.141592f
 
-Bullet::Bullet(const wchar_t* path, float speed, float damage)
-	:GameObject(path), speed(speed), damage(damage),angle(0.0f),bulletCol(*transform, renderer->GetWidth() * 0.5f)
+Bullet::Bullet(const wchar_t* path, float speed, float damage, Enemy* e)
+	:GameObject(path), speed(speed), damage(damage), bulletCol(*transform, renderer->GetWidth() * 0.5f),e(e)
 {
 	this->speed = speed;
-	//bulletCol = new CircleCollider(*transform, renderer->GetWidth() * 0.5f);
 }
-Bullet::Bullet(const wchar_t* path,float speed,float angle,float damage)
-	:GameObject(path),speed(speed),angle(angle),damage(damage), bulletCol(*transform, renderer->GetWidth() * 0.5f)
-{
-	this->speed = speed;
-	//bulletCol = new CircleCollider(*transform, renderer->GetWidth() * 0.5f);
-}
-
 
 Bullet::~Bullet()
 {
@@ -24,35 +17,42 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
-	//std::cout << angle;
+	setPos();
 	Move();
 	CheckOutOfScreen();
+	Damage();
 }
-void Bullet::setPos(float towerX, float towerY, float enemyX, float enemyY) {
-	angle = (enemyY - towerY) / (enemyX - towerX);
-	angle = atan2((enemyY - towerY), (enemyX - towerX))*57.295f;
-	angle = angle / 360.0f;
-	angle = angle;
-	
-	
+
+void Bullet::setPos() {
+	float X = transform->position.x;
+	float Y = transform->position.y;
+	float enemyX = e->transform->position.x;
+	float enemyY = e->transform->position.y;
+
+	angle = atan2((enemyY - Y), (enemyX - X)) * 57.295f;
+	angle /= 360.0f;
 }
+
 void Bullet::Move()
 {
 	//움직일 때 사용할 함수
 	float rad = PI * angle * 2.0f;
-	//rad = angle;
-	transform->position.x
-		+= (speed * cosf(rad)
-			* TimeManager::GetDeltaTime());
-	transform->position.y
-		+= (speed * sinf(rad)
-			* TimeManager::GetDeltaTime());
+	transform->position.x += (speed * cosf(rad) * TimeManager::GetDeltaTime());
+	transform->position.y += (speed * sinf(rad) * TimeManager::GetDeltaTime());
 }
 
-void Bullet::Destroy()
-{
+void Bullet::Damage() {
+	if (bulletCol.Intersected(e->col)) {
+		e->hp -= damage;
+		GameScene& s = (GameScene&)Scene::GetCurrentScene();
+		if (e->hp <= 0) {
+			e->Destroy();
+		}
+		else {
+			s.GetBM()->Destroy(this);
+		}
+	}
 }
-
 
 bool Bullet::CheckOutOfScreen()
 {

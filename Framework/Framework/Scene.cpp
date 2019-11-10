@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Scene.h"
 #include "Framework.h"
-
 Scene* Scene::currentScene;
 Scene* Scene::nextScene;
 

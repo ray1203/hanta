@@ -1,65 +1,46 @@
 #include "stdafx.h"
 #include "Tower.h"
-#include "Scene.h"
 #include "Bullet.h"
-#include "EnemyGenerater.h"
 #include "Enemy.h"
 #include "TimeManager.h"
+#include "GameScene.h"
 #include <vector>
-Tower::Tower(const wchar_t* path, int damage, int speed,int range,float rate,BulletManager *bm):damage(damage),speed(speed),range(range),rate(rate),GameObject(path),bm(bm) {
-
+Tower::Tower(const wchar_t* path, int damage, int speed, int range, float rate)
+	:damage(damage), speed(speed), range(range), rate(rate), GameObject(path) {
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	bm = s.GetBM();
+	em = s.GetEM();
 	col = new CircleCollider(*transform, range);
 	time = 0;
 }
-int c=0;
+
 void Tower::Update() {
 	time += TimeManager::GetDeltaTime();
-	if (time >= rate) {
+	if (time >= rate && activation) {
 		Shoot();
 		time = 0;
-		c++;
 	}
-	if (c > 100) {
-		c = 0;
-		std::cout << "bullet:" << bm->towerBullets.size() << std::endl;
-	}
-	//std::cout << col->GetXOnScreen() << " ";
 }
 
 void Tower::Shoot()
 {
 	std::vector<Enemy*> enemyList;
 	int maxAge = -1;
-	float frontX = 0.0f; 
-	float frontY = 0.0f;
-	int listSize = enemyGenerater->getList().size();
-	//std::cout << "listsize:"<<listSize<<" ";
+	Enemy* frontE = NULL;
+	int listSize = em->getList().size();
 	for (int i = 0; i < listSize; i++) {
-		if (enemyGenerater->getValue(i)->age < 0)continue;
-		//if (col-> Intersected(enemyGenerater->getValue(i)->col->boundingBox)) {
-		//std::cout << "\n" << (this->transform->position.x - enemyGenerater->getValue(i)->transform->position.x) * (this->transform->position.x - enemyGenerater->getValue(i)->transform->position.x) + (this->transform->position.y - enemyGenerater->getValue(i)->transform->position.y) * (this->transform->position.y - enemyGenerater->getValue(i)->transform->position.y) << "\n";
-		if ((this->transform->position.x - enemyGenerater->getValue(i)->transform->position.x) * (this->transform->position.x - enemyGenerater->getValue(i)->transform->position.x) + (this->transform->position.y - enemyGenerater->getValue(i)->transform->position.y) * (this->transform->position.y - enemyGenerater->getValue(i)->transform->position.y) <= range * range) {
-			//std::cout << "ÀÀ±âÀÕ " << enemyGenerater->getValue(i)->transform->position.x << " " << enemyGenerater->getValue(i)->transform->position.y<<" "<<enemyList.size()<< std::endl;
-			enemyList.push_back(enemyGenerater->getValue(i));
-			if (maxAge < enemyGenerater->getValue(i)->age) {
-				maxAge = enemyGenerater->getValue(i)->age;
-				frontX = enemyGenerater->getValue(i)->transform->position.x;
-				frontY = enemyGenerater->getValue(i)->transform->position.y;
+		if (em->getValue(i)->age < 0)
+			continue;
+		if ((this->transform->position.x - em->getValue(i)->transform->position.x) * (this->transform->position.x - em->getValue(i)->transform->position.x) + (this->transform->position.y - em->getValue(i)->transform->position.y) * (this->transform->position.y - em->getValue(i)->transform->position.y) <= range * range) {
+			enemyList.push_back(em->getValue(i));
+			if (maxAge < em->getValue(i)->age) {
+				maxAge = em->getValue(i)->age;
+				frontE = em->getValue(i);
 			}
-
-			//}
-
-
 		}
 	}
-		if (listSize != 0&&enemyList.size()!=0) {
-	//std::cout << frontX << ' ' << frontY <<' '<<transform->position.x<<' '<<transform->position.y<< std::endl;
-	
-			
-	Bullet* b = bm->PushBackTowerBullet(new Bullet(L"bullet.png", speed, damage));
-	b->setPos(transform->position.x, transform->position.y, frontX,frontY);
-	b->transform->SetPosition(transform->position.x, transform->position.y);
-
+	if (listSize != 0&&enemyList.size()!=0) {	
+		Bullet* b = bm->PushBackTowerBullet(new Bullet(L"bullet.png", speed, damage, frontE));
+		b->transform->SetPosition(transform->position.x, transform->position.y);
 	}
 }
-

@@ -1,9 +1,28 @@
-﻿  Enemy.cpp
-C:\Users\HP\Documents\디콘\hanta\Framework\Framework\Enemy.cpp(8,101): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HP\Documents\디콘\hanta\Framework\Framework\Enemy.cpp(8,78): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HP\Documents\디콘\hanta\Framework\Framework\Enemy.cpp(17,100): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HP\Documents\디콘\hanta\Framework\Framework\Enemy.cpp(17,77): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HP\Documents\디콘\hanta\Framework\Framework\Enemy.cpp(43,33): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HP\Documents\디콘\hanta\Framework\Framework\Enemy.cpp(43,21): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HP\Documents\디콘\hanta\Framework\Framework\Enemy.cpp(80,19): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Framework.vcxproj -> C:\Users\HP\Documents\디콘\hanta\Framework\x64\Debug\Framework.exe
+﻿  Bullet.cpp
+  BulletManager.cpp
+  Button.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(9,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(9,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(21,111): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(21,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(25,111): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Enemy.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(25,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(6,39): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(6,102): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(6,79): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(30,33): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameScene.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(30,21): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(13,51): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(13,38): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(17,51): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  main.cpp
+  Player.cpp
+  Tower.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(17,38): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(13,39): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(30,37): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(43,72): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(43,65): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Framework.vcxproj -> C:\Users\Administrator\Desktop\project\hanta\Framework\x64\Debug\Framework.exe

@@ -1,32 +1,19 @@
 #include "stdafx.h"
 #include "Enemy.h"
 #include "GameScene.h"
-#include "EnemyGenerater.h"
-#include <vector>
 #include "InputManager.h"
-Enemy::Enemy(const wchar_t* path, int bx, int by, BulletManager* bm)
-	:GameObject(path), bx(bx), by(by), hp(1), col(*transform, renderer->GetWidth(), renderer->GetHeight()),bm(bm)
+Enemy::Enemy(const wchar_t* path, int bx, int by, int hp)
+	:GameObject(path), bx(bx), by(by), hp(hp), col(*transform, renderer->GetWidth(), renderer->GetHeight())
 {
-	//std::cout << "A"<<bullet->angle;
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	bm = s.GetBM();
 	age = 0;
 	speed = 5.0f;
-	Vector2 vec;
-	//col = new AABBCollider(*transform, renderer->GetWidth(),renderer->GetHeight());
 }
-Enemy::Enemy(const wchar_t* path, int bx, int by,int hp, BulletManager* bm)
-	:GameObject(path), bx(bx), by(by),hp(hp),col(*transform, renderer->GetWidth(), renderer->GetHeight()),bm(bm)
-{
-	age = 0;
-	speed = 5.0f;
-	Vector2 vec;
-	//col = new AABBCollider(*transform, renderer->GetWidth(), renderer->GetHeight());
-	
-}
+
 Enemy::~Enemy() {
-	printf("으앙뒤짐");
-	
-	//SAFE_DELETE(col);
 }
+
 void Enemy::Update() {
 	
 	/*ax ay:이전 위치 
@@ -52,7 +39,7 @@ void Enemy::Update() {
 		}
 	}
 	else if (ax==30&&ay==1) {
-		Scene::GetCurrentScene().Destroy(this);
+		Destroy();
 	}
 	else {
 		if (bx - ax > 0) {
@@ -70,20 +57,13 @@ void Enemy::Update() {
 	}
 }
 
-void Enemy::LateUpdate()
+void Enemy::Destroy()
 {
-	//std::cout << "bulletcount:" << bm->towerBullets.size() << " ";
 	for (auto& i : bm->towerBullets) {
-		if (col.Intersected(i->bulletCol)) {
+		if (i->e == this) {
 			bm->Destroy(i);
-			
-			hp -= i->damage;
-			if (hp <= 0) {
-				std::cout << "으아 맞았다";
-				Scene::GetCurrentScene().Destroy(this);
-				break;
-			}
-			
 		}
 	}
+	Scene::GetCurrentScene().Destroy(this);
+	//bm->Remove();
 }
