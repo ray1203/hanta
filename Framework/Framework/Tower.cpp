@@ -29,9 +29,13 @@ void Tower::Shoot()
 	Enemy* frontE = NULL;
 	int listSize = em->getList().size();
 	for (int i = 0; i < listSize; i++) {
-		if (em->getValue(i)->age < 0)
+		if (em->getValue(i)->age < 0 || em->getValue(i) == nullptr)
 			continue;
-		if ((this->transform->position.x - em->getValue(i)->transform->position.x) * (this->transform->position.x - em->getValue(i)->transform->position.x) + (this->transform->position.y - em->getValue(i)->transform->position.y) * (this->transform->position.y - em->getValue(i)->transform->position.y) <= range * range) {
+		float X = transform->position.x;
+		float Y = transform->position.y;
+		float enemyX = em->getValue(i)->transform->position.x;
+		float enemyY = em->getValue(i)->transform->position.y;
+		if ((X - enemyX)* (X - enemyX) + (Y - enemyY) * (Y - enemyY) <= range * range) {
 			enemyList.push_back(em->getValue(i));
 			if (maxAge < em->getValue(i)->age) {
 				maxAge = em->getValue(i)->age;

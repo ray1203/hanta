@@ -24,13 +24,15 @@ void Bullet::Update()
 }
 
 void Bullet::setPos() {
-	float X = transform->position.x;
-	float Y = transform->position.y;
-	float enemyX = e->transform->position.x;
-	float enemyY = e->transform->position.y;
+	if (e != nullptr) {
+		float X = transform->position.x;
+		float Y = transform->position.y;
+		float enemyX = e->transform->position.x;
+		float enemyY = e->transform->position.y;
 
-	angle = atan2((enemyY - Y), (enemyX - X)) * 57.295f;
-	angle /= 360.0f;
+		angle = atan2((enemyY - Y), (enemyX - X)) * 57.295f;
+		angle /= 360.0f;
+	}
 }
 
 void Bullet::Move()

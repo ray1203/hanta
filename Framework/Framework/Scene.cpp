@@ -102,6 +102,10 @@ GameObject* Scene::PushBackGameObject(GameObject* gameObject)
 void Scene::Destroy(GameObject* o)
 {
 	//삭제될 오브젝트 리스트에 집어넣음
+	for (auto& i : destroyedObjectList) {
+		if (i == o)
+			return;
+	}
 	destroyedObjectList.push_back(o);
 }
 
