@@ -8,10 +8,12 @@ class Tower :
 {
 	int damage;
 	int speed;
-	int range;
+	int range=20;
+	int srange = 0;
 	float rate;
 	float time;
-
+	int flag = 0;
+	GameObject* rangeI;
 	CircleCollider* col;
 	EnemyManager* em;
 	BulletManager* bm;
