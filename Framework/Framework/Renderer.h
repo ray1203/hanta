@@ -20,6 +20,7 @@ public:
 	bool GetInitialized();
 	int GetWidth();
 	int GetHeight();
+	void setSize(int w, int h);
 	Sprite& GetSprite();
 	virtual void Update() {}
 	virtual void Render(ID2D1HwndRenderTarget& renderTarget, Transform& transform);

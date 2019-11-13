@@ -1,5 +1,6 @@
-﻿  Button.cpp
-c:\users\administrator\desktop\project\hanta\framework\framework\button.cpp(9): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\administrator\desktop\project\hanta\framework\framework\button.cpp(21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\administrator\desktop\project\hanta\framework\framework\button.cpp(25): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Framework.vcxproj -> C:\Users\Administrator\Desktop\project\hanta\Framework\x64\Debug\Framework.exe
+﻿  Tower.cpp
+C:\Users\BRS\Documents\GitHub\hanta\Framework\Framework\Tower.cpp(14,39): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\BRS\Documents\GitHub\hanta\Framework\Framework\Tower.cpp(48,37): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\BRS\Documents\GitHub\hanta\Framework\Framework\Tower.cpp(65,72): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\BRS\Documents\GitHub\hanta\Framework\Framework\Tower.cpp(65,65): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Framework.vcxproj -> C:\Users\BRS\Documents\GitHub\hanta\Framework\x64\Debug\Framework.exe

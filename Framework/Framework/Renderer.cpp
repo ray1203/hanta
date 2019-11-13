@@ -29,7 +29,12 @@ int Renderer::GetHeight()
 {
 	return height;
 }
-
+void Renderer::setSize(int w, int h)
+	
+{
+	width = w;
+	height = h;
+}
 void Renderer::Render(ID2D1HwndRenderTarget& renderTarget, Transform& transform)
 {
 	if (!currentSprite || !currentSprite->bitmap)
