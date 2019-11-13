@@ -6,4 +6,3 @@ class CraftScene
 public:
 	virtual void Initialize();
 };
-

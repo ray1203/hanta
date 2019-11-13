@@ -11,7 +11,7 @@ void EnemyManager::Update() {
 	if ((pastTime == 0 || currentTime - pastTime >= 1000) && i < 30) {
 		i++;
 		Scene& s = Scene::GetCurrentScene();
-		Enemy* e = (Enemy*)s.PushBackGameObject(new Enemy(L"R.png", 0, 1, 30));
+		Enemy* e = (Enemy*)s.PushBackGameObject(new Enemy(L"resources\\R.png", 0, 1, 30));
 		e->transform->SetPosition(20, 60);
 		enemyList.push_back(e);
 		pastTime = currentTime;

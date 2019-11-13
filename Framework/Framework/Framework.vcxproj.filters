@@ -98,6 +98,8 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="CraftScene.cpp" />
+    <ClCompile Include="SceneButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -179,6 +181,8 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="CraftScene.h" />
+    <ClInclude Include="SceneButton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

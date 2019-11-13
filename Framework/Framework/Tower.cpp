@@ -29,7 +29,7 @@ void Tower::Update() {
 	}
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col->Intersected(InputManager::GetMouseVector2())&&activation) {
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
-		rangeI = (GameObject*)scene.PushBackGameObject(new GameObject(L"image (1).png"));
+		rangeI = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\Range.png"));
 		rangeI->renderer->changeAlpha(0.5f);
 		rangeI->transform->SetPosition(transform->position.x,transform->position.y);
 		printf("%d", srange);
@@ -62,7 +62,7 @@ void Tower::Shoot()
 		}
 	}
 	if (listSize != 0&&enemyList.size()!=0) {	
-		Bullet* b = bm->PushBackTowerBullet(new Bullet(L"bullet.png", speed, damage, frontE));
+		Bullet* b = bm->PushBackTowerBullet(new Bullet(L"resources\\Bullet.png", speed, damage, frontE));
 		b->transform->SetPosition(transform->position.x, transform->position.y);
 	}
 
