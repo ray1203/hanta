@@ -37,12 +37,12 @@ void Button::Update()
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
 		flag = 0;
 scene.Destroy(rangeI);
-		if (scene.map[(int)(tower->transform->position.y - 20) / 40][(int)(tower->transform->position.x - 20) / 40]) {
+		if (scene.map[(int)(tower->transform->position.y - 20) / 40][(int)(tower->transform->position.x - 20) / 40]!=0) {
 			scene.Destroy(tower);
 			
 		}
 		else {
-			
+			scene.map[(int)(tower->transform->position.y - 20) / 40][(int)(tower->transform->position.x - 20) / 40] = 2;
 			tower->activation = 1;
 			tower->renderer->changeAlpha(1.0f);
 		}

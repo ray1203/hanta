@@ -5,5 +5,5 @@ void TestScene2::Initialize()
 {
 	GameObject* g = PushBackGameObject(new GameObject(L"c.png"));
 	g->transform->SetPosition(300.0f, 400.0f);
-
+	printf("¾À»ý¼º");
 }

@@ -2,10 +2,12 @@
 #include "Framework.h"
 #include "GameScene.h"
 #include "Math.h"
+#include "SceneManager.h"
 
 int main()
 {
-	Framework& f = Framework::GetInstance();
-	f.Run(new GameScene(),L"HanTa", 1280, 800, false);
+	
+	SceneManager s;
+	s.startScene(s.gs);
 	return 0;
 }
