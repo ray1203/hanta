@@ -2,8 +2,8 @@
 #include "Enemy.h"
 #include "GameScene.h"
 #include "InputManager.h"
-Enemy::Enemy(const wchar_t* path, int bx, int by, int hp)
-	:GameObject(path), bx(bx), by(by), hp(hp), col(*transform, renderer->GetWidth(), renderer->GetHeight())
+Enemy::Enemy(const wchar_t* path, int bx, int by,int money, int hp)
+	:GameObject(path), bx(bx), by(by), hp(hp),money(money), col(*transform, renderer->GetWidth(), renderer->GetHeight())
 {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	bm = s.GetBM();

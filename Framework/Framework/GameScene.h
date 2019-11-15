@@ -3,7 +3,9 @@
 #include "Player.h"
 #include "BulletManager.h"
 #include "EnemyManager.h"
-
+#include "CraftTable.h"
+#include "CraftButton.h"
+#include "PlayerData.h"
 //장면을 관리할 객체가 필요합니다.
 //Scene을 상속받아 객체를 생성합니다.
 class GameScene : public Scene
@@ -33,10 +35,15 @@ public:
 	};
 	BulletManager* bm;
 	EnemyManager* em;
+	CraftButton* craftButton;
+	CraftTable* craftTable;
+	PlayerData* playerData;
 	virtual void Initialize();		//모든 Scene에는 반드시 Initialize함수가 있어야합니다. (추상 클래스 참고)
 	int GetMap(int x, int y);
 public:
+	PlayerData* GetPlayerData();
 	BulletManager* GetBM();
 	EnemyManager* GetEM();
+	CraftTable* GetCraftTable();
 	Player* player;
 };

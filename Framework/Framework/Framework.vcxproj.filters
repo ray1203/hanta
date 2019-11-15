@@ -63,7 +63,6 @@
     <ClCompile Include="CircleCollider.cpp">
       <Filter>Components\Collider</Filter>
     </ClCompile>
-    <ClCompile Include="TestObject.cpp" />
     <ClCompile Include="Collision.cpp">
       <Filter>Components\Collider</Filter>
     </ClCompile>
@@ -91,15 +90,18 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="TestScene2.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
-    <ClCompile Include="CraftScene.cpp" />
-    <ClCompile Include="SceneButton.cpp" />
+    <ClCompile Include="CraftTable.cpp" />
+    <ClCompile Include="CraftButton.cpp" />
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="PlayerData.cpp" />
+    <ClCompile Include="JaeumButton.cpp" />
+    <ClCompile Include="MoeumButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -146,7 +148,6 @@
     <ClInclude Include="CircleCollider.h">
       <Filter>Components\Collider</Filter>
     </ClInclude>
-    <ClInclude Include="TestObject.h" />
     <ClInclude Include="Collision.h">
       <Filter>Components\Collider</Filter>
     </ClInclude>
@@ -174,15 +175,18 @@
     <ClInclude Include="InputManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="TestScene2.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="EnemyManager.h" />
-    <ClInclude Include="CraftScene.h" />
-    <ClInclude Include="SceneButton.h" />
+    <ClInclude Include="CraftTable.h" />
+    <ClInclude Include="CraftButton.h" />
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="PlayerData.h" />
+    <ClInclude Include="JaeumButton.h" />
+    <ClInclude Include="MoeumButton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

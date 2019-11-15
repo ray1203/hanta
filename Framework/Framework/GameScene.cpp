@@ -3,8 +3,8 @@
 #include "Player.h"
 #include "GameObject.h"
 #include "Button.h"
-#include "SceneButton.h"
-#include "CraftScene.h"
+//#include "SceneButton.h"
+//#include "CraftScene.h"
 void GameScene::Initialize()
 {
 	for (int x = 0; x < 32; x++) {
@@ -20,10 +20,13 @@ void GameScene::Initialize()
 			}
 		}
 	}
+	playerData = new PlayerData();
+	craftTable = (CraftTable*)PushBackGameObject(new CraftTable());
+	craftButton = (CraftButton*)PushBackGameObject(new CraftButton(L"resources\\SceneButton.png", 31, 0, 80, 80, craftTable));
 	bm = (BulletManager*)PushBackGameObject(new BulletManager());
 	em = (EnemyManager*)PushBackGameObject(new EnemyManager());
 	Button* b = (Button*)PushBackGameObject(new Button(L"resources\\Button.png", 9, 17));
-	SceneButton* sb = (SceneButton*)PushBackGameObject(new SceneButton(L"resources\\SceneButton.png", 11, 17, 80, 80, new CraftScene()));
+	//SceneButton* sb = (SceneButton*)PushBackGameObject(new SceneButton(L"resources\\SceneButton.png", 11, 17, 80, 80, new CraftScene()));
 	//TestObject* t = (TestObject*)PushBackGameObject(new TestObject());		//테스트용 오브젝트입니다.
 	//t->transform->SetPosition(200.0f,100.0f);
 
@@ -35,10 +38,20 @@ int GameScene::GetMap(int x, int y) {
 	return map[y][x];
 }
 
+PlayerData* GameScene::GetPlayerData()
+{
+	return playerData;
+}
+
 BulletManager* GameScene::GetBM() {
 	return bm;
 }
 
 EnemyManager* GameScene::GetEM() {
 	return em;
+}
+
+CraftTable* GameScene::GetCraftTable()
+{
+	return craftTable;
 }
