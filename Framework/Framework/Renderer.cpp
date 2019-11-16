@@ -13,6 +13,7 @@ Renderer::Renderer(Sprite* startSprite, float alpha)
 	D2D1_SIZE_U size = startSprite->bitmap->GetPixelSize();
 	width = size.width;
 	height = size.height;
+	
 }
 
 bool Renderer::GetInitialized()
@@ -29,12 +30,7 @@ int Renderer::GetHeight()
 {
 	return height;
 }
-void Renderer::setSize(int w, int h)
-	
-{
-	width = w;
-	height = h;
-}
+
 void Renderer::Render(ID2D1HwndRenderTarget& renderTarget, Transform& transform)
 {
 	if (!currentSprite || !currentSprite->bitmap)

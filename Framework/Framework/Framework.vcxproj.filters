@@ -103,6 +103,7 @@
     <ClCompile Include="JaeumButton.cpp" />
     <ClCompile Include="MoeumButton.cpp" />
     <ClCompile Include="WaveButton.cpp" />
+    <ClCompile Include="ImageResize.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -189,6 +190,7 @@
     <ClInclude Include="JaeumButton.h" />
     <ClInclude Include="MoeumButton.h" />
     <ClInclude Include="WaveButton.h" />
+    <ClInclude Include="ImageResize.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

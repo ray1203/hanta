@@ -3,6 +3,8 @@
 #include "GameScene.h"
 #include "InputManager.h"
 #include "Tower.h"
+#include "ImageResize.h"
+ImageResize r;
 Button::Button(const wchar_t* path, int x, int y)
 	:GameObject(path), col2(*transform, 40.0f, 40.0f)
 {
@@ -31,7 +33,8 @@ void Button::Update()
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == 2 && flag) {
 		tower->transform->SetPosition(InputManager::GetMouseX() / 40 * 40 + 20, InputManager::GetMouseY() / 40 * 40 + 20);
 		rangeI->transform->SetPosition(InputManager::GetMouseX() / 40 * 40 + 20, InputManager::GetMouseY() / 40 * 40 + 20);
-		rangeI->transform->SetScale(7.0f, 7.0f);
+
+		r.resize(rangeI, (double)80 * tower->srange + 40, 80 * tower->srange + 40);
 	}
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == -1 && flag) {
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();

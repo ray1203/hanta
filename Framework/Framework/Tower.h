@@ -9,7 +9,7 @@ class Tower :
 	int damage;
 	int speed;
 	int range=20;
-	int srange = 0;
+	
 	float rate;
 	float time;
 	int flag = 0;
@@ -19,7 +19,7 @@ class Tower :
 	BulletManager* bm;
 public:
 	Tower(const wchar_t* path, int damage,int speed,int range,float rate);
-
+int srange = 0;
 	int activation = 0;
 
 	void Update();

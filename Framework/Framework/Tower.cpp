@@ -5,6 +5,7 @@
 #include "TimeManager.h"
 #include "GameScene.h"
 #include "InputManager.h"
+#include "ImageResize.h"
 #include <vector>
 Tower::Tower(const wchar_t* path, int damage, int speed, int srange, float rate)
 	:damage(damage), speed(speed), srange(srange), rate(rate), GameObject(path) {
@@ -12,7 +13,7 @@ Tower::Tower(const wchar_t* path, int damage, int speed, int srange, float rate)
 	bm = s.GetBM();
 	em = s.GetEM();
 	col = new CircleCollider(*transform, range);
-	range += srange * 40;
+	range = srange * 40 + 20;
 	time = 0;
 }
 
@@ -29,11 +30,13 @@ void Tower::Update() {
 	}
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col->Intersected(InputManager::GetMouseVector2())&&activation) {
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
+		ImageResize r;
 		rangeI = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\Range.png"));
 		rangeI->renderer->changeAlpha(0.5f);
 		rangeI->transform->SetPosition(transform->position.x,transform->position.y);
 		printf("%d", srange);
-		rangeI->transform->SetScale(srange*2.0f+1, srange*2.0f+1);
+		
+		r.resize(rangeI,(double)80 * srange+40,80 * srange+40);
 		flag = 1;
 	}
 
