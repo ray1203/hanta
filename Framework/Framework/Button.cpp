@@ -4,7 +4,7 @@
 #include "InputManager.h"
 #include "Tower.h"
 Button::Button(const wchar_t* path, int x, int y)
-	:GameObject(path), col2(*transform, 80.0f, 80.0f)
+	:GameObject(path), col2(*transform, 40.0f, 40.0f)
 {
 	transform->SetPosition(x * 40 + 20, y * 40 + 20);
 }
@@ -36,7 +36,7 @@ void Button::Update()
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == -1 && flag) {
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
 		flag = 0;
-scene.Destroy(rangeI);
+	scene.Destroy(rangeI);
 		if (scene.map[(int)(tower->transform->position.y - 20) / 40][(int)(tower->transform->position.x - 20) / 40]!=0) {
 			scene.Destroy(tower);
 			

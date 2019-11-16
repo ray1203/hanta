@@ -10,6 +10,12 @@
 //Scene을 상속받아 객체를 생성합니다.
 class GameScene : public Scene
 {
+	BulletManager* bm;
+	EnemyManager* em;
+	CraftButton* craftButton;
+	CraftTable* craftTable;
+	PlayerData* playerData;
+	virtual void Initialize();		//모든 Scene에는 반드시 Initialize함수가 있어야합니다. (추상 클래스 참고)
 public:
 	int map[20][32] = {//한 타일의 크기는 40*40 입구 0,1 출구 19,1
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -33,14 +39,12 @@ public:
 		{0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0},
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	};
-	BulletManager* bm;
-	EnemyManager* em;
-	CraftButton* craftButton;
-	CraftTable* craftTable;
-	PlayerData* playerData;
-	virtual void Initialize();		//모든 Scene에는 반드시 Initialize함수가 있어야합니다. (추상 클래스 참고)
-	int GetMap(int x, int y);
-public:
+	int enemyWave[100][100] = {
+		{1, 1000, 5},//무시
+		{1, 1000, 5, 1, 100, 5},
+		{1, 100, 5},
+	};
+	//Enemy 번호, 생성 속도(ms), 생성 개수
 	PlayerData* GetPlayerData();
 	BulletManager* GetBM();
 	EnemyManager* GetEM();

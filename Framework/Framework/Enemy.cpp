@@ -26,7 +26,7 @@ void Enemy::Update() {
 		for (int i = 0; i < 4; i++) {
 			if (cx + dx[i] >= 0 && cx + dx[i] < 32 && cy + dy[i] >= 0 && cy + dy[i] < 20) {
 				GameScene g;
-				if (g.GetMap(cx + dx[i], cy + dy[i]) == 1 && (cx + dx[i] != ax || cy + dy[i] != ay)) {
+				if (g.map[(int)cy + dy[i]][(int)cx + dx[i]] == 1 && (cx + dx[i] != ax || cy + dy[i] != ay)) {
 					ax = bx;
 					ay = by;
 					bx += dx[i];

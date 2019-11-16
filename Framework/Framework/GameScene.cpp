@@ -34,10 +34,6 @@ void GameScene::Initialize()
 	//player->enemy = t;
 }
 
-int GameScene::GetMap(int x, int y) {
-	return map[y][x];
-}
-
 PlayerData* GameScene::GetPlayerData()
 {
 	return playerData;
