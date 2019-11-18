@@ -21,15 +21,13 @@ void CraftTable::hide() {
 	Scene::GetCurrentScene().Destroy(jButton);
 }
 void CraftTable::change() {
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	if (isActive) {
 		hide();
-
-		//GameScene& s = (GameScene&)Scene::GetCurrentScene();
-		//s.GetPlayerData()->resume();
+		s.GetPlayerData()->resume();
 	}
 	else {
 		show();
-		//GameScene& s = (GameScene&)Scene::GetCurrentScene();
-		//s.GetPlayerData()->pause();
+		s.GetPlayerData()->pause();
 	}
 }

@@ -10,7 +10,7 @@ class GameObject
 {
 public:
 	//GameObject() 처럼 호출할 수 있는 생성자입니다. 이미지 로드가 필요없을경우 사용합니다.
-	GameObject(Vector2 position = Vector2(), float angle = 0.0f, Vector2 scale = Vector2());
+	GameObject(Vector2 position = Vector2(), float angle = 0.0f, Vector2 scale = Vector2(1.0f,1.0f));
 
 	//GameObject(L"image.png"); 처럼 호출할 수 있는 생성자입니다. 하나의 이미지를 로드할 경우 사용합니다.
 	//TestObject.h, TestObject.cpp를 참고하세요.

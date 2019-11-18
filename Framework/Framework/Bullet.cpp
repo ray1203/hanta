@@ -8,6 +8,8 @@
 Bullet::Bullet(const wchar_t* path, float speed, float damage, Enemy* e)
 	:GameObject(path), speed(speed), damage(damage), bulletCol(*transform, renderer->GetWidth() * 0.5f),e(e)
 {
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	playerData = s.GetPlayerData();
 	this->speed = speed;
 }
 
@@ -17,10 +19,12 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
-	setPos();
-	Move();
-	CheckOutOfScreen();
-	Damage();
+	if (!playerData->isPause) {
+		setPos();
+		Move();
+		CheckOutOfScreen();
+		Damage();
+	}
 }
 
 void Bullet::setPos() {

@@ -6,6 +6,7 @@ class PlayerData
 {
 public:
 	PlayerData();
+	bool isPause;
 	int money;
 	std::vector<String> jaeum;//자음
 	std::vector<String> moeum;//모음
@@ -18,5 +19,7 @@ public:
 	void printMoeum();
 	void printMoney();
 	void printAll();
+	void pause();
+	void resume();
 };
 

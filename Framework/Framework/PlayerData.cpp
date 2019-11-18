@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PlayerData.h"
 
-PlayerData::PlayerData():money(0)
+PlayerData::PlayerData():money(0),isPause(false)
 {
 	std::srand(static_cast<unsigned int>(std::time(0)));
 }
@@ -64,4 +64,14 @@ void PlayerData::printAll()
 	printMoeum();
 	printMoney();
 	std::cout << "----------------------" << "\n";
+}
+
+void PlayerData::pause()
+{
+	isPause = true;
+}
+
+void PlayerData::resume()
+{
+	isPause = false;
 }
