@@ -33,3 +33,6 @@ bool GameObject::GetActive()
 {
 	return isActive;
 }
+void GameObject::Activate(bool b) {
+	isActive = b;
+}

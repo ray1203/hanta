@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "PlayerData.h"
-
-PlayerData::PlayerData():money(0),isPause(false)
+#include "GameScene.h"
+PlayerData::PlayerData():money(10),isPause(false)
 {
+	
 	std::srand(static_cast<unsigned int>(std::time(0)));
 }
 
@@ -19,8 +20,10 @@ void PlayerData::createJaeum()
 		int r = std::rand() % 14;
 		jaeum.push_back(list[r]);
 		money--;
+		notifyChange();
 	}
 	else std::cout << "µ· ºÎÁ·" << "\n";
+	
 }
 
 void PlayerData::createMoeum()
@@ -30,6 +33,7 @@ void PlayerData::createMoeum()
 		int r = std::rand() % 12;
 		moeum.push_back(list[r]);
 		money--;
+		notifyChange();
 	}
 	else std::cout << "µ· ºÎÁ·" << "\n";
 }
@@ -64,6 +68,37 @@ void PlayerData::printAll()
 	printMoeum();
 	printMoney();
 	std::cout << "----------------------" << "\n";
+}
+
+String PlayerData::sprintJaeum()
+{
+	String str;
+	for (int i = 0; i < jaeum.size(); i++) {
+		str.append(jaeum[i]);
+		if (i != jaeum.size() - 1) {
+			str.append(",");
+		}
+	}
+	return str;
+}
+
+String PlayerData::sprintMoeum()
+{
+	String str;
+	for (int i = 0; i < moeum.size(); i++) {
+		str.append(moeum[i]);
+		if (i != moeum.size() - 1) {
+			str.append(",");
+		}
+	}
+	return str;
+}
+
+void PlayerData::notifyChange()
+{
+	printf("notify\n");
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	s.GetCraftTable()->updateText();
 }
 
 void PlayerData::pause()

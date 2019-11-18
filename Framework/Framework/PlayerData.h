@@ -15,10 +15,16 @@ public:
 	int addMoney(int add);
 	void createJaeum();
 	void createMoeum();
+
 	void printJaeum();
 	void printMoeum();
 	void printMoney();
 	void printAll();
+
+	String sprintJaeum();
+	String sprintMoeum();
+	void notifyChange();
+
 	void pause();
 	void resume();
 };

@@ -32,6 +32,7 @@ public:
 	virtual void Update() {}			//매 프레임마다 호출
 	virtual void LateUpdate() {}		//Update가 호출된 이후 호출
 	virtual void OnDestroy() {}			//오브젝트가 삭제될 때 호출
+	void Activate(bool b);
 
 public:
 	bool GetActive();
