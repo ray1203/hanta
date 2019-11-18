@@ -21,11 +21,13 @@ void GameScene::Initialize()
 		}
 	}
 	playerData = new PlayerData();
+	playerData->setlife(20);
 	craftTable = (CraftTable*)PushBackGameObject(new CraftTable());
 	craftButton = (CraftButton*)PushBackGameObject(new CraftButton(L"resources\\SceneButton.png", 31, 0, 80, 80, craftTable));
 	bm = (BulletManager*)PushBackGameObject(new BulletManager());
 	em = (EnemyManager*)PushBackGameObject(new EnemyManager());
 	Button* b = (Button*)PushBackGameObject(new Button(L"resources\\Button.png", 9, 17));
+	
 	//SceneButton* sb = (SceneButton*)PushBackGameObject(new SceneButton(L"resources\\SceneButton.png", 11, 17, 80, 80, new CraftScene()));
 	//TestObject* t = (TestObject*)PushBackGameObject(new TestObject());		//테스트용 오브젝트입니다.
 	//t->transform->SetPosition(200.0f,100.0f);

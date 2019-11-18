@@ -2,6 +2,7 @@
 #include "Enemy.h"
 #include "GameScene.h"
 #include "InputManager.h"
+
 Enemy::Enemy(const wchar_t* path, int bx, int by,int money, int hp)
 	:GameObject(path), bx(bx), by(by), hp(hp),money(money), col(*transform, renderer->GetWidth(), renderer->GetHeight())
 {
@@ -38,7 +39,10 @@ void Enemy::Update() {
 		}
 	}
 	else if (ax==30&&ay==1) {
+		GameScene& s = (GameScene&)Scene::GetCurrentScene();
+		s.GetPlayerData()->changeLife(-1);
 		Destroy();
+		
 	}
 	else {
 		if (bx - ax > 0) {

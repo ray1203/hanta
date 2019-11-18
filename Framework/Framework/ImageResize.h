@@ -4,6 +4,6 @@ class ImageResize
 {
 public:
 	double width, height;
-	void resize(GameObject* g, double x, double y);
+	void resize(GameObject* g, int x, int y);
 };
 

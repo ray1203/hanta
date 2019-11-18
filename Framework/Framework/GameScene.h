@@ -12,7 +12,7 @@ class GameScene : public Scene
 {
 	BulletManager* bm;
 	EnemyManager* em;
-	CraftButton* craftButton;
+	
 	CraftTable* craftTable;
 	PlayerData* playerData;
 	virtual void Initialize();		//모든 Scene에는 반드시 Initialize함수가 있어야합니다. (추상 클래스 참고)
@@ -50,4 +50,6 @@ public:
 	EnemyManager* GetEM();
 	CraftTable* GetCraftTable();
 	Player* player;
+	CraftButton* craftButton;
+	
 };

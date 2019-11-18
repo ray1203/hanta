@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "AABBCollider.h"
 #include "BulletManager.h"
+
 class BulletManager;
 class Enemy :
 	public GameObject

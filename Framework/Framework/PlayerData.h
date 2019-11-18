@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "GameObject.h"
 #include <ctime>
 typedef std::string String;
 class PlayerData
@@ -7,6 +8,11 @@ class PlayerData
 public:
 	PlayerData();
 	int money;
+	void setlife(int life);
+	void changeLife(int changelife);
+	int life;
+	GameObject* remainlife1;
+	GameObject* remainlife2;
 	std::vector<String> jaeum;//자음
 	std::vector<String> moeum;//모음
 	std::vector<String> eumjul;//음절

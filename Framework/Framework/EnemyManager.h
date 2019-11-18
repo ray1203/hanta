@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "Enemy.h"
 #include "WaveButton.h"
+#include "Scene.h"
 class EnemyManager :
 	public GameObject
 {
