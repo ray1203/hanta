@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Bullet.h"
+#include "PlayerData.h"
 class BulletManager :
 	public GameObject
 {
@@ -12,7 +13,7 @@ public:
 
 	std::list<Bullet*> towerBullets;
 	Bullet* PushBackTowerBullet(Bullet* b);
-
+	PlayerData* playerData;
 	void Check();
 	void Destroy(Bullet* b);
 	void Remove();

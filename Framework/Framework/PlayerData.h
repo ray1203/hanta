@@ -7,6 +7,7 @@ class PlayerData
 {
 public:
 	PlayerData();
+	bool isPause;
 	int money;
 	void setlife(int life);
 	void changeLife(int changelife);
@@ -20,9 +21,17 @@ public:
 	int addMoney(int add);
 	void createJaeum();
 	void createMoeum();
+
 	void printJaeum();
 	void printMoeum();
 	void printMoney();
 	void printAll();
+
+	String sprintJaeum();
+	String sprintMoeum();
+	void notifyChange();
+
+	void pause();
+	void resume();
 };
 

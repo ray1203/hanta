@@ -50,10 +50,11 @@ Scene& Scene::GetCurrentScene()
 void Scene::Update()
 {
 	//모든 오브젝트의 Update를 수행
-	for (auto& i : gameObjectList)	
-		if(i->GetActive())
+	for (auto& i : gameObjectList) {
+		if (i->GetActive()) {
 			i->Update();
-
+		}
+	}
 	//LateUpdate 수행
 	for (auto& i : gameObjectList)
 		if (i->GetActive())

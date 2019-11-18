@@ -104,6 +104,9 @@
     <ClCompile Include="MoeumButton.cpp" />
     <ClCompile Include="WaveButton.cpp" />
     <ClCompile Include="ImageResize.cpp" />
+    <ClCompile Include="FontObject.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FontRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -191,6 +194,7 @@
     <ClInclude Include="MoeumButton.h" />
     <ClInclude Include="WaveButton.h" />
     <ClInclude Include="ImageResize.h" />
+    <ClInclude Include="FontObject.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

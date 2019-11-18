@@ -14,33 +14,35 @@ Tower::Tower(const wchar_t* path, int damage, int speed, int srange, float rate)
 	em = s.GetEM();
 	col = new CircleCollider(*transform, range);
 	range = srange * 40 + 20;
+	playerData = s.GetPlayerData();
 	time = 0;
 }
 
 void Tower::Update() {
-	time += TimeManager::GetDeltaTime();
-	if (time >= rate && activation) {
-		Shoot();
-		time = 0;
-	}	if (InputManager::GetMyKeyState(MK_LBUTTON) == 1 && flag == 1) {
-		
-		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
-		scene.Destroy(rangeI);
-		flag = 0;
-	}
-	if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col->Intersected(InputManager::GetMouseVector2())&&activation) {
-		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
-		ImageResize r;
-		rangeI = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\Range.png"));
-		rangeI->renderer->changeAlpha(0.5f);
-		rangeI->transform->SetPosition(transform->position.x,transform->position.y);
-		printf("%d", srange);
-		
-		r.resize(rangeI,(double)80 * srange+40,80 * srange+40);
-		flag = 1;
-	}
+	if (!playerData->isPause) {
+		time += TimeManager::GetDeltaTime();
+		if (time >= rate && activation) {
+			Shoot();
+			time = 0;
+		}	if (InputManager::GetMyKeyState(MK_LBUTTON) == 1 && flag == 1) {
 
+			GameScene& scene = (GameScene&)Scene::GetCurrentScene();
+			scene.Destroy(rangeI);
+			flag = 0;
+		}
+		if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col->Intersected(InputManager::GetMouseVector2()) && activation) {
+			GameScene& scene = (GameScene&)Scene::GetCurrentScene();
+			ImageResize r;
+			rangeI = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\Range.png"));
+			rangeI->renderer->changeAlpha(0.5f);
+			rangeI->transform->SetPosition(transform->position.x, transform->position.y);
+			printf("%d", srange);
 
+			r.resize(rangeI, (double)80 * srange + 40, 80 * srange + 40);
+			flag = 1;
+		}
+
+	}
 }
 
 void Tower::Shoot()

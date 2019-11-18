@@ -2,8 +2,11 @@
 #include "BulletManager.h"
 #include "Scene.h"			//æ¿ ¿Œ≈¨∑ÁµÂ
 #include "TimeManager.h"
+#include "GameScene.h"
 BulletManager::BulletManager()
 {
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	playerData = s.GetPlayerData();
 }
 
 BulletManager::~BulletManager()

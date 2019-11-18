@@ -26,10 +26,12 @@ private:
 	ID2D1Factory* factory;
 	IWICImagingFactory* wicFactory;
 	ID2D1HwndRenderTarget* renderTarget;
+	IDWriteFactory* dwriteFactory;
 	
 public:
 	ID2D1HwndRenderTarget& GetRenderTarget();
 	IWICImagingFactory& GetImagingFactory();
 	ID2D1Factory& GetFactory();
+	IDWriteFactory& GetDwriteFactory();
 };
 

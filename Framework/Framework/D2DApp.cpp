@@ -34,6 +34,16 @@ HRESULT D2DApp::CreateDeviceIndependentResources()
 	if (SUCCEEDED(hr))
 		hr = D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &factory);
 
+	if (SUCCEEDED(hr))
+	{
+		// Create a DirectWrite factory.
+		hr = DWriteCreateFactory(
+			DWRITE_FACTORY_TYPE_SHARED,
+			__uuidof(dwriteFactory),
+			reinterpret_cast<IUnknown * *>(&dwriteFactory)
+		);
+	}
+
 	return hr;
 }
 
@@ -156,6 +166,11 @@ IWICImagingFactory& D2DApp::GetImagingFactory()
 ID2D1Factory& D2DApp::GetFactory()
 {
 	return *factory;
+}
+
+IDWriteFactory& D2DApp::GetDwriteFactory()
+{
+	return *dwriteFactory;
 }
 
 

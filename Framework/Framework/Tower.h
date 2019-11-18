@@ -3,6 +3,7 @@
 #include "CircleCollider.h"
 #include "BulletManager.h"	
 #include "EnemyManager.h"
+#include "PlayerData.h"
 class Tower :
 	public GameObject
 {
@@ -16,6 +17,7 @@ class Tower :
 	GameObject* rangeI;
 	CircleCollider* col;
 	EnemyManager* em;
+	PlayerData* playerData;
 	BulletManager* bm;
 public:
 	Tower(const wchar_t* path, int damage,int speed,int range,float rate);

@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "CircleCollider.h"			//여기 추가
 #include "Enemy.h"
+#include "PlayerData.h"
 class Enemy;
 class Bullet:
 	public GameObject
@@ -17,7 +18,7 @@ public:
 
 	CircleCollider bulletCol;			//여기도
 	Enemy* e;
-
+	PlayerData* playerData;
 	virtual void Update();
 	void Move();
 	void Damage();

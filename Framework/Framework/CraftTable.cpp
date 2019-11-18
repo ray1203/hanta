@@ -9,6 +9,8 @@ CraftTable::CraftTable()
 	playerData = s.GetPlayerData();
 }
 void CraftTable::show() {
+	FontObject* f = new FontObject("hihi",30,30);
+	Scene::GetCurrentScene().PushBackGameObject(f);
 	isActive = true;
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	background = (BackGround*)s.PushBackGameObject(new BackGround(L"resources\\background.png"));
@@ -23,15 +25,25 @@ void CraftTable::hide() {
 	Scene::GetCurrentScene().Destroy(jButton);
 }
 void CraftTable::change() {
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	if (isActive) {
 		hide();
-
-		//GameScene& s = (GameScene&)Scene::GetCurrentScene();
-		//s.GetPlayerData()->resume();
+		s.GetPlayerData()->resume();
 	}
 	else {
 		show();
-		//GameScene& s = (GameScene&)Scene::GetCurrentScene();
-		//s.GetPlayerData()->pause();
+		s.GetPlayerData()->pause();
 	}
+}
+
+void CraftTable::updateText()
+{
+	if(jaeumText!=nullptr)
+	Scene::GetCurrentScene().Destroy(jaeumText);
+	if(moeumText!=nullptr)
+	Scene::GetCurrentScene().Destroy(moeumText);
+	moeumText = new FontObject(playerData->sprintMoeum(), 1100, 600);
+	jaeumText = new FontObject(playerData->sprintJaeum(), 100, 600);
+	Scene::GetCurrentScene().PushBackGameObject(jaeumText);
+	Scene::GetCurrentScene().PushBackGameObject(moeumText);
 }
