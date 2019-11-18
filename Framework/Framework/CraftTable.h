@@ -5,16 +5,21 @@
 #include "PlayerData.h"
 #include "MoeumButton.h"
 #include "JaeumButton.h"
+#include "InputManager.h"
 #include "FontObject.h"
+#include<conio.h>
 //#include "Scene.h"
+typedef std::string String;
 class CraftTable :
 	public GameObject
 {
 public:
 	CraftTable();
+	virtual void Update();
 	FontObject* jaeumText;
 	FontObject* moeumText;
 	FontObject* eumjulText;
+	FontObject* insertText;
 
 	PlayerData* playerData;
 	BackGround* background;
@@ -24,7 +29,8 @@ public:
 	void show();
 	void hide();
 	void change();
-
+	String buffer;
+	void input();
 	void updateText();
 
 };

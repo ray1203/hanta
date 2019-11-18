@@ -186,7 +186,9 @@
     <ClInclude Include="D2DApp.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="FontObject.h" />
+    <ClInclude Include="FontRenderer.h" />
     <ClInclude Include="Framework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />

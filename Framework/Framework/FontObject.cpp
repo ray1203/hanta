@@ -21,11 +21,10 @@ FontObject::FontObject(String str, float posX, float posY):GameObject(fontRender
 {
 	setlocale(LC_ALL, "korean");
 	int C_STR_BUFFER_SIZE = str.size() + 1;
-	//wchar_t result[100];
 	wchar_t *result = new wchar_t[str.size()+1];
 	MultiByteToWideChar(CP_ACP, NULL, str.c_str(), -1, result, str.size()+1);
-	std::cout << "giving:" << str<<"||";
-	wprintf(L"%s\n", result);
+	//std::cout << "giving:" << str<<"||";
+	//wprintf(L"%s\n", result);
 
 	font = new Font(L"Arial");				
 	font->fontSize = 10.0f;

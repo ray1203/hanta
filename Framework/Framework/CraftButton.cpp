@@ -10,6 +10,7 @@ CraftButton::CraftButton(const wchar_t* path, int x, int y, float width, float h
 
 void CraftButton::Update()
 {
+	
 	if (col2.Intersected(InputManager::GetMouseVector2())) {
 		HCURSOR hCursor = LoadCursor(0, IDC_HAND);
 		hCursor = SetCursor(hCursor);

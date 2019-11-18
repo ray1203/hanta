@@ -1,25 +1,81 @@
-﻿  Bullet.cpp
+﻿  AABBCollider.cpp
+  Animation.cpp
+  AnimationRenderer.cpp
+  Audio.cpp
+  BackGround.cpp
+  Bullet.cpp
   BulletManager.cpp
   Button.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(11,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(11,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(24,111): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(24,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(30,112): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(30,70): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(34,111): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(34,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(35,112): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(35,70): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CircleCollider.cpp
+  Collider.cpp
+  Collision.cpp
+  Component.cpp
   CraftButton.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(37,47): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftButton.cpp(8,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   CraftTable.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftButton.cpp(8,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftTable.cpp(140,43): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  D2DApp.cpp
   Enemy.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftTable.cpp(142,81): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(6,39): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(6,115): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   EnemyManager.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+  Font.cpp
+  FontObject.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(6,92): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\FontObject.cpp(23,40): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  FontRenderer.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\FontObject.cpp(25,73): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Framework.cpp
+  GameObject.cpp
   GameScene.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\FontRenderer.cpp(49,27): warning C4267: '초기화 중': 'size_t'에서 'UINT32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(15,51): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(15,38): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(19,51): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ImageResize.cpp
+  InputManager.cpp
   JaeumButton.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(19,38): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\JaeumButton.cpp(8,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ListAnimation.cpp
   main.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
   MoeumButton.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\JaeumButton.cpp(8,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\MoeumButton.cpp(8,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Player.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+  PlayerData.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\MoeumButton.cpp(8,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(19,45): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(20,48): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Renderer.cpp
+  ResourceManager.cpp
+  Scene.cpp
+  SheetAnimation.cpp
+  SoundEvent.cpp
+  TimeManager.cpp
   Tower.cpp
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
-c1xx : fatal error C1083: 컴파일러 중간 파일 파일을 열 수 없습니다. 'x64\Debug\Framework.pch': Invalid argument
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(21,48): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(15,39): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(41,41): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(53,37): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(70,83): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Transform.cpp
+  WaveButton.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(70,76): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\WaveButton.cpp(8,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  WinApp.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\WaveButton.cpp(8,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Framework.vcxproj -> C:\Users\Administrator\Desktop\project\hanta\Framework\x64\Debug\Framework.exe

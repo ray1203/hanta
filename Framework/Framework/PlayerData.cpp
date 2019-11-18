@@ -1,9 +1,10 @@
-#include "stdafx.h"
+Ôªø#include "stdafx.h"
 #include "PlayerData.h"
+#include "GameScene.h"
 #include "ImageResize.h"
-#include "Scene.h"
-PlayerData::PlayerData():money(0)
+PlayerData::PlayerData():money(10),isPause(false)
 {
+	
 	std::srand(static_cast<unsigned int>(std::time(0)));
 }
 
@@ -12,27 +13,43 @@ int PlayerData::addMoney(int add=1)
 	money += add;
 	return money;
 }
-
+String PlayerData::MergeJaso(String choSung, String jungSung, String jongSung) {
+	int ChoSungPos, JungSungPos, JongSungPos;
+	int nUniCode;
+	ChoSungPos = m_ChoSungTbl.find(choSung) / 2;
+	JungSungPos = m_JungSungTbl.find(jungSung) / 2;
+	JongSungPos = m_JongSungTbl.find(jongSung) / 2;
+	nUniCode = m_UniCodeHangulBase + (ChoSungPos * 21 + JungSungPos) * 28 + JongSungPos;
+	wchar_t a[15];
+	swprintf(a, sizeof(a) / sizeof(wchar_t), L"%c", nUniCode);
+	char b[15];
+	sprintf_s(b, 15, "%ls", a);
+	String result(b);
+	return result;
+}
 void PlayerData::createJaeum()
 {
 	if (money > 0) {
-		String list[30] = { "§°","§§","§ß","§©","§±","§≤","§µ","§∑","§∏","§∫","§ª","§º","§Ω","§æ" };
+		String list[30] = { "„Ñ±","„Ñ¥","„Ñ∑","„Ñπ","„ÖÅ","„ÖÇ","„ÖÖ","„Öá","„Öà","„Öä","„Öã","„Öå","„Öç","„Öé" };
 		int r = std::rand() % 14;
 		jaeum.push_back(list[r]);
 		money--;
+		notifyChange();
 	}
-	else std::cout << "µ∑ ∫Œ¡∑" << "\n";
+	else std::cout << "Îèà Î∂ÄÏ°±" << "\n";
+	
 }
 
 void PlayerData::createMoeum()
 {
 	if (money > 0) {
-		String list[30] = { "§À","§≈","§¡","§¿","§ƒ","§”","§ø","§√","§«","§–","§Ã","§—"};
+		String list[30] = { "„Öõ","„Öï","„Öë","„Öê","„Öî","„Ö£","„Öè","„Öì","„Öó","„Ö†","„Öú","„Ö°"};
 		int r = std::rand() % 12;
 		moeum.push_back(list[r]);
 		money--;
+		notifyChange();
 	}
-	else std::cout << "µ∑ ∫Œ¡∑" << "\n";
+	else std::cout << "Îèà Î∂ÄÏ°±" << "\n";
 }
 
 void PlayerData::printJaeum()
@@ -66,12 +83,54 @@ void PlayerData::printAll()
 	printMoney();
 	std::cout << "----------------------" << "\n";
 }
+
+String PlayerData::sprintJaeum()
+{
+	String str;
+	for (int i = 0; i < jaeum.size(); i++) {
+		str.append(jaeum[i]);
+		if (i != jaeum.size() - 1) {
+			str.append(",");
+		}
+	}
+	return str;
+}
+
+String PlayerData::sprintMoeum()
+{
+	String str;
+	for (int i = 0; i < moeum.size(); i++) {
+		str.append(moeum[i]);
+		if (i != moeum.size() - 1) {
+			str.append(",");
+		}
+	}
+	return str;
+}
+
+void PlayerData::notifyChange()
+{
+	printf("notify\n");
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	s.GetCraftTable()->updateText();
+}
+
+void PlayerData::pause()
+{
+	isPause = true;
+}
+
+void PlayerData::resume()
+{
+	isPause = false;
+}
+
 void PlayerData::setlife(int life)
 {
 	GameObject* heart = new GameObject(L"resources\\heart (2).png");
 	Scene::GetCurrentScene().PushBackGameObject(heart);
-	ImageResize l;	l.resize(heart, 60, 60);
-	printf("\nª˝∏Ì¡÷¿‘");
+	ImageResize l;    l.resize(heart, 60, 60);
+	printf("\nÏÉùÎ™ÖÏ£ºÏûÖ");
 	this->life = life;
 	heart->transform->position.x = 940;
 	heart->transform->position.y = 30;
@@ -101,7 +160,7 @@ void PlayerData::setlife(int life)
 	switch (life % 10) {
 	case 0:
 		remainlife2 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources\\number\\dot0.png"));
-		
+
 		break;
 	case 1:
 		remainlife2 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources\\number\\dot1.png")); break;
@@ -134,7 +193,7 @@ void PlayerData::changeLife(int changelife)
 	switch (life / 10) {
 		Scene::GetCurrentScene().Destroy(remainlife1);
 	case 0:
-		remainlife1 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources\\number\\dot0.png"));break;
+		remainlife1 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources\\number\\dot0.png")); break;
 	case 1:
 		remainlife1 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources\\number\\dot1.png")); break;
 	case 2:

@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "AABBCollider.h"
 #include "BulletManager.h"
-
+#include "PlayerData.h"
 class BulletManager;
 class Enemy :
 	public GameObject
@@ -18,6 +18,7 @@ public:
 	~Enemy();
 	AABBCollider col;
 	BulletManager* bm;
+	PlayerData* playerData;
 	virtual void Update();
 	void Destroy();
 };

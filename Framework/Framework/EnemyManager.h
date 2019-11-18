@@ -3,7 +3,7 @@
 #include "GameObject.h"
 #include "Enemy.h"
 #include "WaveButton.h"
-#include "Scene.h"
+#include "PlayerData.h"
 class EnemyManager :
 	public GameObject
 {
@@ -23,6 +23,7 @@ class EnemyManager :
 	double currentTime = 0.0f;
 	WaveButton* w;
 public:
+	PlayerData* playerData;
 	int wave = -1;
 	int flag = 0;
 	EnemyManager();
