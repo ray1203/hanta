@@ -34,6 +34,8 @@ public:
 	void printAll();
 
 	String MergeJaso(String choSung, String jungSung, String jongSung);
+	String MergeJaJa(String choSung1, String choSung2);
+	String Merge(String str1, String str2);
 	String sprintJaeum();
 	String sprintMoeum();
 	void notifyChange();

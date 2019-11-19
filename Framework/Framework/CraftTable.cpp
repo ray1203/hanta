@@ -20,6 +20,7 @@ void CraftTable::show() {
 	background = (BackGround*)s.PushBackGameObject(new BackGround(L"resources\\background.png"));
 	mButton = (MoeumButton*)s.PushBackGameObject(new MoeumButton(L"resources\\MoeumButton.png", 10, 10, 80, 80, playerData));
 	jButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\JaeumButton.png", 20, 10, 80, 80, playerData));
+	updateText();
 }
 void CraftTable::hide() {
 	buffer = "";
@@ -27,6 +28,9 @@ void CraftTable::hide() {
 	Scene::GetCurrentScene().Destroy(background);
 	Scene::GetCurrentScene().Destroy(mButton);
 	Scene::GetCurrentScene().Destroy(jButton);
+	Scene::GetCurrentScene().Destroy(jaeumText);
+	Scene::GetCurrentScene().Destroy(moeumText);
+	Scene::GetCurrentScene().Destroy(insertText);
 }
 void CraftTable::change() {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
@@ -135,6 +139,34 @@ void CraftTable::input()
 			}
 		}
 
+	}
+	else if (InputManager::GetKeyDown(VK_RETURN)&&buffer.size()<=6) {
+		int C_STR_BUFFER_SIZE = buffer.size() + 1;
+		wchar_t* result = new wchar_t[buffer.size() + 1];
+		MultiByteToWideChar(CP_ACP, NULL, buffer.c_str(), -1, result, buffer.size() + 1);
+		//wprintf(L"%c\n", result[0]);
+		if (result[1] == L'+') {
+			std::cout << "a";
+			wchar_t a1[15];
+			swprintf(a1, sizeof(a1) / sizeof(wchar_t), L"%c", result[0]);
+			char b1[15];
+			sprintf_s(b1, 15, "%ls", a1);
+			String result1(b1);
+			std::cout << "r1:" << result1 << "\n";
+			
+			wchar_t a2[15];
+			swprintf(a2, sizeof(a2) / sizeof(wchar_t), L"%c", result[2]);
+			char b2[15];
+			sprintf_s(b2, 15, "%ls", a2);
+			String result2(b2);
+			std::cout << "r2:" << result2 << "\n";
+			String str = playerData->Merge(result1, result2);
+			std::cout << "str:" << str << "\n";
+			if (str != "null") {
+				buffer = str;
+				updateText();
+			}
+		}
 	}
 
 	int C_STR_BUFFER_SIZE = buffer.size() + 1;

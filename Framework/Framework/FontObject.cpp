@@ -14,7 +14,7 @@ FontObject::FontObject()
 	fontRenderer->text = result;						//텍스트의 내용을 지정해줍니다.
 	transform->SetPosition(300.0f, 300.0f);			//위치 지정
 	transform->SetRotation(0.0f);					//각도 지정
-	transform->SetScale(3.0f, 1.0f);				//크기 지정 모두 가능합니다.
+	transform->SetScale(1.0f, 1.0f);				//크기 지정 모두 가능합니다.
 }
 
 FontObject::FontObject(String str, float posX, float posY):GameObject(fontRenderer=new FontRenderer()), str(str)
@@ -27,12 +27,12 @@ FontObject::FontObject(String str, float posX, float posY):GameObject(fontRender
 	//wprintf(L"%s\n", result);
 
 	font = new Font(L"Arial");				
-	font->fontSize = 10.0f;
+	font->fontSize = 7.0f;
 	fontRenderer->font = this->font;			
 	fontRenderer->text = result;				
 	transform->SetPosition(posX, posY);			
 	transform->SetRotation(0.0f);				
-	transform->SetScale(3.0f, 1.0f);			
+	transform->SetScale(1.0f, 1.0f);			
 }
 
 FontObject::FontObject(String str, float posX, float posY , float scaleX, float scaleY) :GameObject(fontRenderer = new FontRenderer()), str(str)

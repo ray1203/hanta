@@ -27,6 +27,107 @@ String PlayerData::MergeJaso(String choSung, String jungSung, String jongSung) {
 	String result(b);
 	return result;
 }
+
+String PlayerData::MergeJaJa(String choSung1, String choSung2)
+{
+	printf("mergeJaJa\n");
+	if (choSung1 == "ㄱ") {
+		if (choSung2 == "ㄱ") {
+			return "ㄲ";
+		}
+		else if (choSung2 == "ㅅ") {
+			return "ㄳ";
+		}
+	}
+	else if (choSung1 == "ㄴ") {
+		if (choSung2 == "ㅈ") {
+			return "ㄵ";
+		}
+		else if (choSung2 == "ㅎ") {
+			return "ㄶ";
+		}
+	}
+	else if (choSung1 == "ㄷ") {
+		if (choSung2 == "ㄷ") {
+			return "ㄸ";
+		}
+	}
+	else if (choSung1 == "ㄹ") {
+		if (choSung2 == "ㄱ") {
+			return "ㄺ";
+		}
+		else if (choSung2 == "ㅁ") {
+			return "ㄻ";
+		}
+		else if (choSung2 == "ㅂ") {
+			return "ㄼ";
+		}
+		else if (choSung2 == "ㅅ") {
+			return "ㄽ";
+		}
+		else if (choSung2 == "ㅌ") {
+			return "ㄾ";
+		}
+		else if (choSung2 == "ㅍ") {
+			return "ㄿ";
+		}
+		else if (choSung2 == "ㅎ") {
+			return "ㅀ";
+		}
+	}
+	else if (choSung1 == "ㅂ") {
+		if (choSung2 == "ㅅ") {
+			return "ㅄ";
+		}else if (choSung2 == "ㅂ") {
+			return "ㅃ";
+		}
+	}
+	else if (choSung1 == "ㅅ") {
+		if (choSung2 == "ㅅ") {
+			return "ㅆ";
+		}
+	}
+	else if (choSung1 == "ㅈ") {
+		if (choSung2 == "ㅈ") {
+			return "ㅉ";
+		}
+	}
+	return "null";
+}
+
+String PlayerData::Merge(String str1, String str2)
+{
+	String cList[30] = { "ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"," " };
+	String c2List[30] = { "ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ","ㄲ","ㄸ","ㅃ","ㅆ","ㅉ", " " };
+	String c3List[35] = { "ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ","ㄲ","ㄸ","ㅃ","ㅆ","ㅉ","ㄳ","ㄵ","ㄶ","ㄺ","ㄻ","ㄼ","ㄽ","ㄾ","ㄿ","ㅀ","ㅄ"," " };
+	String mList[30] = {"ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ"," "};
+	int i = 0;
+	while (cList[i] != " ") {
+		if (cList[i++] == str1) {
+			int j = 0;
+			while (cList[j] != " ") {
+				if (cList[j++] == str2) {
+				return MergeJaJa(str1, str2);
+
+				}
+			}
+		}
+		
+	}
+	i = 0;
+	while (c2List[i] != " ") {
+		if (c2List[i++] == str1) {
+			int j = 0;
+			while (mList[j++] == str2) {
+				return MergeJaso(str1, str2,"");
+			}
+		}
+
+	}
+	
+	return "null";
+}
+
 void PlayerData::createJaeum()
 {
 	if (money > 0) {
@@ -43,7 +144,7 @@ void PlayerData::createJaeum()
 void PlayerData::createMoeum()
 {
 	if (money > 0) {
-		String list[30] = { "ㅛ","ㅕ","ㅑ","ㅐ","ㅔ","ㅣ","ㅏ","ㅓ","ㅗ","ㅠ","ㅜ","ㅡ"};
+		String list[30] = { "ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ" };
 		int r = std::rand() % 12;
 		moeum.push_back(list[r]);
 		money--;
