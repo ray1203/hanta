@@ -13,9 +13,10 @@ class EnemyManager :
 		int by;
 		int money;
 		int hp;
+		float speed;
 	};
 	Info enemyTable[2] = {
-		{L"resources\\R.png", 0, 1, 1, 30}
+		{L"resources\\R.png", 0, 1, 1, 30, 5.0}
 	};
 	int i = 0;
 	int cnt = 0;

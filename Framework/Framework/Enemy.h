@@ -14,7 +14,7 @@ public:
 	int age;
 	float hp;
 	int money = 1;
-	Enemy(const wchar_t* path, int bx, int by,int money,int hp = 1);
+	Enemy(const wchar_t* path, int bx, int by, int money, int hp, float speed);
 	~Enemy();
 	AABBCollider col;
 	BulletManager* bm;

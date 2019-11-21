@@ -2,14 +2,14 @@
 #include "Enemy.h"
 #include "GameScene.h"
 #include "InputManager.h"
-Enemy::Enemy(const wchar_t* path, int bx, int by,int money, int hp)
-	:GameObject(path), bx(bx), by(by), hp(hp),money(money), col(*transform, renderer->GetWidth(), renderer->GetHeight())
+Enemy::Enemy(const wchar_t* path, int bx, int by,int money, int hp, float speed)
+	:GameObject(path), bx(bx), by(by), hp(hp),money(money), speed(speed), col(*transform, renderer->GetWidth(), renderer->GetHeight())
 {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	playerData = s.GetPlayerData();
 	bm = s.GetBM();
 	age = 0;
-	speed = 5.0f;
+	speed = 20.0f;
 }
 
 Enemy::~Enemy() {

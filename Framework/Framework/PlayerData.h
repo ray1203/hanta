@@ -13,6 +13,18 @@ public:
 	void setlife(int life);
 	void changeLife(int changelife);
 	int life;
+	wchar_t number[10][30] = {
+		{L"resources\\number\\dot0.png"},
+		{L"resources\\number\\dot1.png"},
+		{L"resources\\number\\dot2.png"},
+		{L"resources\\number\\dot3.png"},
+		{L"resources\\number\\dot4.png"},
+		{L"resources\\number\\dot5.png"},
+		{L"resources\\number\\dot6.png"},
+		{L"resources\\number\\dot7.png"},
+		{L"resources\\number\\dot8.png"},
+		{L"resources\\number\\dot9.png"}
+	};
 	GameObject* remainlife1;
 	GameObject* remainlife2;
 	String m_ChoSungTbl = "ぁあいぇえぉけげこさざしじすずせぜそぞ";

@@ -18,7 +18,7 @@ void EnemyManager::Update() {
 				if ((pastTime == 0 || currentTime - pastTime >= s.enemyWave[wave][i + 1]) && cnt < s.enemyWave[wave][i + 2]) {
 					cnt++;
 					int n = s.enemyWave[wave][i] - 1;
-					Enemy* e = (Enemy*)s.PushBackGameObject(new Enemy(enemyTable[n].path, enemyTable[n].bx, enemyTable[n].by, enemyTable[n].money, enemyTable[n].hp));
+					Enemy* e = (Enemy*)s.PushBackGameObject(new Enemy(enemyTable[n].path, enemyTable[n].bx, enemyTable[n].by, enemyTable[n].money, enemyTable[n].hp, enemyTable[n].speed));
 					e->transform->SetPosition(20, 60);
 					enemyList.push_back(e);
 					pastTime = currentTime;
