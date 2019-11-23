@@ -2,6 +2,7 @@
 #include "CraftTable.h"
 #include "BackGround.h"
 #include "GameScene.h"
+#include "ImageResize.h"
 CraftTable::CraftTable()
 {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
@@ -46,97 +47,120 @@ void CraftTable::change() {
 
 void CraftTable::input()
 {
+	int keyselect = 0;
+	if (buffer.size() >= 4) {
 
-	if (InputManager::GetKeyDown(0x52)) {
-		buffer.append("ぁ");
+	}
+	else if (InputManager::GetKeyDown(0x52) && InputManager::GetMyKeyState(VK_SHIFT)) {
+		buffer.append("あ");keyselect = 1;
+
+	}
+	else if (InputManager::GetKeyDown(0x52)) {
+		buffer.append("ぁ"); keyselect = 1;
+
 	}
 	else if (InputManager::GetKeyDown(0x53)) {
-		buffer.append("い");
+		buffer.append("い"); keyselect = 1;
+		
 	}
-	else if (InputManager::GetKeyDown(0x45)) {
-		buffer.append("ぇ");
+	else if (InputManager::GetKeyDown(0x45) && InputManager::GetMyKeyState(VK_SHIFT)) {
+		buffer.append("え"); keyselect = 1;
+		
+	}	else if (InputManager::GetKeyDown(0x45)) {
+		buffer.append("ぇ"); keyselect = 1;
+		
 	}
 	else if (InputManager::GetKeyDown(0x46)) {
-		buffer.append("ぉ");
+		buffer.append("ぉ"); keyselect = 1;
+		
 	}
 	else if (InputManager::GetKeyDown(0x41)) {
-		buffer.append("け");
+		buffer.append("け"); keyselect = 1;
+	}	else if (InputManager::GetKeyDown(0x51) && InputManager::GetMyKeyState(VK_SHIFT)) {
+		buffer.append("こ"); keyselect = 1;
 	}
 	else if (InputManager::GetKeyDown(0x51)) {
-		buffer.append("げ");
+		buffer.append("げ"); keyselect = 1;
 	}
-	else if (InputManager::GetKeyDown(0x54)) {
-		buffer.append("さ");
+	else if (InputManager::GetKeyDown(0x54) && InputManager::GetMyKeyState(VK_SHIFT)) {
+		buffer.append("ざ"); keyselect = 1;
+	}	else if (InputManager::GetKeyDown(0x54)) {
+		buffer.append("さ"); keyselect = 1;
 	}	
 	else if (InputManager::GetKeyDown(0x44)) {
-		buffer.append("し");
+		buffer.append("し"); keyselect = 1;
 	}
-	else if (InputManager::GetKeyDown(0x57)) {
-		buffer.append("じ");
+	else if (InputManager::GetKeyDown(0x57) && InputManager::GetMyKeyState(VK_SHIFT)) {
+		buffer.append("す"); keyselect = 1;
+	}	else if (InputManager::GetKeyDown(0x57)) {
+		buffer.append("じ"); keyselect = 1;
 	}
 	else if (InputManager::GetKeyDown(0x43)) {
-		buffer.append("ず");
+		buffer.append("ず"); keyselect = 1;
 	}
 	else if (InputManager::GetKeyDown(0x5A)) {
-		buffer.append("せ");
+		buffer.append("せ"); keyselect = 1; 
 	}
 	else if (InputManager::GetKeyDown(0x58)) {
-		buffer.append("ぜ");
+		buffer.append("ぜ"); keyselect = 1;
 	}
 	else if (InputManager::GetKeyDown(0x56)) {
-		buffer.append("そ");
+		buffer.append("そ"); keyselect = 1; 
 	}
 	else if (InputManager::GetKeyDown(0x47)) {
-		buffer.append("ぞ");
+		buffer.append("ぞ"); keyselect = 1;
 	}
 
 	else if (InputManager::GetKeyDown(0x4B)) {
-		buffer.append("た");
+		buffer.append("た"); keyselect = 1;
 	}
 
 	else if (InputManager::GetKeyDown(0x49)) {
-		buffer.append("ち");
+		buffer.append("ち"); keyselect = 1;
 	}
 
 
 	else if (InputManager::GetKeyDown(0x4A)) {
-		buffer.append("っ");
+		buffer.append("っ"); keyselect = 1; 
 	}
 	else if (InputManager::GetKeyDown(0x55)) {
-		buffer.append("づ");
+		buffer.append("づ"); keyselect = 1; 
 	}
 	else if (InputManager::GetKeyDown(0x48)) {
-		buffer.append("で");
+		buffer.append("で"); keyselect = 1;
 	}
 	else if (InputManager::GetKeyDown(0x59)) {
-		buffer.append("に");
+		buffer.append("に"); keyselect = 1;
 	}
 
 	else if (InputManager::GetKeyDown(0x4E)) {
-		buffer.append("ぬ");
+		buffer.append("ぬ"); keyselect = 1; 
 	}	
 	else if (InputManager::GetKeyDown(0x42)) {
-		buffer.append("ば");
+		buffer.append("ば"); keyselect = 1;
 	}
 	else if (InputManager::GetKeyDown(0x4D)) {
-		buffer.append("ぱ");
+		buffer.append("ぱ"); keyselect = 1;
 	}
 	else if (InputManager::GetKeyDown(0x4C)) {
-		buffer.append("び");
+		buffer.append("び"); keyselect = 1;
 	}
 
-	else if (InputManager::GetKeyDown(0x4F)) {
-		buffer.append("だ");
+	else if (InputManager::GetKeyDown(0x4F) && InputManager::GetMyKeyState(VK_SHIFT)) {
+		buffer.append("ぢ"); keyselect = 1;
+	}	else if (InputManager::GetKeyDown(0x4F)) {
+		buffer.append("だ"); keyselect = 1;
 	}
-	else if (InputManager::GetKeyDown(0x50)) {
-		buffer.append("つ");
+	else if (InputManager::GetKeyDown(0x50) && InputManager::GetMyKeyState(VK_SHIFT)) {
+		buffer.append("て"); keyselect = 1;
+	}	else if (InputManager::GetKeyDown(0x50)) {
+		buffer.append("つ"); keyselect = 1;
 	}
-
-
-
-
-
-	else if (InputManager::GetKeyDown(VK_BACK)) {
+	else if (InputManager::GetKeyDown(VK_RETURN)) {
+		playerData->CreateWord(buffer);
+		buffer.clear();
+	}
+	if (InputManager::GetKeyDown(VK_BACK)) {
 		if (buffer.size() > 0) {
 			if (buffer.at(buffer.size() - 1) == '+') {
 				buffer.erase(buffer.size() - 1);
@@ -148,12 +172,14 @@ void CraftTable::input()
 		}
 
 	}
-	else if (InputManager::GetKeyDown(VK_RETURN)&&buffer.size()<=6) {
+	if (buffer.size()<=4&&keyselect) {
+		std::cout << buffer.size() << std::endl;
+		keyselect = 0;
 		int C_STR_BUFFER_SIZE = buffer.size() + 1;
-		
+		printf("d: %d\n", C_STR_BUFFER_SIZE);
 		wchar_t* result = new wchar_t[buffer.size() + 1];
 		const char* s = buffer.c_str();
-		MultiByteToWideChar(CP_ACP, NULL, s+2, -1, result, buffer.size() + 1);
+		MultiByteToWideChar(CP_ACP, NULL, s+buffer.size()-4, -1, result, buffer.size() + 1);
 		wprintf(L"%c\n", result[2]);
 			
 			
@@ -169,30 +195,28 @@ void CraftTable::input()
 			char b2[15];
 			sprintf_s(b2, 15, "%ls", a2);
 			String result2(b2);
-			std::cout << "r2:" << result2 << "\n";
-			
-			String str = playerData->Merge(result1, result2);
-			std::cout << "str:" << str << "\n";
-			if (str != "null") {
-				buffer = str;
-				updateText();
-			}
-		
+			std::cout << "r2:" << result2 << "\n"; String str;
+			str = playerData->Merge(result1, result2);
+		std::cout << "str:" << str << "\n";
+		if (str != "null") {
+			buffer.erase(buffer.find(result1), buffer.size());
+			buffer.append(str);
+			updateText();
+		}
 	}
+		
+	
 
 	int C_STR_BUFFER_SIZE = buffer.size() + 1;
 	wchar_t* result = new wchar_t[buffer.size() + 1];
-	MultiByteToWideChar(CP_ACP, NULL, buffer.c_str(), -1, result, buffer.size() + 1);
+	MultiByteToWideChar(CP_ACP, NULL, buffer.c_str(), -1, result, buffer.size());
 	//std::cout << buffer.size() << std::endl;
-	if (buffer.size() > 6) {
-		if (buffer.at(buffer.size() - 1) == '+') {
-			buffer.erase(buffer.size() - 1);
-		}
-		else {
+	/*if (buffer.size() > 6) {
+	
 			buffer.erase(buffer.size() - 1);
 			buffer.erase(buffer.size() - 1);
-		}
-	}
+		
+	}*/
 	updateText();
 }
 
@@ -204,11 +228,16 @@ void CraftTable::updateText()
 		Scene::GetCurrentScene().Destroy(moeumText);
 	if (insertText != nullptr)
 		Scene::GetCurrentScene().Destroy(insertText);
+	if (wordText != nullptr)
+		Scene::GetCurrentScene().Destroy(wordText);
 	moeumText = new FontObject(playerData->sprintMoeum(), 800, 600);
-	jaeumText = new FontObject(playerData->sprintJaeum(), 100, 600);
-	//std::cout << buffer << std::endl;
-	insertText = new FontObject(buffer, 600, 400);
+	jaeumText = new FontObject(playerData->sprintJaeum(), 100, 600); 
+	wordText = new FontObject(playerData->sprintword(), 300, 700);
+	insertText = new FontObject(buffer, 550, 350);
+	insertText->transform->SetScale(4, 4);
+	insertText->font->fontWeight = DWRITE_FONT_WEIGHT_HEAVY;
 	Scene::GetCurrentScene().PushBackGameObject(jaeumText);
 	Scene::GetCurrentScene().PushBackGameObject(moeumText);
 	Scene::GetCurrentScene().PushBackGameObject(insertText);
+	Scene::GetCurrentScene().PushBackGameObject(wordText);
 }

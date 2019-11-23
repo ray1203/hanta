@@ -19,6 +19,7 @@ public:
 	FontObject* jaeumText;
 	FontObject* moeumText;
 	FontObject* eumjulText;
+	FontObject* wordText;
 	FontObject* insertText;
 
 	PlayerData* playerData;
@@ -27,10 +28,17 @@ public:
 	JaeumButton* jButton;
 	int isjaja = 0;
 	int ismomo = 0;
+	int mouemselect = 0;
+	int jauemselect = 0;
+	String lastmouem1;
+	String lastmouem2;
+	String lastjauem1;
+	String lastjauem2;
 	bool isActive;
 	void show();
 	void hide();
 	void change();
+	
 	String buffer;
 	void input();
 	void updateText();

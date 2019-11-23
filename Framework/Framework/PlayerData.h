@@ -5,10 +5,7 @@
 #include <map>
 typedef std::string String; 
 typedef unsigned short ushort;
-struct words{
-	String word;
-	int value;
-};
+
 class PlayerData
 {
 public:
@@ -27,23 +24,27 @@ public:
 	ushort m_UniCodeHangulLast = 0xD79F;
 	std::map<String,int> jaeum;//자음
 	std::map<String, int> moeum;//모음
-	std::vector<words> eumjul;//음절
-	std::vector<words> word;//단어
+	std::map<String,int> eumjul;//음절
+	std::map<String,int> word;//단어
 	int addMoney(int add);
 	void createJaeum();
 	void createMoeum();
-
+	void CreateWord(String str);
 	void printJaeum();
 	void printMoeum();
 	void printMoney();
 	void printAll();
-
+int BreakHan(wchar_t* str, wchar_t* buffer, int nSize);
+	
 	String MergeJaso(String choSung, String jungSung, String jongSung);
 	String MergeJaJa(String choSung1, String choSung2);
 	String MergeSoSo(String mouem1, String mouem2);
 	String Merge(String str1, String str2);
 	String sprintJaeum();
 	String sprintMoeum();
+	String splitJaeum(String);
+	String splitmoeum(String);
+	String sprintword();
 	void notifyChange();
 
 	void pause();
