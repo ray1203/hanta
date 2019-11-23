@@ -2,7 +2,7 @@
 #include "PlayerData.h"
 #include "GameScene.h"
 #include "ImageResize.h"
-PlayerData::PlayerData():money(10),isPause(false)
+PlayerData::PlayerData():money(100),isPause(false)
 {
 	
 	std::srand(static_cast<unsigned int>(std::time(0)));
@@ -95,8 +95,48 @@ String PlayerData::MergeJaJa(String choSung1, String choSung2)
 	return "null";
 }
 
+String PlayerData::MergeSoSo(String mouem1, String mouem2)
+{
+	if (mouem1 == "ㅗ") {
+		if (mouem2 == "ㅏ")
+			return "ㅘ";
+		if (mouem2 == "ㅐ")
+			return "ㅙ";
+		if (mouem2 == "ㅣ")
+				return "ㅚ";
+
+	}
+	if (mouem1 == "ㅡ") {
+		if (mouem2 == "ㅣ")
+			return "ㅢ";
+	}
+	if (mouem1 == "ㅜ") {
+		if (mouem2 == "ㅓ")
+			return "ㅝ";
+		if (mouem2 == "ㅔ")
+			return "ㅞ";
+		if (mouem2 == "ㅣ")
+			return "ㅟ";
+
+	}
+	return "null";
+
+}
+
 String PlayerData::Merge(String str1, String str2)
 {
+	int flag = 0;
+
+	if (!jaeum.count(str1)&&!moeum.count(str1))
+	{
+		std::cout << str1 << "이 모잘랍니다!" << std::endl;
+		flag = 1;
+	}
+	if (!jaeum.count(str2) && !moeum.count(str2)){
+		std::cout << str2 << "이 모잘랍니다!" << std::endl;
+		flag = 1;
+	}
+	if (flag)return "null";
 	String cList[30] = { "ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"," " };
 	String c2List[30] = { "ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ","ㄲ","ㄸ","ㅃ","ㅆ","ㅉ", " " };
 	String c3List[35] = { "ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ","ㄲ","ㄸ","ㅃ","ㅆ","ㅉ","ㄳ","ㄵ","ㄶ","ㄺ","ㄻ","ㄼ","ㄽ","ㄾ","ㄿ","ㅀ","ㅄ"," " };
@@ -115,11 +155,26 @@ String PlayerData::Merge(String str1, String str2)
 		
 	}
 	i = 0;
+	while (mList[i] != " ") {
+		if (mList[i++] == str1) {
+			int j = 0;
+			while (mList[j] != " ") {
+				if (mList[j++] == str2) {
+					return MergeSoSo(str1, str2);
+
+				}
+			}
+		}
+
+	}
+	i = 0;
 	while (c2List[i] != " ") {
 		if (c2List[i++] == str1) {
 			int j = 0;
-			while (mList[j++] == str2) {
-				return MergeJaso(str1, str2,"");
+			while (mList[j] != " ") {
+				if (mList[j++] == str2) {
+					return MergeJaso(str1, str2, "");
+				}
 			}
 		}
 
@@ -133,7 +188,7 @@ void PlayerData::createJaeum()
 	if (money > 0) {
 		String list[30] = { "ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ" };
 		int r = std::rand() % 14;
-		jaeum.push_back(list[r]);
+		jaeum[list[r]]+=1;
 		money--;
 		notifyChange();
 	}
@@ -146,7 +201,7 @@ void PlayerData::createMoeum()
 	if (money > 0) {
 		String list[30] = { "ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ" };
 		int r = std::rand() % 12;
-		moeum.push_back(list[r]);
+		moeum[list[r]] += 1;
 		money--;
 		notifyChange();
 	}
@@ -155,18 +210,21 @@ void PlayerData::createMoeum()
 
 void PlayerData::printJaeum()
 {
+	std::map<String, int>::iterator i;
 	std::cout << "jaeum : ";
-	for (int i = 0; i < jaeum.size(); i++) {
-		std::cout << jaeum[i] << ",";
+	for (i = jaeum.begin(); i != jaeum.end(); i++) {
+		std::cout << i->first<< ",";
 	}
+
 	std::cout << "\n";
 }
 
 void PlayerData::printMoeum()
 {
+	std::map<String, int>::iterator i;
 	std::cout << "moeum : ";
-	for (int i = 0; i < moeum.size(); i++) {
-		std::cout << moeum[i] << ",";
+	for (i = moeum.begin(); i != moeum.end(); i++) {
+		std::cout << i->first << ",";
 	}
 	std::cout << "\n";
 }
@@ -187,26 +245,36 @@ void PlayerData::printAll()
 
 String PlayerData::sprintJaeum()
 {
+	std::map<String, int>::iterator i;
 	String str;
-	for (int i = 0; i < jaeum.size(); i++) {
-		str.append(jaeum[i]);
-		if (i != jaeum.size() - 1) {
+	for (i = jaeum.begin(); i != jaeum.end(); i++) {
+			str.append(i->first);
+			str.append("x");
+			char a[10];
+			sprintf_s(a, "%d", i->second);
+			str.append(a);
 			str.append(",");
-		}
 	}
+
 	return str;
 }
 
 String PlayerData::sprintMoeum()
 {
+	
+	std::map<String, int>::iterator i;
 	String str;
-	for (int i = 0; i < moeum.size(); i++) {
-		str.append(moeum[i]);
-		if (i != moeum.size() - 1) {
-			str.append(",");
-		}
+	for (i = moeum.begin(); i != moeum.end(); i++) {
+		str.append(i->first);
+		str.append("x");
+		char a[10];
+		sprintf_s(a, "%d", i->second);
+		str.append(a);
+		str.append(",");
 	}
+
 	return str;
+
 }
 
 void PlayerData::notifyChange()

@@ -1,5 +1,5 @@
 ﻿  PlayerData.cpp
-C:\Users\HP\Documents\디콘\Framework\Framework\PlayerData.cpp(19,45): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HP\Documents\디콘\Framework\Framework\PlayerData.cpp(20,48): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HP\Documents\디콘\Framework\Framework\PlayerData.cpp(21,48): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Framework.vcxproj -> C:\Users\HP\Documents\디콘\Framework\x64\Debug\Framework.exe
+C:\Users\angrykirby\Documents\GitHub\hanta\Framework\Framework\PlayerData.cpp(19,45): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\angrykirby\Documents\GitHub\hanta\Framework\Framework\PlayerData.cpp(20,48): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\angrykirby\Documents\GitHub\hanta\Framework\Framework\PlayerData.cpp(21,48): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Framework.vcxproj -> C:\Users\angrykirby\Documents\GitHub\hanta\Framework\x64\Debug\Framework.exe

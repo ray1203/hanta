@@ -25,6 +25,8 @@ public:
 	BackGround* background;
 	MoeumButton* mButton;
 	JaeumButton* jButton;
+	int isjaja = 0;
+	int ismomo = 0;
 	bool isActive;
 	void show();
 	void hide();

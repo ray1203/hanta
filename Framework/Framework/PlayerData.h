@@ -2,8 +2,13 @@
 #include "stdafx.h"
 #include "GameObject.h"
 #include <ctime>
+#include <map>
 typedef std::string String; 
 typedef unsigned short ushort;
+struct words{
+	String word;
+	int value;
+};
 class PlayerData
 {
 public:
@@ -20,10 +25,10 @@ public:
 	String m_JongSungTbl = "  ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";
 	ushort m_UniCodeHangulBase = 0xAC00;
 	ushort m_UniCodeHangulLast = 0xD79F;
-	std::vector<String> jaeum;//자음
-	std::vector<String> moeum;//모음
-	std::vector<String> eumjul;//음절
-	std::vector<String> word;//단어
+	std::map<String,int> jaeum;//자음
+	std::map<String, int> moeum;//모음
+	std::vector<words> eumjul;//음절
+	std::vector<words> word;//단어
 	int addMoney(int add);
 	void createJaeum();
 	void createMoeum();
@@ -35,6 +40,7 @@ public:
 
 	String MergeJaso(String choSung, String jungSung, String jongSung);
 	String MergeJaJa(String choSung1, String choSung2);
+	String MergeSoSo(String mouem1, String mouem2);
 	String Merge(String str1, String str2);
 	String sprintJaeum();
 	String sprintMoeum();

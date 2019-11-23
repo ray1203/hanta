@@ -6,6 +6,7 @@ CraftButton::CraftButton(const wchar_t* path, int x, int y, float width, float h
 	:GameObject(path), craftTable(ct), col2(*transform, width, height), path(path)
 {
 	transform->SetPosition(x * 40 + 20, y * 40 + 20);
+	
 }
 
 void CraftButton::Update()
