@@ -1,6 +1,66 @@
-﻿  CraftTable.cpp
-C:\Users\angrykirby\Documents\GitHub\hanta\Framework\Framework\CraftTable.cpp(201,44): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\angrykirby\Documents\GitHub\hanta\Framework\Framework\CraftTable.cpp(205,89): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\angrykirby\Documents\GitHub\hanta\Framework\Framework\CraftTable.cpp(233,43): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\angrykirby\Documents\GitHub\hanta\Framework\Framework\CraftTable.cpp(235,77): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Framework.vcxproj -> C:\Users\angrykirby\Documents\GitHub\hanta\Framework\x64\Debug\Framework.exe
+﻿  Bullet.cpp
+  BulletManager.cpp
+  Button.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(11,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(11,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(31,111): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(31,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(37,112): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(37,70): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(40,111): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(40,69): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(41,112): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(41,70): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CraftButton.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Button.cpp(43,47): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftButton.cpp(8,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CraftTable.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftButton.cpp(8,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftTable.cpp(201,44): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftTable.cpp(205,89): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftTable.cpp(233,43): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Enemy.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\CraftTable.cpp(235,77): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(6,39): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(6,129): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  EnemyManager.cpp
+  GameScene.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Enemy.cpp(6,106): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(15,51): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(15,38): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(19,51): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  JaeumButton.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\GameScene.cpp(19,38): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\JaeumButton.cpp(8,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MoeumButton.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\JaeumButton.cpp(8,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\MoeumButton.cpp(8,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player.cpp
+  PlayerData.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\MoeumButton.cpp(8,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(65,45): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(66,48): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(67,48): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(257,40): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(260,65): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(305,41): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Tower.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\PlayerData.cpp(308,66): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(15,39): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(29,21): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(31,23): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(33,19): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(34,21): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(39,21): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(56,41): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(69,38): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(86,84): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(86,77): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(94,38): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(113,86): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(113,79): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  WaveButton.cpp
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\Tower.cpp(127,36): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\WaveButton.cpp(8,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\project\hanta\Framework\Framework\WaveButton.cpp(8,32): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Framework.vcxproj -> C:\Users\Administrator\Desktop\project\hanta\Framework\x64\Debug\Framework.exe

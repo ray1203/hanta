@@ -27,6 +27,7 @@ public:
 		{L"resources\\number\\dot8.png"},
 		{L"resources\\number\\dot9.png"}
 	};
+	int tower[5] = { 0 };
 	GameObject* remainlife1;
 	GameObject* remainlife2;
 	String m_ChoSungTbl = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
@@ -38,6 +39,20 @@ public:
 	std::map<String, int> moeum;//모음
 	std::map<String, int> eumjul;//음절
 	std::map<String, int> word;//단어
+
+	struct Info {
+		const wchar_t* path;
+		int attribute;
+		int damage;
+		int speed;//탄속
+		int srange;
+		float rate;//딜레이
+	};
+	Info towerTable[1000] = {
+		{L"resources\\Tower.png", 1, 1, 1000, 3, 0.1f},
+
+	};
+
 	int addMoney(int add);
 	void createJaeum();
 	void createMoeum();
@@ -57,7 +72,7 @@ public:
 	String sprintJaeum();
 	String sprintMoeum();
 	String splitJaeum(String);
-	String splitmoeum(String);
+	String splitmoeum(String);//?
 	String sprintword();
 	void notifyChange();
 

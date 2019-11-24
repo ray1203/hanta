@@ -20,7 +20,14 @@ void Button::Update()
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col2.Intersected(InputManager::GetMouseVector2())) {
 		range = 600;
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
-		tower = (Tower*)scene.PushBackGameObject(new Tower(L"resources\\Tower.png", 1, 1000, 3, 0.1f));
+		int i = 0;//
+		tower = (Tower*)scene.PushBackGameObject(new Tower(scene.GetPlayerData()->towerTable[i].path,
+			scene.GetPlayerData()->towerTable[i].attribute,
+			scene.GetPlayerData()->towerTable[i].damage,
+			scene.GetPlayerData()->towerTable[i].speed,
+			scene.GetPlayerData()->towerTable[i].srange,
+			scene.GetPlayerData()->towerTable[i].rate));
+		scene.GetPlayerData()->tower[scene.GetPlayerData()->towerTable[i].attribute - 1]++;//////
 		tower->transform->SetPosition(InputManager::GetMouseX() / 40 * 40 + 20, InputManager::GetMouseY() / 40 * 40 + 20);
 		tower->renderer->changeAlpha(0.5f);
 		flag = 1;
@@ -28,7 +35,6 @@ void Button::Update()
 		rangeI = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\Range.png"));
 		rangeI->renderer->changeAlpha(0.5f);
 		rangeI->transform->SetPosition(InputManager::GetMouseX() / 40 * 40 + 20, InputManager::GetMouseY() / 40 * 40 + 20);
-
 	}
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == 2 && flag) {
 		tower->transform->SetPosition(InputManager::GetMouseX() / 40 * 40 + 20, InputManager::GetMouseY() / 40 * 40 + 20);
@@ -39,7 +45,7 @@ void Button::Update()
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == -1 && flag) {
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
 		flag = 0;
-	scene.Destroy(rangeI);
+		scene.Destroy(rangeI);
 		if (scene.map[(int)(tower->transform->position.y - 20) / 40][(int)(tower->transform->position.x - 20) / 40]!=0) {
 			scene.Destroy(tower);
 			
