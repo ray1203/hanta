@@ -234,18 +234,18 @@ void PlayerData::CreateWord(String str) {
 		int flag = 0;
 		if (jauem1[0] == jauem1[1])
 		{
-			if (jaeum.count(jauem1[0]) >= 2) {
+			if (jaeum[jauem1[0]]<2) {
 				std::cout << jauem1[0] << "이 모잘랍니다!" << std::endl;
 				flag = 1;
 			}
 		}
-		if (!jaeum.count(jauem1[0]))
+		if (jaeum[jauem1[0]]<1&&!flag)
 		{
 
 			std::cout << jauem1[0] << "이 모잘랍니다!" << std::endl;
 			flag = 1;
 		}
-		if (!jaeum.count(jauem1[1])) {
+		if (jaeum[jauem1[1]] < 1) {
 			std::cout << jauem1[1] << "이 모잘랍니다!!" << std::endl; flag = 1;
 		}
 		if (flag)return;
@@ -279,15 +279,15 @@ void PlayerData::CreateWord(String str) {
 	sprintf_s(b3, 15, "%ls", a3);
 	String Jong(b3);
 
-	if (!jaeum.count(Cho))
+	if (jaeum[Cho] < 1)
 	{
 		std::cout << Cho << "이 모잘랍니다!" << std::endl;
 		flag = 1;
 	}
-	if (!moeum.count(Jung)) {
+	if (jaeum[Jung] < 1) {
 		std::cout << Jung << "이 모잘랍니다!" << std::endl; flag = 1;
 	}
-	if (!jaeum.count(Jong) && Jong.size() >= 2)
+	if (jaeum[Jong] < 1 && Jong.size() >= 2)
 	{
 		std::cout << Jong << "이 모잘랍니다!" << std::endl; flag = 1;
 	}
