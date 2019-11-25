@@ -5,8 +5,8 @@
 #include "Tower.h"
 #include "ImageResize.h"
 ImageResize r;
-Button::Button(const wchar_t* path, int x, int y)
-	:GameObject(path), col2(*transform, 40.0f, 40.0f)
+Button::Button(const wchar_t* path, int x, int y,int t)
+	:GameObject(path), col2(*transform, 40.0f, 40.0f), t(t)
 {
 	transform->SetPosition(x * 40 + 20, y * 40 + 20);
 }
@@ -20,8 +20,10 @@ void Button::Update()
 	if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col2.Intersected(InputManager::GetMouseVector2())) {
 		range = 600;
 		GameScene& scene = (GameScene&)Scene::GetCurrentScene();
-		int i = 0;//
-		tower = (Tower*)scene.PushBackGameObject(new Tower(scene.GetPlayerData()->towerTable[i].path,
+		int i =t;//
+		tower = (Tower*)scene.PushBackGameObject(
+			new Tower(
+			scene.GetPlayerData()->towerTable[i].path,
 			scene.GetPlayerData()->towerTable[i].attribute,
 			scene.GetPlayerData()->towerTable[i].damage,
 			scene.GetPlayerData()->towerTable[i].speed,

@@ -7,6 +7,7 @@ PlayerData::PlayerData():money(100),isPause(false)
 {
 	
 	std::srand(static_cast<unsigned int>(std::time(0)));
+	vocab.insert(std::pair<String,int>("물",nature));
 }
 
 int PlayerData::BreakHan(wchar_t* str, wchar_t* buffer, int nSize)
@@ -284,7 +285,7 @@ void PlayerData::CreateWord(String str) {
 		std::cout << Cho << "이 모잘랍니다!" << std::endl;
 		flag = 1;
 	}
-	if (jaeum[Jung] < 1) {
+	if (moeum[Jung] < 1) {
 		std::cout << Jung << "이 모잘랍니다!" << std::endl; flag = 1;
 	}
 	if (jaeum[Jong] < 1 && Jong.size() >= 2)

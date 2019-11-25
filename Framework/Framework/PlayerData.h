@@ -15,6 +15,15 @@ public:
 	void setlife(int life);
 	void changeLife(int changelife);
 	int life;
+	enum attribute
+	{
+		power=1,
+		fantasy,
+		nature,
+		art,
+		concept,
+		none,
+	};
 	wchar_t number[10][30] = {
 		{L"resources\\number\\dot0.png"},
 		{L"resources\\number\\dot1.png"},
@@ -39,7 +48,7 @@ public:
 	std::map<String, int> moeum;//모음
 	std::map<String, int> eumjul;//음절
 	std::map<String, int> word;//단어
-
+	std::map<String, int> vocab;//단어 목록 선언은 .cpp에서
 	struct Info {
 		const wchar_t* path;
 		int attribute;
@@ -48,9 +57,20 @@ public:
 		int srange;
 		float rate;//딜레이
 	};
+	
 	Info towerTable[1000] = {
-		{L"resources\\Tower.png", 1, 1, 1000, 3, 0.1f},
-
+		{L"resources\\tower\\power_1.png",power,12,1000,3,0.5f},
+		{L"resources\\tower\\power_2.png",power,15,1000,3,0.35f},
+		{L"resources\\tower\\fantasy_1.png",fantasy,8,1000,3,0.4f},
+		{L"resources\\tower\\fantasy_2.png",fantasy,11,1000,3,0.25f},
+		{L"resources\\tower\\nature_1.png",nature,10,1000,4,0.5f},
+		{L"resources\\tower\\nature_2.png",nature,13,1000,4,0.35f},
+		{L"resources\\tower\\art_1.png",art,10,1000,3,0.5f},
+		{L"resources\\tower\\art_2.png",art,13,1000,3,0.35f},
+		{L"resources\\tower\\concept_1.png",concept,10,1000,3,0.5f},
+		{L"resources\\tower\\concept_2.png",concept,13,1000,3,0.35f},
+		{L"resources\\tower\\none_1.png",none,15,1000,3,0.3f},
+		{L"resources\\tower\\none_2.png",none,17,1000,3,0.2f},
 	};
 
 	int addMoney(int add);

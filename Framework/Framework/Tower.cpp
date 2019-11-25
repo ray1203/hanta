@@ -25,17 +25,17 @@ Tower::Tower(const wchar_t* path, int attribute, int damage, int speed, int sran
 
 void Tower::Update() {
 	GameScene& scene = (GameScene&)Scene::GetCurrentScene();
-	if (attribute == 1)
+	if (attribute == 1)//Èû
 		damage = o_damage * (1 + 0.2 * scene.GetPlayerData()->tower[0]);
-	if (attribute == 2)
+	if (attribute == 2)//È¯»ó
 		rate = o_rate * 3.0 / (1.0 + scene.GetPlayerData()->tower[1]);
-	if (attribute == 3) {
+	if (attribute == 3) {//ÀÚ¿¬
 		range = o_range * (1 + 0.1 * scene.GetPlayerData()->tower[2]);
 		srange = o_srange * (1 + 0.1 * scene.GetPlayerData()->tower[2]);
 	}
-	if (attribute == 4)
+	if (attribute == 4)//ÀÎ°ø
 		multi = 2 + (int)(0.5 * (scene.GetPlayerData()->tower[3]) - 1);
-	if (attribute == 5)
+	if (attribute == 5)//°³³ä
 		damage = o_damage * (0.5 * scene.GetPlayerData()->tower[4]);
 	if (!(playerData->isPause)) {
 		time += TimeManager::GetDeltaTime();
