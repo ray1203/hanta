@@ -3,9 +3,9 @@
 #include "GameScene.h"
 #include "ImageResize.h"
 #include <string>
-PlayerData::PlayerData():money(100),isPause(false)
+#include <math.h>
+PlayerData::PlayerData():isPause(false)
 {
-	
 	std::srand(static_cast<unsigned int>(std::time(0)));
 	vocab.insert(std::pair<String,int>("물",nature));
 }
@@ -55,11 +55,7 @@ int PlayerData::BreakHan(wchar_t* str, wchar_t* buffer, int nSize)
 	buffer[pos] = '\0';
 	return pos;
 }
-int PlayerData::addMoney(int add=1)
-{
-	money += add;
-	return money;
-}
+
 String PlayerData::MergeJaso(String choSung, String jungSung, String jongSung) {
 	int ChoSungPos, JungSungPos, JongSungPos;
 	int nUniCode;
@@ -519,37 +515,67 @@ void PlayerData::resume()
 	isPause = false;
 }
 
-void PlayerData::setlife(int life)
+void PlayerData::setdata(int life,int money)
 {
-	GameObject* heart = new GameObject(L"resources\\heart (2).png");
+	ImageResize I;
+
+	GameObject* heart = new GameObject(L"resources\\heart.png");
 	Scene::GetCurrentScene().PushBackGameObject(heart);
-	ImageResize l;
-	l.resize(heart, 60, 60);
+	I.resize(heart, 45, 45);
 	this->life = life;
 	heart->transform->position.x = 940;
 	heart->transform->position.y = 30;
 
-	remainlife1 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[life / 10]));
-	remainlife2 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[life % 10]));
+	GameObject* coin = new GameObject(L"resources\\coin.png");
+	Scene::GetCurrentScene().PushBackGameObject(coin);
+	I.resize(coin, 45, 45);
+	this->money = money;
+	coin->transform->position.x = 940;
+	coin->transform->position.y = 80;
 
-	remainlife1->transform->position.x = 1010;
-	remainlife1->transform->position.y = 30;
-	remainlife2->transform->position.x = 1041;
-	remainlife2->transform->position.y = 30;
+	int k = pow(10, (int)log10(life));
+	for (ls = 0; k > 0; ls++) {
+		remainlife[ls] = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[life / k]));
+		remainlife[ls]->transform->position.x = 1000 + 31 * ls;
+		remainlife[ls]->transform->position.y = 30;
+		life %= k;
+		k /= 10;
+	}
+
+	k = pow(10, (int)log10(money));
+	for (ms = 0; k > 0; ms++) {
+		remainmoney[ms] = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[money / k]));
+		remainmoney[ms]->transform->position.x = 1000 + 31 * ms;
+		remainmoney[ms]->transform->position.y = 75;
+		money %= k;
+		k /= 10;
+	}
 }
 
 void PlayerData::changeLife(int changelife)
 {
 	life += changelife;
+	int k = pow(10, ls - 1);
+	for (int i = 0, dlife = life; i < ls; i++) {
+		Scene::GetCurrentScene().Destroy(remainlife[i]);
+		remainlife[i] = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[dlife / k]));
+		remainlife[i]->transform->position.x = 1000 + 31 * i;
+		remainlife[i]->transform->position.y = 30;
+		dlife %= k;
+		k /= 10;
+	}
+}
 
-	Scene::GetCurrentScene().Destroy(remainlife1);
-	Scene::GetCurrentScene().Destroy(remainlife2);
-
-	remainlife1 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[life / 10]));
-	remainlife2 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[life % 10]));
-
-	remainlife1->transform->position.x = 1010;
-	remainlife1->transform->position.y = 30;
-	remainlife2->transform->position.x = 1041;
-	remainlife2->transform->position.y = 30;
+void PlayerData::changeMoney(int changemoney)
+{
+	money += changemoney;
+	int k = pow(10, ms - 1);
+	for (int i = 0, dmoney = money; i < ms; i++) {
+		Scene::GetCurrentScene().Destroy(remainmoney[i]);
+		remainmoney[i] = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[dmoney / k]));
+		remainmoney[i]->transform->position.x = 1000 + 31 * i;
+		remainmoney[i]->transform->position.y = 75;
+		dmoney %= k;
+		k /= 10;
+	}
 }

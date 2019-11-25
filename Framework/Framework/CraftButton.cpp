@@ -2,10 +2,9 @@
 #include "CraftButton.h"
 #include "GameScene.h"
 
-CraftButton::CraftButton(const wchar_t* path, int x, int y, float width, float height, CraftTable* ct)
+CraftButton::CraftButton(const wchar_t* path,  float width, float height, CraftTable* ct)
 	:GameObject(path), craftTable(ct), col2(*transform, width, height), path(path)
 {
-	transform->SetPosition(x * 40 + 20, y * 40 + 20);
 }
 
 void CraftButton::Update()

@@ -52,7 +52,7 @@ void Bullet::Damage() {
 		e->hp -= damage;
 		GameScene& s = (GameScene&)Scene::GetCurrentScene();
 		if (e->hp <= 0) {
-			s.GetPlayerData()->addMoney(e->money);
+			s.GetPlayerData()->changeMoney(e->money);
 			s.GetPlayerData()->printMoney();
 			e->Destroy();
 		}

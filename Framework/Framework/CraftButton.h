@@ -10,7 +10,7 @@ class CraftButton :
 public:
 	const wchar_t* path;
 	CraftTable* craftTable;
-	CraftButton(const wchar_t* path, int x, int y, float width, float height, CraftTable* ct);
+	CraftButton(const wchar_t* path, float width, float height, CraftTable* ct);
 	AABBCollider col2;
 	void Update();
 	int isclick = 0;

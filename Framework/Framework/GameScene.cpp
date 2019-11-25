@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "GameObject.h"
 #include "Button.h"
+#include "ImageResize.h"
 //#include "SceneButton.h"
 //#include "CraftScene.h"
 void GameScene::Initialize()
@@ -20,15 +21,17 @@ void GameScene::Initialize()
 			}
 		}
 	}
+	ImageResize I;
 	playerData = new PlayerData();
-	playerData->setlife(20);
+	playerData->setdata(20, 100);
 	craftTable = (CraftTable*)PushBackGameObject(new CraftTable());
-	craftButton = (CraftButton*)PushBackGameObject(new CraftButton(L"resources\\SceneButton.png", 31, 0, 80, 80, craftTable));
 	bm = (BulletManager*)PushBackGameObject(new BulletManager());
 	em = (EnemyManager*)PushBackGameObject(new EnemyManager());
+	craftButton = (CraftButton*)PushBackGameObject(new CraftButton(L"resources\\craftButton.png", 80, 80, craftTable));
+	I.resize(craftButton, 80, 80);
+	craftButton->transform->SetPosition(640, 40);
 	for (int i = 0; i < 12; i++) {
 		Button* b = (Button*)PushBackGameObject(new Button(playerData->towerTable[i].path, i, 19,i));
-
 	}
 	//SceneButton* sb = (SceneButton*)PushBackGameObject(new SceneButton(L"resources\\SceneButton.png", 11, 17, 80, 80, new CraftScene()));
 	//TestObject* t = (TestObject*)PushBackGameObject(new TestObject());		//테스트용 오브젝트입니다.

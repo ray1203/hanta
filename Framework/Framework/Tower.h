@@ -22,6 +22,7 @@ class Tower :
 	int flag = 0;
 	GameObject* rangeI;
 	CircleCollider* col;
+	AABBCollider* col2;
 	EnemyManager* em;
 	PlayerData* playerData;
 	BulletManager* bm;

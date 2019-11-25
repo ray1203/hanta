@@ -12,8 +12,9 @@ Tower::Tower(const wchar_t* path, int attribute, int damage, int speed, int sran
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	bm = s.GetBM();
 	em = s.GetEM();
-	col = new CircleCollider(*transform, range);
 	o_range = srange * 40 + 20;
+	col = new CircleCollider(*transform, o_range);
+	col2 = new AABBCollider(*transform, renderer->GetWidth(), renderer->GetHeight());
 	playerData = s.GetPlayerData();
 	time = 0;
 
@@ -47,7 +48,7 @@ void Tower::Update() {
 			scene.Destroy(rangeI);
 			flag = 0;
 		}
-		if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col->Intersected(InputManager::GetMouseVector2()) && activation) {
+		if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col2->Intersected(InputManager::GetMouseVector2()) && activation) {
 			ImageResize r;
 			rangeI = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\Range.png"));
 			rangeI->renderer->changeAlpha(0.5f);
@@ -61,7 +62,7 @@ void Tower::Update() {
 
 void Tower::Shoot()
 {
-	if (attribute <= 3) {
+	if (attribute <= 3 || attribute == 6) {
 		std::vector<Enemy*> enemyList;
 		int maxAge = -1;
 		Enemy* frontE = NULL;
@@ -69,11 +70,7 @@ void Tower::Shoot()
 		for (int i = 0; i < listSize; i++) {
 			if (em->getValue(i)->age < 0 || em->getValue(i) == nullptr)
 				continue;
-			float X = transform->position.x;
-			float Y = transform->position.y;
-			float enemyX = em->getValue(i)->transform->position.x;
-			float enemyY = em->getValue(i)->transform->position.y;
-			if ((X - enemyX) * (X - enemyX) + (Y - enemyY) * (Y - enemyY) <= range * range) {
+			if (col->Intersected(em->getValue(i)->transform->position)) {
 				enemyList.push_back(em->getValue(i));
 				if (maxAge < em->getValue(i)->age) {
 					maxAge = em->getValue(i)->age;
@@ -94,11 +91,7 @@ void Tower::Shoot()
 		for (int i = 0; i < listSize; i++) {
 			if (em->getValue(i)->age < 0 || em->getValue(i) == nullptr)
 				continue;
-			float X = transform->position.x;
-			float Y = transform->position.y;
-			float enemyX = em->getValue(i)->transform->position.x;
-			float enemyY = em->getValue(i)->transform->position.y;
-			if ((X - enemyX) * (X - enemyX) + (Y - enemyY) * (Y - enemyY) <= range * range) {
+			if (col->Intersected(em->getValue(i)->transform->position)) {
 				enemyList.push_back(em->getValue(i));
 				if (maxAge < em->getValue(i)->age) {
 					maxAge = em->getValue(i)->age;
@@ -127,7 +120,7 @@ void Tower::Shoot()
 			 em->getValue(i)->hp -= damage;
 			GameScene& s = (GameScene&)Scene::GetCurrentScene();
 			if (em->getValue(i)->hp <= 0) {
-				s.GetPlayerData()->addMoney(em->getValue(i)->money);
+				s.GetPlayerData()->changeMoney(em->getValue(i)->money);
 				s.GetPlayerData()->printMoney();
 				em->getValue(i)->Destroy();
 			}

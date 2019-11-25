@@ -12,8 +12,9 @@ public:
 	PlayerData();
 	bool isPause;
 	int money;
-	void setlife(int life);
+	void setdata(int life, int money);
 	void changeLife(int changelife);
+	void changeMoney(int changemoney);
 	int life;
 	enum attribute
 	{
@@ -36,9 +37,10 @@ public:
 		{L"resources\\number\\dot8.png"},
 		{L"resources\\number\\dot9.png"}
 	};
-	int tower[5] = { 0 };
-	GameObject* remainlife1;
-	GameObject* remainlife2;
+	int tower[6] = { 0 };
+	GameObject* remainlife[10];
+	GameObject* remainmoney[10];
+	int ls, ms;
 	String m_ChoSungTbl = "ぁあいぇえぉけげこさざしじすずせぜそぞ";
 	String m_JungSungTbl = "ただちぢっつづてでとどなにぬねのはばぱひび";
 	String m_JongSungTbl = "  ぁあぃいぅうぇぉおかがきぎくぐけげごさざしじずせぜそぞ";
@@ -73,7 +75,6 @@ public:
 		{L"resources\\tower\\none_2.png",none,17,1000,3,0.2f},
 	};
 
-	int addMoney(int add);
 	void createJaeum();
 	void createMoeum();
 
