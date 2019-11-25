@@ -3,6 +3,7 @@
 #include "BackGround.h"
 #include "GameScene.h"
 #include "ImageResize.h"
+#include "WordButton.h"
 CraftTable::CraftTable()
 {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
@@ -18,9 +19,14 @@ void CraftTable::show() {
 	//Scene::GetCurrentScene().PushBackGameObject(f);
 	isActive = true;
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	
 	background = (BackGround*)s.PushBackGameObject(new BackGround(L"resources\\background.png"));
 	mButton = (MoeumButton*)s.PushBackGameObject(new MoeumButton(L"resources\\MoeumButton.png", 20, 10, 80, 80, playerData));
 	jButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\JaeumButton.png", 10, 10, 80, 80, playerData));
+	wordbutton = (WordButton*)s.PushBackGameObject(new WordButton(L"resources\\Button.png",15,5));
+	
+
+
 	updateText();
 }
 void CraftTable::hide() {
@@ -29,6 +35,7 @@ void CraftTable::hide() {
 	Scene::GetCurrentScene().Destroy(background);
 	Scene::GetCurrentScene().Destroy(mButton);
 	Scene::GetCurrentScene().Destroy(jButton);
+	Scene::GetCurrentScene().Destroy(wordbutton);
 	deleteText();
 }
 
@@ -65,7 +72,7 @@ void CraftTable::change() {
 void CraftTable::input()
 {
 	int keyselect = 0;
-	if (buffer.size() >= 4) {
+	if (buffer.size() >= 4&&craftmode) {
 
 	}
 	else if (InputManager::GetKeyDown(0x52) && InputManager::GetMyKeyState(VK_SHIFT)) {
@@ -179,13 +186,65 @@ void CraftTable::input()
 	else if (InputManager::GetKeyDown(0x50)) {
 		buffer.append("¤Ä"); keyselect = 1;
 	}
-	else if (InputManager::GetKeyDown(VK_RETURN)) {
+	else if (!craftmode && InputManager::GetKeyDown(VK_SPACE)) {
+	buffer.append(" "); keyselect = 1;
+}
+	else if (InputManager::GetKeyDown(VK_RETURN)&&craftmode) {
 		playerData->CreateWord(buffer);
 		buffer.clear();
 	}
+	else if (InputManager::GetKeyDown(VK_RETURN) && !craftmode) {
+		if (buffer.back() == ' ')buffer.erase(buffer.size() - 1);
+		String words[3];
+		char* writable = new char[buffer.size() + 1];
+		std::copy(buffer.begin(), buffer.end(), writable);
+		int size = buffer.size();
+		writable[buffer.size()] = '\0';
+		words[0] = strtok(writable, " ");
+		if (std::count(buffer.begin(), buffer.end(), ' ') >= 1)
+			words[1] = strtok(NULL, " ");
+		if (std::count(buffer.begin(), buffer.end(), ' ') == 2)
+			words[2] = strtok(NULL, " ");
+
+		String addtext;
+		addtext = words[0];
+		if (std::count(buffer.begin(), buffer.end(), ' ') >= 1)
+			addtext += words[1];
+		if (std::count(buffer.begin(), buffer.end(), ' ') == 2)
+			addtext += words[2];
+
+		if (playerData->word[words[0]])
+		{
+			std::map<String, int> usingword;
+			usingword[words[0]] += 1;
+			if (playerData->word[words[1]] && std::count(buffer.begin(), buffer.end(), ' ') >= 1 && playerData->word[words[1]] >= 1 + usingword[words[1]]) {
+				usingword[words[1]] += 1;
+				if (std::count(buffer.begin(), buffer.end(), ' ') >= 2 && playerData->word[words[2]] >= 1 + usingword[words[2]])
+				{
+					playerData->word[words[0]] -= 1;
+					playerData->word[words[1]] -= 1;
+					playerData->word[words[2]] -= 1;
+					playerData->word[addtext] += 1;
+					updateText();
+					buffer.clear();
+					
+				}
+				else if (!playerData->word[words[1]] && std::count(buffer.begin(), buffer.end(), ' ') >= 2) {
+					playerData->word[words[0]] -= 1;
+					playerData->word[words[1]] -= 1;
+					playerData->word[addtext] += 1;
+					updateText();
+					buffer.clear();
+				}
+
+			}
+
+		}
+
+	}
 	if (InputManager::GetKeyDown(VK_BACK)) {
 		if (buffer.size() > 0) {
-			if (buffer.at(buffer.size() - 1) == '+') {
+			if (buffer.at(buffer.size() - 1) == ' ') {
 				buffer.erase(buffer.size() - 1);
 			}
 			else {
@@ -195,37 +254,40 @@ void CraftTable::input()
 		}
 
 	}
-	if (buffer.size() <= 4 && keyselect) {
-		std::cout << buffer.size() << std::endl;
-		keyselect = 0;
-		int C_STR_BUFFER_SIZE = buffer.size() + 1;
-		printf("d: %d\n", C_STR_BUFFER_SIZE);
-		wchar_t* result = new wchar_t[buffer.size() + 1];
-		const char* s = buffer.c_str();
-		MultiByteToWideChar(CP_ACP, NULL, s + buffer.size() - 4, -1, result, buffer.size() + 1);
-		wprintf(L"%c\n", result[2]);
+	if (keyselect) {
+		
+			//std::cout << buffer.size() << std::endl;
+			keyselect = 0;
+			int C_STR_BUFFER_SIZE = buffer.size() + 1;
+			wchar_t* result = new wchar_t[buffer.size() + 1];
+			const char* s = buffer.c_str();
+			MultiByteToWideChar(CP_ACP, NULL, s + buffer.size() - 4, -1, result, buffer.size() + 1);
+			
 
 
-		wchar_t a1[15];
-		swprintf(a1, sizeof(a1) / sizeof(wchar_t), L"%c", result[0]);
-		char b1[15];
-		sprintf_s(b1, 15, "%ls", a1);
-		String result1(b1);
-		std::cout << "r1:" << result1 << "\n";
+			wchar_t a1[15];
+			swprintf(a1, sizeof(a1) / sizeof(wchar_t), L"%c", result[0]);
+			char b1[15];
+			sprintf_s(b1, 15, "%ls", a1);
+			String result1(b1);
+	//	std::cout << "r1:" << result1 << "\n";
 
-		wchar_t a2[15];
-		swprintf(a2, sizeof(a2) / sizeof(wchar_t), L"%c", result[1]);
-		char b2[15];
-		sprintf_s(b2, 15, "%ls", a2);
-		String result2(b2);
-		std::cout << "r2:" << result2 << "\n"; String str;
-		str = playerData->Merge(result1, result2);
-		std::cout << "str:" << str << "\n";
-		if (str != "null") {
-			buffer.erase(buffer.find(result1), buffer.size());
-			buffer.append(str);
-			updateText();
-		}
+			wchar_t a2[15];
+			swprintf(a2, sizeof(a2) / sizeof(wchar_t), L"%c", result[1]);
+			char b2[15];
+			sprintf_s(b2, 15, "%ls", a2);
+			String result2(b2);
+			//std::cout << "r2:" << result2 << "\n";
+			String str;
+			str = playerData->Merge(result1, result2);
+			//std::cout << "str:" << str << "\n";
+			if (str != "null") {
+				buffer.erase(buffer.find(result1), buffer.size());
+				buffer.append(str);
+				updateText();
+			}
+
+		
 	}
 
 
@@ -241,6 +303,14 @@ void CraftTable::input()
 
 	}*/
 	updateText();
+	if (wordbutton->col2.Intersected(InputManager::GetMouseVector2())) {
+		HCURSOR hCursor = LoadCursor(0, IDC_HAND);
+		hCursor = SetCursor(hCursor);
+	}
+	if (wordbutton->col2.Intersected(InputManager::GetMouseVector2())&&InputManager::GetMyKeyState(VK_LBUTTON)==1) {
+		craftmode = !craftmode;
+	}
+	
 }
 
 void CraftTable::updateText()

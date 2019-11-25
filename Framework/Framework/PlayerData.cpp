@@ -126,7 +126,7 @@ String PlayerData::splitJaeum(String str) {
 
 String PlayerData::MergeJaJa(String choSung1, String choSung2)
 {
-	printf("mergeJaJa\n");
+//	printf("mergeJaJa\n");
 	if (choSung1 == "ㄱ") {
 		if (choSung2 == "ㄱ") {
 			return "ㄲ";
@@ -218,25 +218,26 @@ String PlayerData::MergeSoSo(String mouem1, String mouem2)
 	return "null";
 
 }
-
 void PlayerData::CreateWord(String str) {
+	std::map<String, int> usingword;
 	if (splitJaeum(str) != "null") {
+
 		String j = splitJaeum(str);
 		String jauem1[2];
 		char* writable = new char[j.size() + 1];
 		std::copy(j.begin(), j.end(), writable);
-		writable[str.size()] = '\0';
+		writable[5] = '\0';
 		jauem1[0] = strtok(writable, ",");
-		jauem1[1] = strtok(writable, ",");
+		jauem1[1] = strtok(NULL, ",");
 		int flag = 0;
 		if (jauem1[0] == jauem1[1])
 		{
-			if (jaeum[jauem1[0]]<2) {
+			if (jaeum[jauem1[0]] < 2) {
 				std::cout << jauem1[0] << "이 모잘랍니다!" << std::endl;
 				flag = 1;
 			}
 		}
-		if (jaeum[jauem1[0]]<1&&!flag)
+		if (jaeum[jauem1[0]] < 1 && !flag)
 		{
 
 			std::cout << jauem1[0] << "이 모잘랍니다!" << std::endl;
@@ -248,54 +249,59 @@ void PlayerData::CreateWord(String str) {
 		if (flag)return;
 		jaeum[jauem1[0]] -= 1;
 		jaeum[jauem1[1]] -= 1;
+
 		std::cout << MergeJaJa(jauem1[0], jauem1[1]) << std::endl;
 		jaeum[MergeJaJa(jauem1[0], jauem1[1])] += 1;
 	}
-	int C_STR_BUFFER_SIZE = str.size() + 1;
-	wchar_t* result = new wchar_t[str.size() + 1];
-	const char* s = str.c_str();
-	MultiByteToWideChar(CP_ACP, NULL, s, -1, result, str.size() + 1);
-	wchar_t buffer[10];
-	BreakHan(result, buffer, sizeof(buffer));
-	int flag = 0;
-	wchar_t a1[15];
-	swprintf(a1, sizeof(a1) / sizeof(wchar_t), L"%c", buffer[0]);
-	char b1[15];
-	sprintf_s(b1, 15, "%ls", a1);
-	String Cho(b1);
+	else {
+		int C_STR_BUFFER_SIZE = str.size() + 1;
+		wchar_t* result = new wchar_t[str.size() + 1];
+		const char* s = str.c_str();
+		MultiByteToWideChar(CP_ACP, NULL, s, -1, result, str.size() + 1);
+		wchar_t buffer[10];
+		BreakHan(result, buffer, sizeof(buffer));
+		int flag = 0;
+		wchar_t a1[15];
+		swprintf(a1, sizeof(a1) / sizeof(wchar_t), L"%c", buffer[0]);
+		char b1[15];
+		sprintf_s(b1, 15, "%ls", a1);
+		String Cho(b1);
 
-	wchar_t a2[15];
-	swprintf(a2, sizeof(a2) / sizeof(wchar_t), L"%c", buffer[1]);
-	char b2[15];
-	sprintf_s(b2, 15, "%ls", a2);
-	String Jung(b2);
+		wchar_t a2[15];
+		swprintf(a2, sizeof(a2) / sizeof(wchar_t), L"%c", buffer[1]);
+		char b2[15];
+		sprintf_s(b2, 15, "%ls", a2);
+		String Jung(b2);
 
-	wchar_t a3[15];
-	swprintf(a3, sizeof(a3) / sizeof(wchar_t), L"%c", buffer[2]);
-	char b3[15];
-	sprintf_s(b3, 15, "%ls", a3);
-	String Jong(b3);
+		wchar_t a3[15];
+		swprintf(a3, sizeof(a3) / sizeof(wchar_t), L"%c", buffer[2]);
+		char b3[15];
+		sprintf_s(b3, 15, "%ls", a3);
+		String Jong(b3);
 
-	if (jaeum[Cho] < 1)
-	{
-		std::cout << Cho << "이 모잘랍니다!" << std::endl;
-		flag = 1;
+		if (jaeum[Cho] < 1)
+		{
+			std::cout << Cho << "이 모잘랍니다!" << std::endl;
+			flag = 1;
+		}
+		else {
+			usingword[Cho] += 1;
+		}
+		if (moeum[Jung] < 1) {
+			std::cout << Jung << "이 모잘랍니다!" << std::endl; flag = 1;
+		}
+		if (jaeum[Jong] < 1 + usingword[Jong] && Jong.size() >= 2)
+		{
+			std::cout << Jong << "이 모잘랍니다!" << std::endl; flag = 1;
+		}
+		if (flag)return;
+		jaeum[Cho] -= 1;
+		moeum[Jung] -= 1;
+		if (Jong.size() >= 2)
+			jaeum[Jong] -= 1;
+		std::cout << str << "이 생성되었습니다!" << std::endl;
+		word[str] += 1;
 	}
-	if (moeum[Jung] < 1) {
-		std::cout << Jung << "이 모잘랍니다!" << std::endl; flag = 1;
-	}
-	if (jaeum[Jong] < 1 && Jong.size() >= 2)
-	{
-		std::cout << Jong << "이 모잘랍니다!" << std::endl; flag = 1;
-	}
-	if (flag)return;
-	jaeum[Cho] -= 1;
-	moeum[Jung] -= 1;
-	if (Jong.size() >= 2)
-		jaeum[Jong] -= 1;
-	std::cout << str << "이 생성되었습니다!" << std::endl;
-	word[str] += 1;
-
 }
 String PlayerData::Merge(String str1, String str2)
 {
@@ -486,12 +492,14 @@ String PlayerData::sprintMoeum()
 	std::map<String, int>::iterator i;
 	String str;
 	for (i = moeum.begin(); i != moeum.end(); i++) {
-		str.append(i->first);
-		str.append("x");
-		char a[10];
-		sprintf_s(a, "%d", i->second);
-		str.append(a);
-		str.append(",");
+		if (i->second) {
+			str.append(i->first);
+			str.append("x");
+			char a[10];
+			sprintf_s(a, "%d", i->second);
+			str.append(a);
+			str.append(",");
+		}
 	}
 
 	return str;
@@ -500,7 +508,7 @@ String PlayerData::sprintMoeum()
 
 void PlayerData::notifyChange()
 {
-	printf("notify\n");
+//	printf("notify\n");
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	s.GetCraftTable()->updateText();
 }

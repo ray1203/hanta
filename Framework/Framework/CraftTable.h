@@ -7,6 +7,7 @@
 #include "JaeumButton.h"
 #include "InputManager.h"
 #include "FontObject.h"
+#include "WordButton.h"
 #include<conio.h>
 //#include "Scene.h"
 typedef std::string String;
@@ -34,7 +35,9 @@ public:
 	String lastmouem2;
 	String lastjauem1;
 	String lastjauem2;
+	WordButton* wordbutton;
 	bool isActive;
+	int craftmode = 1;
 	void show();
 	void hide();
 	void deleteText();
