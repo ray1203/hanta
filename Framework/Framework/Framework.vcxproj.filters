@@ -111,6 +111,7 @@
     <ClCompile Include="OverButton.cpp" />
     <ClCompile Include="HpBar.cpp" />
     <ClCompile Include="MakeTowerButton.cpp" />
+    <ClCompile Include="TowerButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -205,6 +206,7 @@
     <ClInclude Include="OverButton.h" />
     <ClInclude Include="HpBar.h" />
     <ClInclude Include="MakeTowerButton.h" />
+    <ClInclude Include="TowerButton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

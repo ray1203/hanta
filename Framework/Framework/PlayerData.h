@@ -69,21 +69,22 @@ public:
 		int speed;//≈∫º”
 		int srange;
 		float rate;//µÙ∑π¿Ã
+		int star;
 	};
 	
 	Info towerTable[1000] = {
-		{L"resources\\tower\\power_1.png",power,12,1000,3,0.5f},
-		{L"resources\\tower\\power_2.png",power,15,1000,3,0.35f},
-		{L"resources\\tower\\fantasy_1.png",fantasy,8,1000,3,0.4f},
-		{L"resources\\tower\\fantasy_2.png",fantasy,11,1000,3,0.25f},
-		{L"resources\\tower\\nature_1.png",nature,10,1000,4,0.5f},
-		{L"resources\\tower\\nature_2.png",nature,13,1000,4,0.35f},
-		{L"resources\\tower\\art_1.png",art,10,1000,3,0.5f},
-		{L"resources\\tower\\art_2.png",art,13,1000,3,0.35f},
-		{L"resources\\tower\\concept_1.png",concept,10,1000,1510,0.5f},
-		{L"resources\\tower\\concept_2.png",concept,13,1000,1510,0.35f},
-		{L"resources\\tower\\none_1.png",none,15,1000,3,0.3f},
-		{L"resources\\tower\\none_2.png",none,17,1000,3,0.2f},
+		{L"resources\\tower\\power_1.png",power,12,1000,3,0.5f,2},
+		{L"resources\\tower\\power_2.png",power,15,1000,3,0.35f,3},
+		{L"resources\\tower\\fantasy_1.png",fantasy,8,1000,3,0.4f,2},
+		{L"resources\\tower\\fantasy_2.png",fantasy,11,1000,3,0.25f,3},
+		{L"resources\\tower\\nature_1.png",nature,10,1000,4,0.5f,2},
+		{L"resources\\tower\\nature_2.png",nature,13,1000,4,0.35f,3},
+		{L"resources\\tower\\art_1.png",art,10,1000,3,0.5f,2},
+		{L"resources\\tower\\art_2.png",art,13,1000,3,0.35f,3},
+		{L"resources\\tower\\concept_1.png",concept,10,1000,1510,0.5f,2},
+		{L"resources\\tower\\concept_2.png",concept,13,1000,1510,0.35f,3},
+		{L"resources\\tower\\none_1.png",none,15,1000,3,0.3f,2},
+		{L"resources\\tower\\none_2.png",none,17,1000,3,0.2f,3},
 	};
 
 	void createJaeum();

@@ -11,6 +11,7 @@ public:
 	int flag = 0;
 	int t = 0;
 	Button(const wchar_t* path, int x, int y,int t);
+	~Button();
 	AABBCollider col2;
 	void Update();
 	Tower* tower;

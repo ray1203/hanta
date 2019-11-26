@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "Button.h"
 #include "ImageResize.h"
+#include "TowerButton.h"
 //#include "SceneButton.h"
 //#include "CraftScene.h"
 void GameScene::Initialize()
@@ -30,9 +31,7 @@ void GameScene::Initialize()
 	craftButton = (CraftButton*)PushBackGameObject(new CraftButton(L"resources\\craftButton.png", 80, 80, craftTable));
 	I.resize(craftButton, 80, 80);
 	craftButton->transform->SetPosition(640, 40);
-	for (int i = 0; i < 12; i++) {
-		Button* b = (Button*)PushBackGameObject(new Button(playerData->towerTable[i].path, i, 19, i));
-	}
+	TowerButton* b = (TowerButton*)PushBackGameObject(new TowerButton(L"resources\\Button.png", 0, 19));
 	//SceneButton* sb = (SceneButton*)PushBackGameObject(new SceneButton(L"resources\\SceneButton.png", 11, 17, 80, 80, new CraftScene()));
 	//TestObject* t = (TestObject*)PushBackGameObject(new TestObject());		//테스트용 오브젝트입니다.
 	//t->transform->SetPosition(200.0f,100.0f);
