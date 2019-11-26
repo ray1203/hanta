@@ -38,6 +38,7 @@ public:
 		{L"resources\\number\\dot9.png"}
 	};
 	int tower[6] = { 0 };
+	int over = 0;
 	GameObject* remainlife[10];
 	GameObject* remainmoney[10];
 	int ls, ms;
@@ -69,8 +70,8 @@ public:
 		{L"resources\\tower\\nature_2.png",nature,13,1000,4,0.35f},
 		{L"resources\\tower\\art_1.png",art,10,1000,3,0.5f},
 		{L"resources\\tower\\art_2.png",art,13,1000,3,0.35f},
-		{L"resources\\tower\\concept_1.png",concept,10,1000,3,0.5f},
-		{L"resources\\tower\\concept_2.png",concept,13,1000,3,0.35f},
+		{L"resources\\tower\\concept_1.png",concept,10,1000,1510,0.5f},
+		{L"resources\\tower\\concept_2.png",concept,13,1000,1510,0.35f},
 		{L"resources\\tower\\none_1.png",none,15,1000,3,0.3f},
 		{L"resources\\tower\\none_2.png",none,17,1000,3,0.2f},
 	};

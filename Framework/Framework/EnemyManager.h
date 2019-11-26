@@ -16,7 +16,7 @@ class EnemyManager :
 		float speed;
 	};
 	Info enemyTable[1000] = {
-		{L"resources\\R.png", 0, 1, 1, 300, 5.0}
+		{L"resources\\R.png", 0, 1, 1, 100, 5.0},
 	};
 	int i = 0;
 	int cnt = 0;

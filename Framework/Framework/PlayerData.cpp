@@ -2,8 +2,7 @@
 #include "PlayerData.h"
 #include "GameScene.h"
 #include "ImageResize.h"
-#include <string>
-#include <math.h>
+#include "OverButton.h"
 PlayerData::PlayerData():isPause(false)
 {
 	std::srand(static_cast<unsigned int>(std::time(0)));
@@ -26,7 +25,7 @@ int PlayerData::BreakHan(wchar_t* str, wchar_t* buffer, int nSize)
 	static const wchar_t wcTail[] = { L' ', L'ㄱ', L'ㄲ', L'ㄳ',
 		   L'ㄴ', L'ㄵ', L'ㄶ', L'ㄷ',
 		   L'ㄹ', L'ㄺ', L'ㄻ', L'ㄼ',
-		   L'ㄽ', L'ㄾ', L'ㄿ', L'ㅀ',
+		   L'ㄽ', L'ㄾ', L'ㄿ', L'ㅀ', 
 		   L'ㅁ', L'ㅂ', L'ㅄ', L'ㅅ',
 		   L'ㅆ', L'ㅇ', L'ㅈ', L'ㅊ',
 		   L'ㅋ', L'ㅌ', L'ㅍ', L'ㅎ' };
@@ -409,7 +408,7 @@ void PlayerData::createJaeum()
 		String list[30] = { "ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ" };
 		int r = std::rand() % 14;
 		jaeum[list[r]] += 1;
-		money--;
+		changeMoney(-1);
 		notifyChange();
 	}
 	else std::cout << "돈 부족" << "\n";
@@ -422,7 +421,7 @@ void PlayerData::createMoeum()
 		String list[30] = { "ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ" };
 		int r = std::rand() % 12;
 		moeum[list[r]] += 1;
-		money--;
+		changeMoney(-1);
 		notifyChange();
 	}
 	else std::cout << "돈 부족" << "\n";
@@ -532,7 +531,8 @@ void PlayerData::pause()
 
 void PlayerData::resume()
 {
-	isPause = false;
+	if (over == 0)
+		isPause = false;
 }
 
 void PlayerData::setdata(int life,int money)
@@ -583,6 +583,14 @@ void PlayerData::changeLife(int changelife)
 		remainlife[i]->transform->position.y = 30;
 		dlife %= k;
 		k /= 10;
+	}
+	if (life == 0) {
+		pause();
+		over = 1;
+		OverButton* b = (OverButton*)Scene::GetCurrentScene().PushBackGameObject(new OverButton(L"resources\\OverButton.jpg", 640, 400));
+		ImageResize I;
+		I.resize(b, 640, 400);
+		b->transform->SetPosition(640, 400);
 	}
 }
 

@@ -13,7 +13,7 @@ Tower::Tower(const wchar_t* path, int attribute, int damage, int speed, int sran
 	bm = s.GetBM();
 	em = s.GetEM();
 	o_range = srange * 40 + 20;
-	col = new CircleCollider(*transform, o_range);
+	//col = new CircleCollider(*transform, o_range);
 	col2 = new AABBCollider(*transform, renderer->GetWidth(), renderer->GetHeight());
 	playerData = s.GetPlayerData();
 	time = 0;
@@ -38,6 +38,7 @@ void Tower::Update() {
 		multi = 2 + (int)(0.5 * (scene.GetPlayerData()->tower[3]) - 1);
 	if (attribute == 5)//°³³ä
 		damage = o_damage * (0.5 * scene.GetPlayerData()->tower[4]);
+	col = new CircleCollider(*transform, range);
 	if (!(playerData->isPause)) {
 		time += TimeManager::GetDeltaTime();
 		if (time >= rate && activation) {
