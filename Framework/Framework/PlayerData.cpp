@@ -6,7 +6,20 @@
 PlayerData::PlayerData():isPause(false)
 {
 	std::srand(static_cast<unsigned int>(std::time(0)));
-	vocab.insert(std::pair<String,int>("물",nature));
+	std::pair<String, int> v[1000] = {
+	   {"파괴",힘},{"지식",힘}, {"근력",힘}, {"인력",힘},{"척력",힘},{"자기력",힘},{"전기력",힘},{"중력",힘},{"약력",힘},{"강력",힘},{"마찰력",힘},{"원심력",힘},{"구심력",힘},{"탄력",힘},{"탄성력",인공},
+	   {"요정",환상},{"노을",환상},{"몽환",환상},{"악마",환상},{"천사",환상},{"드래곤",환상},{"여친",환상},{"고블린",환상},{"분신",환상},{"미믹",환상},{"정령",환상},{"마법",환상},{"유령",환상},
+	   {"강물",자연},{"강아지",자연},{"고양이",자연},{"사자",자연},{"동물",자연},{"폭포",자연},{"바위",자연},{"태양",자연},{"산맥",자연},{"노루",자연},{"무지개",자연},{"나무",자연},{"개미",자연},{"곤충",자연},{"사과",인공},
+	   {"기계",인공},{"포탑",인공},{"컴퓨터",인공},{"원자로",인공},{"폭탄",인공},{"공업",인공},{"인터넷",인공},{"설비",인공},{"시설",인공},{"미사일",인공},{"대검",인공}, {"도끼",인공},{"단검",인공},{"게임",인공},
+	   {"사랑",개념},{"저주",개념},{"축복",개념},{"혼돈",개념},{"슬픔",개념},{"기쁨",개념},{"행운",개념},{"행복",개념},{"분노",개념},{"애정",개념},{"즐거움",개념},{"혐오",개념},{"공포",개념},{"증오",개념},{"욕망",개념},{"두려움",개념},{"노여움",개념},
+	   {"시공의폭풍은정말최고야",무계열},
+	};
+	int i = 0;
+	while (1) {
+		if (v[i].first == "시공의폭풍은정말최고야")
+			break;
+		vocab.insert(v[i++]);
+	}
 }
 
 int PlayerData::BreakHan(wchar_t* str, wchar_t* buffer, int nSize)
@@ -587,9 +600,7 @@ void PlayerData::changeLife(int changelife)
 	if (life == 0) {
 		pause();
 		over = 1;
-		OverButton* b = (OverButton*)Scene::GetCurrentScene().PushBackGameObject(new OverButton(L"resources\\OverButton.jpg", 640, 400));
-		ImageResize I;
-		I.resize(b, 640, 400);
+		OverButton* b = (OverButton*)Scene::GetCurrentScene().PushBackGameObject(new OverButton(L"resources\\OverButton.png", 1280, 800));
 		b->transform->SetPosition(640, 400);
 	}
 }

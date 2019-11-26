@@ -150,6 +150,7 @@
     <ClCompile Include="Framework.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="HpBar.cpp" />
     <ClCompile Include="ImageResize.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="JaeumButton.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Framework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="HpBar.h" />
     <ClInclude Include="ImageResize.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="JaeumButton.h" />

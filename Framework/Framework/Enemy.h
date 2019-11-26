@@ -3,6 +3,7 @@
 #include "AABBCollider.h"
 #include "BulletManager.h"
 #include "PlayerData.h"
+#include "HpBar.h"
 class BulletManager;
 class Enemy :
 	public GameObject
@@ -10,8 +11,10 @@ class Enemy :
 	int ax = -1, ay = -1;
 	int bx, by;
 	float speed = 5.0;
+	HpBar* hpbar;
 public:
 	int age;
+	float maxhp;
 	float hp;
 	int money = 1;
 	Enemy(const wchar_t* path, int bx, int by, int money, int hp, float speed);

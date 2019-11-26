@@ -2,6 +2,7 @@
 #include "Enemy.h"
 #include "GameScene.h"
 #include "InputManager.h"
+#include "ImageResize.h"
 Enemy::Enemy(const wchar_t* path, int bx, int by,int money, int hp, float speed)
 	:GameObject(path), bx(bx), by(by), hp(hp),money(money), speed(speed), col(*transform, renderer->GetWidth(), renderer->GetHeight())
 {
@@ -9,7 +10,12 @@ Enemy::Enemy(const wchar_t* path, int bx, int by,int money, int hp, float speed)
 	playerData = s.GetPlayerData();
 	bm = s.GetBM();
 	age = 0;
+	maxhp = hp;
 	speed = 20.0f;
+	hpbar = (HpBar*)s.PushBackGameObject(new HpBar(L"resources\\hpbar.png"));
+	hpbar->transform->SetPosition(this->transform->position.x, this->transform->position.y - 18);
+	ImageResize I;
+	I.resize(hpbar, 24, 4);
 }
 
 Enemy::~Enemy() {
@@ -58,6 +64,9 @@ void Enemy::Update() {
 				this->transform->position.y -= speed;
 			}
 		}
+		ImageResize I;
+		hpbar->transform->SetPosition(this->transform->position.x + 24 * (hp / maxhp - 1), this->transform->position.y - 18);
+		I.resize(hpbar, 24 * hp / maxhp, 4);
 	}
 }
 
@@ -78,4 +87,5 @@ void Enemy::Destroy()
 	}
 
 	Scene::GetCurrentScene().Destroy(this);
+	Scene::GetCurrentScene().Destroy(hpbar);
 }

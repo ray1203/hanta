@@ -109,6 +109,7 @@
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="WordButton.cpp" />
     <ClCompile Include="OverButton.cpp" />
+    <ClCompile Include="HpBar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -201,6 +202,7 @@
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="WordButton.h" />
     <ClInclude Include="OverButton.h" />
+    <ClInclude Include="HpBar.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

@@ -25,6 +25,15 @@ public:
 		concept,
 		none,
 	};
+	enum attribute_kr
+	{
+		힘 = 1,
+		환상,
+		자연,
+		인공,
+		개념,
+		무계열,
+	};
 	wchar_t number[10][30] = {
 		{L"resources\\number\\dot0.png"},
 		{L"resources\\number\\dot1.png"},
