@@ -8,6 +8,7 @@
 #include "InputManager.h"
 #include "FontObject.h"
 #include "WordButton.h"
+#include "MakeTowerButton.h"
 #include<conio.h>
 //#include "Scene.h"
 typedef std::string String;
@@ -15,6 +16,7 @@ class CraftTable :
 	public GameObject
 {
 public:
+	bool created = false;
 	CraftTable();
 	virtual void Update();
 	FontObject* jaeumText;
@@ -22,7 +24,7 @@ public:
 	FontObject* eumjulText;
 	FontObject* wordText;
 	FontObject* insertText;
-
+	MakeTowerButton* makeTowerBtn;
 	PlayerData* playerData;
 	BackGround* background;
 	MoeumButton* mButton;

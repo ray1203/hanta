@@ -8,11 +8,16 @@ CraftTable::CraftTable()
 {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	playerData = s.GetPlayerData();
+	buffer = "";
 }
 void CraftTable::Update()
 {
-	if (isActive)
+	if (isActive) {
+		if (makeTowerBtn->flag)
+			buffer = "";
 		input();
+		makeTowerBtn->getBuffer(buffer);
+	}
 }
 void CraftTable::show() {
 	//FontObject* f = new FontObject("hihi",30,30);
@@ -24,7 +29,7 @@ void CraftTable::show() {
 	mButton = (MoeumButton*)s.PushBackGameObject(new MoeumButton(L"resources\\MoeumButton.png", 25, 15, 80, 80, playerData));
 	jButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\JaeumButton.png", 5, 15, 80, 80, playerData));
 	wordbutton = (WordButton*)s.PushBackGameObject(new WordButton(L"resources\\Button.png",15,5));
-	
+	makeTowerBtn = (MakeTowerButton*)s.PushBackGameObject(new MakeTowerButton(L"resources\\makeTower.png"));
 
 
 	updateText();
@@ -36,6 +41,7 @@ void CraftTable::hide() {
 	Scene::GetCurrentScene().Destroy(mButton);
 	Scene::GetCurrentScene().Destroy(jButton);
 	Scene::GetCurrentScene().Destroy(wordbutton);
+	Scene::GetCurrentScene().Destroy(makeTowerBtn);
 	deleteText();
 }
 
@@ -308,10 +314,15 @@ void CraftTable::input()
 		HCURSOR hCursor = LoadCursor(0, IDC_HAND);
 		hCursor = SetCursor(hCursor);
 	}
-	if (wordbutton->col2.Intersected(InputManager::GetMouseVector2())&&InputManager::GetMyKeyState(VK_LBUTTON)==1) {
+	if (wordbutton->col2.Intersected(InputManager::GetMouseVector2()) && InputManager::GetMyKeyState(VK_LBUTTON) == 1) {
 		craftmode = !craftmode;
+		if (craftmode) {
+			printf("dest");
+		}
+		else {
+			GameScene& s = (GameScene&)Scene::GetCurrentScene();
+		}
 	}
-	
 }
 
 void CraftTable::updateText()

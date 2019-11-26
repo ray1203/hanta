@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "AABBCollider.h"
 #include "Tower.h"
+#include "FontObject.h"
 class Button :
 	public GameObject
 {
@@ -14,4 +15,5 @@ public:
 	void Update();
 	Tower* tower;
 	GameObject* rangeI;
+	FontObject* text;
 };

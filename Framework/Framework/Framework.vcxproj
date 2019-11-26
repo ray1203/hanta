@@ -156,6 +156,7 @@
     <ClCompile Include="JaeumButton.cpp" />
     <ClCompile Include="ListAnimation.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MakeTowerButton.cpp" />
     <ClCompile Include="MoeumButton.cpp" />
     <ClCompile Include="OverButton.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="JaeumButton.h" />
     <ClInclude Include="ListAnimation.h" />
+    <ClInclude Include="MakeTowerButton.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MoeumButton.h" />
     <ClInclude Include="OverButton.h" />

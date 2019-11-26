@@ -61,6 +61,7 @@ public:
 	std::map<String, int> eumjul;//음절
 	std::map<String, int> word;//단어
 	std::map<String, int> vocab;//단어 목록 선언은 .cpp에서
+	int myTower[13] = { 0, };
 	struct Info {
 		const wchar_t* path;
 		int attribute;
