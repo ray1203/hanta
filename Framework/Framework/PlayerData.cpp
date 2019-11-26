@@ -386,6 +386,18 @@ String PlayerData::Merge(String str1, String str2)
 		}
 		if (flag)
 			return MergeJaso(result1, mouem, "");
+		if (result3 != "0")
+		{
+			i = 0;
+			while (mList[i] != " ") {
+				if (mList[i++] == str2) {
+					String a = MergeJaso(result1, result2, "");
+					String b= MergeJaso(result3, str2, "");
+					return a + b;
+					
+				}
+			}
+		}
 	}
 
 	return "null";

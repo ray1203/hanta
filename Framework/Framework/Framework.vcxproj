@@ -168,6 +168,7 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WaveButton.cpp" />
     <ClCompile Include="WinApp.cpp" />
+    <ClCompile Include="WordButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollider.h" />
@@ -212,6 +213,7 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="WaveButton.h" />
     <ClInclude Include="WinApp.h" />
+    <ClInclude Include="WordButton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl" />

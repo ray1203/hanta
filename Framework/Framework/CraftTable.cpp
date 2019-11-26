@@ -21,8 +21,8 @@ void CraftTable::show() {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	
 	background = (BackGround*)s.PushBackGameObject(new BackGround(L"resources\\background.png"));
-	mButton = (MoeumButton*)s.PushBackGameObject(new MoeumButton(L"resources\\MoeumButton.png", 20, 10, 80, 80, playerData));
-	jButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\JaeumButton.png", 10, 10, 80, 80, playerData));
+	mButton = (MoeumButton*)s.PushBackGameObject(new MoeumButton(L"resources\\MoeumButton.png", 25, 15, 80, 80, playerData));
+	jButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\JaeumButton.png", 5, 15, 80, 80, playerData));
 	wordbutton = (WordButton*)s.PushBackGameObject(new WordButton(L"resources\\Button.png",15,5));
 	
 
@@ -229,13 +229,14 @@ void CraftTable::input()
 					buffer.clear();
 					
 				}
-				else if (!playerData->word[words[1]] && std::count(buffer.begin(), buffer.end(), ' ') >= 2) {
+				else if (playerData->word[words[1]]>=0+usingword[words[1]] && std::count(buffer.begin(), buffer.end(), ' ') ==1 ) {
 					playerData->word[words[0]] -= 1;
 					playerData->word[words[1]] -= 1;
 					playerData->word[addtext] += 1;
 					updateText();
 					buffer.clear();
 				}
+
 
 			}
 
@@ -323,10 +324,10 @@ void CraftTable::updateText()
 		Scene::GetCurrentScene().Destroy(insertText);
 	if (wordText != nullptr)
 		Scene::GetCurrentScene().Destroy(wordText);
-	moeumText = new FontObject(playerData->sprintMoeum(), 800, 600);
-	jaeumText = new FontObject(playerData->sprintJaeum(), 100, 600);
-	wordText = new FontObject(playerData->sprintword(), 300, 700);
-	insertText = new FontObject(buffer, 550, 350);
+	moeumText = new FontObject(playerData->sprintMoeum(), 800, 700);
+	jaeumText = new FontObject(playerData->sprintJaeum(), 100, 700);
+	wordText = new FontObject(playerData->sprintword(), 300, 750);
+	insertText = new FontObject(buffer, 450, 350);
 	insertText->transform->SetScale(4, 4);
 	insertText->font->fontWeight = DWRITE_FONT_WEIGHT_HEAVY;
 	Scene::GetCurrentScene().PushBackGameObject(jaeumText);
