@@ -3,6 +3,8 @@
 #include "GameScene.h"
 #include "Math.h"
 #include <locale.h>
+
+#pragma comment(linker, "/ENTRY:mainCRTStartup")
 int main()
 {
 	setlocale(LC_ALL, "korean");

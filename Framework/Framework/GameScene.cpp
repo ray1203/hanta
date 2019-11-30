@@ -24,7 +24,7 @@ void GameScene::Initialize()
 	}
 	ImageResize I;
 	playerData = new PlayerData();
-	playerData->setdata(20, 100);
+	playerData->setdata(20, 20);
 	craftTable = (CraftTable*)PushBackGameObject(new CraftTable());
 	bm = (BulletManager*)PushBackGameObject(new BulletManager());
 	em = (EnemyManager*)PushBackGameObject(new EnemyManager());

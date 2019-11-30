@@ -3,6 +3,7 @@
 #include "GameScene.h"
 #include "ImageResize.h"
 #include "OverButton.h"
+#pragma warning(disable:4996)
 PlayerData::PlayerData():isPause(false)
 {
 	std::srand(static_cast<unsigned int>(std::time(0)));

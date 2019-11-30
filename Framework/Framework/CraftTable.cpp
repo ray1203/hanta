@@ -4,6 +4,7 @@
 #include "GameScene.h"
 #include "ImageResize.h"
 #include "WordButton.h"
+#pragma warning(disable:4996)
 CraftTable::CraftTable()
 {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
@@ -26,6 +27,9 @@ void CraftTable::show() {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
 	
 	background = (BackGround*)s.PushBackGameObject(new BackGround(L"resources\\background.png"));
+	ImageResize r;
+	r.resize(background, 1280, 800);
+	background->transform->SetPosition(640, 400);
 	mButton = (MoeumButton*)s.PushBackGameObject(new MoeumButton(L"resources\\MoeumButton.png", 25, 15, 80, 80, playerData));
 	jButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\JaeumButton.png", 5, 15, 80, 80, playerData));
 	wordbutton = (WordButton*)s.PushBackGameObject(new WordButton(L"resources\\Button.png",15,5));
