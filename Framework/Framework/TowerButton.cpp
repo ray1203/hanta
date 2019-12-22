@@ -61,7 +61,6 @@ void TowerButton::Update()
 		scene.Destroy(rangeI);
 		if (scene.map[(int)(tower->transform->position.y - 20) / 40][(int)(tower->transform->position.x - 20) / 40]!=0) {
 			scene.Destroy(tower);
-			
 		}
 		else {
 			scene.GetPlayerData()->myTower[t]--;

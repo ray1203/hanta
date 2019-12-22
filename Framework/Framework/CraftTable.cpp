@@ -30,11 +30,11 @@ void CraftTable::show() {
 	background->transform->SetPosition(640, 400);
 
 	jaeumButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\button\\jaeumButton.png", 80, 80, playerData));
-	I.resize(jaeumButton, 80, 80);
+	I.resize(jaeumButton, 160, 100);
 	jaeumButton->transform->SetPosition(220, 620);
 
 	moeumButton = (MoeumButton*)s.PushBackGameObject(new MoeumButton(L"resources\\button\\moeumButton.png", 80, 80, playerData));
-	I.resize(moeumButton, 80, 80);
+	I.resize(moeumButton, 160, 100);
 	moeumButton->transform->SetPosition(1020, 620);
 
 	modeButton = (ModeButton*)s.PushBackGameObject(new ModeButton(L"resources\\button\\modeButton_1.png", 80, 80));

@@ -65,8 +65,8 @@ void Tower::Update() {
 		}
 		if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col2->Intersected(InputManager::GetMouseVector2()) && activation) {
 			ImageResize r;
-			rangeI = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\Range.png"));
-			TowerInfoframe = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\TowerInfo.png"));
+			rangeI = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\tower\\range.png"));
+			TowerInfoframe = (GameObject*)scene.PushBackGameObject(new GameObject(L"resources\\tower\\towerInfo.png"));
 			TowerImage = (GameObject*)scene.PushBackGameObject(new GameObject(path));
 
 			words = "";
@@ -142,7 +142,7 @@ void Tower::Shoot()
 			}
 		}
 		if (listSize != 0 && enemyList.size() != 0) {
-			Bullet* b = bm->PushBackTowerBullet(new Bullet(L"resources\\Bullet.png", speed, damage, frontE));
+			Bullet* b = bm->PushBackTowerBullet(new Bullet(L"resources\\tower\\bullet.png", speed, damage, frontE));
 			b->transform->SetPosition(transform->position.x, transform->position.y);
 		}
 	}
@@ -165,7 +165,7 @@ void Tower::Shoot()
 		while (maxAge >= 0) {
 			for (int i = 0; i < enemyList.size(); i++) {
 				if (enemyList[i]->age == maxAge) {
-					Bullet* b = bm->PushBackTowerBullet(new Bullet(L"resources\\Bullet.png", speed, damage, enemyList[i]));
+					Bullet* b = bm->PushBackTowerBullet(new Bullet(L"resources\\tower\\bullet.png", speed, damage, enemyList[i]));
 					b->transform->SetPosition(transform->position.x, transform->position.y);
 					multi--;
 				}
