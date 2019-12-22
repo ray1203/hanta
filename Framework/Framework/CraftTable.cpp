@@ -13,8 +13,11 @@ CraftTable::CraftTable()
 void CraftTable::Update()
 {
 	if (isActive) {
-		if (makeTowerBtn->flag)
+		if (makeTowerBtn->flag) {
 			buffer = "";
+			makeTowerBtn->flag = false;
+
+		}
 		input();
 		makeTowerBtn->setBuffer(buffer);
 	}
@@ -60,6 +63,7 @@ void CraftTable::hide() {
 	Scene::GetCurrentScene().Destroy(modeButton);
 	Scene::GetCurrentScene().Destroy(makeTowerBtn);
 	Scene::GetCurrentScene().Destroy(gameButton);
+	Scene::GetCurrentScene().Destroy(wordText);
 	deleteText();
 }
 
@@ -299,10 +303,14 @@ void CraftTable::input()
 			swprintf(a2, sizeof(a2) / sizeof(wchar_t), L"%c", result[1]);
 			char b2[15];
 			sprintf_s(b2, 15, "%ls", a2);
+		
 			String result2(b2);
+			//std::cout << "rs1:"<<result1 << " rs2:" << result2 <<result1.size()<<" "<<result2.size()<< std::endl;
 			String str;
 			str = playerData->merge(result1, result2);
+		//	std::cout << "str:" << buffer << std::endl;
 			if (str != "null") {
+				//std::cout << buffer.find_last_of(result1) << " " << buffer.find(result1) << std::endl;
 				buffer.erase(buffer.find(result1), buffer.size());
 				buffer.append(str);
 				updateText();
@@ -334,7 +342,7 @@ void CraftTable::updateText()
 	wordText = new FontObject(playerData->sprintWord(), 300, 750);
 	insertText = new FontObject(buffer, 450, 350);
 	insertText->transform->SetScale(4, 4);
-	insertText->font->fontWeight = DWRITE_FONT_WEIGHT_HEAVY;
+	
 	Scene::GetCurrentScene().PushBackGameObject(jaeumText);
 	Scene::GetCurrentScene().PushBackGameObject(moeumText);
 	Scene::GetCurrentScene().PushBackGameObject(insertText);

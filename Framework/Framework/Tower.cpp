@@ -102,7 +102,10 @@ void Tower::Update() {
 			temp += "\n공격속도:";
 			temp += std::to_string(speed);
 			temp += "\n사거리:";
+			if(range<60000)
 			temp += std::to_string(range);
+			else
+			temp += "∞";
 			temp += "\n멀티샷:";
 			temp += std::to_string(multi - (attribute != 4));
 			temp += "\n같은 계열의 타워 수:";

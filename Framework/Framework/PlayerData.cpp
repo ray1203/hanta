@@ -99,18 +99,18 @@ void PlayerData::createWord(String str) {
 		if (jauem1[0] == jauem1[1])
 		{
 			if (jaeum[jauem1[0]] < 2) {
-				std::cout << jauem1[0] << "이 모잘랍니다!" << std::endl;
+				std::cout << jauem1[0] << "이 더 필요합니다!" << std::endl;
 				flag = 1;
 			}
 		}
 		if (jaeum[jauem1[0]] < 1 && !flag)
 		{
 
-			std::cout << jauem1[0] << "이 모잘랍니다!" << std::endl;
+			std::cout << jauem1[0] << "이 더 필요합니다!" << std::endl;
 			flag = 1;
 		}
 		if (jaeum[jauem1[1]] < 1) {
-			std::cout << jauem1[1] << "이 모잘랍니다!!" << std::endl; flag = 1;
+			std::cout << jauem1[1] << "이 더 필요합니다!!" << std::endl; flag = 1;
 		}
 		if (flag)return;
 		jaeum[jauem1[0]] -= 1;
@@ -118,6 +118,30 @@ void PlayerData::createWord(String str) {
 
 		std::cout << mergeJaJa(jauem1[0], jauem1[1]) << std::endl;
 		jaeum[mergeJaJa(jauem1[0], jauem1[1])] += 1;
+	}
+	else if (splitMoeum(str) != "null") {
+		String j = splitMoeum(str);
+
+		String mouem1[2];
+		char* writable = new char[j.size() + 1];
+		std::copy(j.begin(), j.end(), writable);
+		writable[5] = '\0';
+		mouem1[0] = strtok(writable, ",");
+		mouem1[1] = strtok(NULL, ",");
+		int flag = 0;
+		if (moeum[mouem1[0]] < 1) {
+			flag = 1;
+			std::cout << mouem1[0] << "이 더 필요합니다!" << std::endl;
+		}
+		if (moeum[mouem1[1]] < 1){
+			flag = 1;
+			std::cout << mouem1[1] << "이 더 필요합니다!!" << std::endl;
+			}
+		if (flag)return;
+		moeum[mouem1[0]] -= 1;
+		moeum[mouem1[1]] -= 1;
+		std::cout << mergeMoMo(mouem1[0], mouem1[1]) << std::endl;
+		moeum[mergeMoMo(mouem1[0], mouem1[1])] += 1;
 	}
 	else {
 		int C_STR_BUFFER_SIZE = str.size() + 1;
@@ -147,18 +171,18 @@ void PlayerData::createWord(String str) {
 
 		if (jaeum[Cho] < 1)
 		{
-			std::cout << Cho << "이 모잘랍니다!" << std::endl;
+			std::cout << Cho << "이 더 필요합니다!" << std::endl;
 			flag = 1;
 		}
 		else {
 			usingword[Cho] += 1;
 		}
 		if (moeum[Jung] < 1) {
-			std::cout << Jung << "이 모잘랍니다!" << std::endl; flag = 1;
+			std::cout << Jung << "이 더 필요합니다!" << std::endl; flag = 1;
 		}
 		if (jaeum[Jong] < 1 + usingword[Jong] && Jong.size() >= 2)
 		{
-			std::cout << Jong << "이 모잘랍니다!" << std::endl; flag = 1;
+			std::cout << Jong << "이 더 필요합니다!" << std::endl; flag = 1;
 		}
 		if (flag)return;
 		jaeum[Cho] -= 1;
@@ -358,6 +382,8 @@ String PlayerData::mergeMoMo(String mouem1, String mouem2)
 
 String PlayerData::merge(String str1, String str2)
 {
+	//std::cout << "str1:"<<str1 << " str2:" << str2 << std::endl;
+
 	int C_STR_BUFFER_SIZE = str1.size() + 1;
 	wchar_t* result = new wchar_t[str1.size() + 1];
 	const char* s = str1.c_str();
@@ -391,6 +417,18 @@ String PlayerData::merge(String str1, String str2)
 				while (mList[j] != " ") {
 					if (mList[j++] == str2) {
 						return mergeJaMo(str1, str2, "");
+					}
+				}
+			}
+
+		}
+		i = 0;
+		while (mList[i] != " ") {
+			if (mList[i++] == str1) {
+				int j = 0;
+				while (mList[j] != " ") {
+					if (mList[j++] == str2) {
+						return mergeMoMo(str1, str2);
 					}
 				}
 			}
@@ -472,7 +510,9 @@ String PlayerData::sprintJaeum()
 {
 	std::map<String, int>::iterator i;
 	String str;
+	int index = 0;
 	for (i = jaeum.begin(); i != jaeum.end(); i++) {
+		index++;
 		if (i->second) {
 			str.append(i->first);
 			str.append("x");
@@ -481,6 +521,7 @@ String PlayerData::sprintJaeum()
 			str.append(a);
 			str.append(",");
 		}
+		if (index == 10)str.append("\n");
 	}
 
 	return str;
@@ -491,7 +532,9 @@ String PlayerData::sprintMoeum()
 
 	std::map<String, int>::iterator i;
 	String str;
+	int index = 0;
 	for (i = moeum.begin(); i != moeum.end(); i++) {
+		index++;
 		if (i->second) {
 			str.append(i->first);
 			str.append("x");
@@ -500,6 +543,7 @@ String PlayerData::sprintMoeum()
 			str.append(a);
 			str.append(",");
 		}
+		if (index == 10)str.append("\n");
 	}
 
 	return str;
@@ -509,7 +553,9 @@ String PlayerData::sprintMoeum()
 String PlayerData::sprintWord() {
 	std::map<String, int>::iterator i;
 	String str;
+	int index=0;
 	for (i = word.begin(); i != word.end(); i++) {
+		index++;
 		if (i->second) {
 			str.append(i->first);
 			str.append("x");
@@ -518,13 +564,22 @@ String PlayerData::sprintWord() {
 			str.append(a);
 			str.append(",");
 		}
+		if (index == 10)str.append("\n");
 	}
 
 	return str;
 }
-
+String PlayerData::splitMoeum(String str) {
+	if (str == "ㅚ")return "ㅗ,ㅣ";
+	if (str == "ㅙ")return "ㅗ,ㅐ";
+	if (str == "ㅘ")return "ㅗ,ㅏ";
+	if (str == "ㅝ")return "ㅜ,ㅓ";
+	if (str == "ㅟ")return "ㅜ,ㅣ";
+	if (str == "ㅞ")return "ㅜ,ㅔ";
+	if (str == "ㅢ")return "ㅡ,ㅣ";
+	return "null";
+}
 String PlayerData::splitJaeum(String str) {
-	String returnvalue;
 	if (str == "ㄲ") {
 		return "ㄱ,ㄱ";
 	}

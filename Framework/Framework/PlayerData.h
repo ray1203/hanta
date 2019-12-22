@@ -41,7 +41,7 @@ public:
 	String sprintWord();
 
 	String splitJaeum(String);
-	//String splitMoeum(String);
+	String splitMoeum(String);
 
 public:
 	enum attribute
