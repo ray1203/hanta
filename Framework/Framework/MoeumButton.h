@@ -1,18 +1,12 @@
 #pragma once
-#include "GameObject.h"
+#include "Button.h"
 #include "PlayerData.h"
-#include "AABBCollider.h"
-#include "InputManager.h"
 class MoeumButton :
-	public GameObject
+	public Button
 {
-
-public:
-	const wchar_t* path;
 	PlayerData* playerData;
-	MoeumButton(const wchar_t* path, int x, int y, float width, float height, PlayerData* playerData);
-	AABBCollider col2;
-	void Update();
-	int isclick = 0;
+public:
+	MoeumButton(const wchar_t* path, float colwidth, float colheight, PlayerData* playerData);
+	void OnClick();
 };
 

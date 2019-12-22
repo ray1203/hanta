@@ -12,7 +12,7 @@ Enemy::Enemy(const wchar_t* path, int bx, int by,int money, int hp, float speed)
 	age = 0;
 	maxhp = hp;
 	speed = 20.0f;
-	hpbar = (HpBar*)s.PushBackGameObject(new HpBar(L"resources\\hpbar.png"));
+	hpbar = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\enemy\\hpBar.png"));
 	hpbar->transform->SetPosition(this->transform->position.x, this->transform->position.y - 18);
 	ImageResize I;
 	I.resize(hpbar, 24, 4);

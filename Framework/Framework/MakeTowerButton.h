@@ -1,30 +1,17 @@
 #pragma once
-#include "GameObject.h"
-#include "AABBCollider.h"
-#include "InputManager.h"
+#include "Button.h"
 #include "PlayerData.h"
 typedef std::string String;
 class MakeTowerButton :
-	public GameObject
+	public Button
 {
 
-public:/*
-	enum attribute_kr
-	{
-		힘 = 1,
-		환상,
-		자연,
-		인공,
-		개념,
-		무계열,
-	};*/
+public:
 	bool flag = false;
-	MakeTowerButton(const wchar_t* path);
-	AABBCollider col2;
+	MakeTowerButton(const wchar_t* path, float colwidth, float colheight);
 	PlayerData* playerData;
 	String buffer;
-	void Update();
-	void destroy();
-	void getBuffer(String b);
+	void OnClick();
+	void setBuffer(String b);
 };
 

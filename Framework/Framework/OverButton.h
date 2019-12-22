@@ -1,12 +1,10 @@
 #pragma once
-#include "GameObject.h"
-#include "AABBCollider.h"
+#include "Button.h"
 class OverButton :
-	public GameObject
+	public Button
 {
-	AABBCollider col;
 public:
-	OverButton(const wchar_t* path, float width, float height);
-	void Update();
+	OverButton(const wchar_t* path, float colwidth, float colheight);
+	void OnClick();
 };
 

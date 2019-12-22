@@ -53,7 +53,6 @@
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Collider.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -90,7 +89,6 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
@@ -107,11 +105,12 @@
     <ClCompile Include="FontRenderer.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
-    <ClCompile Include="WordButton.cpp" />
     <ClCompile Include="OverButton.cpp" />
-    <ClCompile Include="HpBar.cpp" />
     <ClCompile Include="MakeTowerButton.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="TmenuButton.cpp" />
     <ClCompile Include="TowerButton.cpp" />
+    <ClCompile Include="ModeButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -148,7 +147,6 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="Collider.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -185,7 +183,6 @@
     <ClInclude Include="InputManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
@@ -202,11 +199,12 @@
     <ClInclude Include="FontRenderer.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
-    <ClInclude Include="WordButton.h" />
     <ClInclude Include="OverButton.h" />
-    <ClInclude Include="HpBar.h" />
     <ClInclude Include="MakeTowerButton.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="TmenuButton.h" />
     <ClInclude Include="TowerButton.h" />
+    <ClInclude Include="ModeButton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">

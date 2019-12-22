@@ -2,19 +2,12 @@
 #include "OverButton.h"
 #include "InputManager.h"
 #include "GameScene.h"
-OverButton::OverButton(const wchar_t* path, float width, float height)
-	:GameObject(path), col(*transform, width, height)
+OverButton::OverButton(const wchar_t* path, float colwidth, float colheight)
+	:Button(path, colwidth, colheight)
 {
 }
 
-void OverButton::Update()
+void OverButton::OnClick()
 {
-	if (col.Intersected(InputManager::GetMouseVector2())) {
-		HCURSOR hCursor = LoadCursor(0, IDC_HAND);
-		hCursor = SetCursor(hCursor);
-	}
-
-	if (InputManager::GetMyKeyState(VK_LBUTTON) == -1 && col.Intersected(InputManager::GetMouseVector2())) {
-		Scene::GetCurrentScene().ChangeScene(new GameScene());
-	}
+	Scene::GetCurrentScene().ChangeScene(new GameScene());
 }

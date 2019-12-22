@@ -1,43 +1,38 @@
 #include "stdafx.h"
 #include "GameScene.h"
-#include "Player.h"
 #include "GameObject.h"
 #include "Button.h"
 #include "ImageResize.h"
-#include "TowerButton.h"
-//#include "SceneButton.h"
-//#include "CraftScene.h"
+#include "TmenuButton.h"
 void GameScene::Initialize()
 {
 	for (int x = 0; x < 32; x++) {
 		for (int y = 0; y < 20; y++) {
 			if (map[y][x])
 			{
-				GameObject* g = (GameObject*)PushBackGameObject(new GameObject(L"resources\\Road.png"));
+				GameObject* g = (GameObject*)PushBackGameObject(new GameObject(L"resources\\road.png"));
 				g->transform->SetPosition(x * 40 + 20, y * 40 + 20);
 			}
 			else {
-				GameObject* g = (GameObject*)PushBackGameObject(new GameObject(L"resources\\Ground.png"));
+				GameObject* g = (GameObject*)PushBackGameObject(new GameObject(L"resources\\ground.png"));
 				g->transform->SetPosition(x * 40 + 20, y * 40 + 20);
 			}
 		}
 	}
 	ImageResize I;
-	playerData = new PlayerData();
-	playerData->setdata(20, 20);
+
+	playerData = new PlayerData(20, 20);
 	craftTable = (CraftTable*)PushBackGameObject(new CraftTable());
 	bm = (BulletManager*)PushBackGameObject(new BulletManager());
 	em = (EnemyManager*)PushBackGameObject(new EnemyManager());
-	craftButton = (CraftButton*)PushBackGameObject(new CraftButton(L"resources\\craftButton.png", 80, 80, craftTable));
+
+	craftButton = (CraftButton*)PushBackGameObject(new CraftButton(L"resources\\button\\craftButton.png", 80, 80, craftTable));
 	I.resize(craftButton, 80, 80);
 	craftButton->transform->SetPosition(640, 40);
-	TowerButton* b = (TowerButton*)PushBackGameObject(new TowerButton(L"resources\\Button.png", 0, 19));
-	//SceneButton* sb = (SceneButton*)PushBackGameObject(new SceneButton(L"resources\\SceneButton.png", 11, 17, 80, 80, new CraftScene()));
-	//TestObject* t = (TestObject*)PushBackGameObject(new TestObject());		//테스트용 오브젝트입니다.
-	//t->transform->SetPosition(200.0f,100.0f);
 
-	//player = (Player*)PushBackGameObject(new Player());			//오브젝트를 생성하고 싶다면, PushBackGameObject함수를 호출하여 생성합니다.
-	//player->enemy = t;
+	b = (TmenuButton*)PushBackGameObject(new TmenuButton(L"resources\\button\\towerButton.png", 40, 40));
+	I.resize(b, 40, 40);
+	b->transform->SetPosition(20, 780);
 }
 
 PlayerData* GameScene::GetPlayerData()

@@ -5,9 +5,9 @@
 #include "PlayerData.h"
 #include "MoeumButton.h"
 #include "JaeumButton.h"
+#include "ModeButton.h"
 #include "InputManager.h"
 #include "FontObject.h"
-#include "WordButton.h"
 #include "MakeTowerButton.h"
 #include<conio.h>
 //#include "Scene.h"
@@ -27,8 +27,9 @@ public:
 	MakeTowerButton* makeTowerBtn;
 	PlayerData* playerData;
 	BackGround* background;
-	MoeumButton* mButton;
-	JaeumButton* jButton;
+	JaeumButton* jaeumButton;
+	MoeumButton* moeumButton;
+	GameObject* gameButton;
 	int isjaja = 0;
 	int ismomo = 0;
 	int mouemselect = 0;
@@ -37,16 +38,16 @@ public:
 	String lastmouem2;
 	String lastjauem1;
 	String lastjauem2;
-	WordButton* wordbutton;
-	bool isActive;
+	ModeButton* modeButton;
+	GameObject* modeButton2;
+	bool isActive = false;
 	int craftmode = 1;
 	void show();
 	void hide();
 	void deleteText();
-	void change();
+	void modeChange();
 	String buffer;
 	void input();
 	void updateText();
-
 };
 

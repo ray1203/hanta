@@ -1,10 +1,10 @@
 #pragma once
 #include "Scene.h"
-#include "Player.h"
 #include "BulletManager.h"
 #include "EnemyManager.h"
 #include "CraftTable.h"
 #include "CraftButton.h"
+#include "TmenuButton.h"
 #include "PlayerData.h"
 //장면을 관리할 객체가 필요합니다.
 //Scene을 상속받아 객체를 생성합니다.
@@ -15,6 +15,7 @@ class GameScene : public Scene
 	CraftButton* craftButton;
 	CraftTable* craftTable;
 	PlayerData* playerData;
+	TmenuButton* b;
 	virtual void Initialize();		//모든 Scene에는 반드시 Initialize함수가 있어야합니다. (추상 클래스 참고)
 public:
 	int map[20][32] = {//한 타일의 크기는 40*40 입구 0,1 출구 19,1
@@ -51,5 +52,4 @@ public:
 	BulletManager* GetBM();
 	EnemyManager* GetEM();
 	CraftTable* GetCraftTable();
-	Player* player;
 };

@@ -5,7 +5,8 @@
 #include "Scene.h"
 EnemyManager::EnemyManager() {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
-	w = (WaveButton*)s.PushBackGameObject(new WaveButton(L"resources\\WaveButton.png", 0, 1));
+	w = (WaveButton*)s.PushBackGameObject(new WaveButton(L"resources\\button\\waveButton.png", 40, 40));
+	w->transform->SetPosition(20, 60);
 	playerData = s.GetPlayerData();
 }
 
@@ -33,7 +34,8 @@ void EnemyManager::Update() {
 				}
 			}
 			else {
-				w = (WaveButton*)s.PushBackGameObject(new WaveButton(L"resources\\WaveButton.png", 0, 1));
+				w = (WaveButton*)s.PushBackGameObject(new WaveButton(L"resources\\button\\waveButton.png", 40, 40));
+				w->transform->SetPosition(20, 60);
 				i = 0;
 				flag = 1;
 			}

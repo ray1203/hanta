@@ -91,10 +91,10 @@ void Tower::Update() {
 			else {
 				py = transform->position.y;
 			}
-			TowerInfoframe->transform->SetPosition(px, py);
+			TowerInfoframe->transform->SetPosition(px, py-35);
 
 			TowerImage->transform->SetPosition(px - 120, py - 65);
-			towerkind = (FontObject*)scene.PushBackGameObject(new FontObject("유형:" + towerkinds, px - 160, py + 70));
+			towerkind = (FontObject*)scene.PushBackGameObject(new FontObject("유형:" + towerkinds, px - 180, py + 30));
 			towerkind->font->colorBrush->SetColor(D2D1::ColorF(0, 0.6, 0.7, 1));
 
 			String temp = "공격력:";
@@ -110,13 +110,14 @@ void Tower::Update() {
 
 
 
-			towerstat = (FontObject*)scene.PushBackGameObject(new FontObject(temp, px, py));
+			towerstat = (FontObject*)scene.PushBackGameObject(new FontObject(temp, px - 25, py - 100));
 			towerstat->font->colorBrush->SetColor(D2D1::ColorF(0, 0.6, 0.7, 1));
-			towerstat->font->fontSize = 10;
-			stars = (FontObject*)scene.PushBackGameObject(new FontObject(words, px - 150, py + 10));
+			
+			stars = (FontObject*)scene.PushBackGameObject(new FontObject(words, px - 150, py - 15));
 			stars->font->colorBrush->SetColor(D2D1::ColorF(1, 1, 0, 1));
 			r.resize(rangeI, (double)80 * srange + 40, 80 * srange + 40);
 			r.resize(TowerImage, 100, 100);
+			towerstat->font->fontSize = 6;
 			flag = 1;
 		}
 	}
@@ -183,7 +184,6 @@ void Tower::Shoot()
 			GameScene& s = (GameScene&)Scene::GetCurrentScene();
 			if (em->getValue(i)->hp <= 0) {
 				s.GetPlayerData()->changeMoney(em->getValue(i)->money);
-				s.GetPlayerData()->printMoney();
 				em->getValue(i)->Destroy();
 			}
 		}

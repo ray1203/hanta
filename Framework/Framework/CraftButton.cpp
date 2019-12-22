@@ -2,21 +2,21 @@
 #include "CraftButton.h"
 #include "GameScene.h"
 
-CraftButton::CraftButton(const wchar_t* path,  float width, float height, CraftTable* ct)
-	:GameObject(path), craftTable(ct), col2(*transform, width, height), path(path)
+CraftButton::CraftButton(const wchar_t* path,  float colwidth, float colheight, CraftTable* ct)
+	:Button(path, colwidth, colheight), craftTable(ct)
 {
 }
 
-void CraftButton::Update()
+void CraftButton::OnClick()
 {
-	
-	if (col2.Intersected(InputManager::GetMouseVector2())) {
-		HCURSOR hCursor = LoadCursor(0, IDC_HAND);
-		hCursor = SetCursor(hCursor);
+	GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	if (isActive) {
+		s.GetCraftTable()->hide();
+		s.GetPlayerData()->resume();
 	}
-
-	if (InputManager::GetMyKeyState(VK_LBUTTON) == -1 && col2.Intersected(InputManager::GetMouseVector2())) {
-		craftTable->change();
-		GameScene& s = (GameScene&)Scene::GetCurrentScene();
+	else {
+		s.GetCraftTable()->show();
+		s.GetPlayerData()->pause();
 	}
+	isActive = !isActive;
 }

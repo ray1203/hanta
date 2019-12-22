@@ -3,7 +3,6 @@
 #include "BackGround.h"
 #include "GameScene.h"
 #include "ImageResize.h"
-#include "WordButton.h"
 #pragma warning(disable:4996)
 CraftTable::CraftTable()
 {
@@ -17,24 +16,38 @@ void CraftTable::Update()
 		if (makeTowerBtn->flag)
 			buffer = "";
 		input();
-		makeTowerBtn->getBuffer(buffer);
+		makeTowerBtn->setBuffer(buffer);
 	}
 }
 void CraftTable::show() {
-	//FontObject* f = new FontObject("hihi",30,30);
-	//Scene::GetCurrentScene().PushBackGameObject(f);
 	isActive = true;
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
-	
-	background = (BackGround*)s.PushBackGameObject(new BackGround(L"resources\\background.png"));
-	ImageResize r;
-	r.resize(background, 1280, 800);
-	background->transform->SetPosition(640, 400);
-	mButton = (MoeumButton*)s.PushBackGameObject(new MoeumButton(L"resources\\MoeumButton.png", 25, 15, 80, 80, playerData));
-	jButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\JaeumButton.png", 5, 15, 80, 80, playerData));
-	wordbutton = (WordButton*)s.PushBackGameObject(new WordButton(L"resources\\Button.png",15,5));
-	makeTowerBtn = (MakeTowerButton*)s.PushBackGameObject(new MakeTowerButton(L"resources\\makeTower.png"));
 
+	ImageResize I;
+
+	background = (BackGround*)s.PushBackGameObject(new BackGround(L"resources\\backGround.png"));
+	I.resize(background, 1280, 800);
+	background->transform->SetPosition(640, 400);
+
+	jaeumButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\button\\jaeumButton.png", 80, 80, playerData));
+	I.resize(jaeumButton, 80, 80);
+	jaeumButton->transform->SetPosition(220, 620);
+
+	moeumButton = (MoeumButton*)s.PushBackGameObject(new MoeumButton(L"resources\\button\\moeumButton.png", 80, 80, playerData));
+	I.resize(moeumButton, 80, 80);
+	moeumButton->transform->SetPosition(1020, 620);
+
+	modeButton = (ModeButton*)s.PushBackGameObject(new ModeButton(L"resources\\button\\modeButton_1.png", 80, 80));
+	I.resize(modeButton, 80, 80);
+	modeButton->transform->SetPosition(620, 220);
+
+	makeTowerBtn = (MakeTowerButton*)s.PushBackGameObject(new MakeTowerButton(L"resources\\button\\makeTower.png", 160, 160));
+	I.resize(makeTowerBtn, 160, 160);
+	makeTowerBtn->transform->SetPosition(640,600);
+
+	gameButton = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\button\\gameButton.png"));
+	I.resize(gameButton, 80, 80);
+	gameButton->transform->SetPosition(640, 40);
 
 	updateText();
 }
@@ -42,10 +55,11 @@ void CraftTable::hide() {
 	buffer = "";
 	isActive = false;
 	Scene::GetCurrentScene().Destroy(background);
-	Scene::GetCurrentScene().Destroy(mButton);
-	Scene::GetCurrentScene().Destroy(jButton);
-	Scene::GetCurrentScene().Destroy(wordbutton);
+	Scene::GetCurrentScene().Destroy(jaeumButton);
+	Scene::GetCurrentScene().Destroy(moeumButton);
+	Scene::GetCurrentScene().Destroy(modeButton);
 	Scene::GetCurrentScene().Destroy(makeTowerBtn);
+	Scene::GetCurrentScene().Destroy(gameButton);
 	deleteText();
 }
 
@@ -67,15 +81,16 @@ void CraftTable::deleteText()
 	Scene::GetCurrentScene().PushBackGameObject(insertText);
 }
 
-void CraftTable::change() {
-	GameScene& s = (GameScene&)Scene::GetCurrentScene();
-	if (isActive) {
-		hide();
-		s.GetPlayerData()->resume();
+void CraftTable::modeChange() {
+	craftmode = !craftmode;
+	ImageResize I;
+	if (craftmode) {
+		Scene::GetCurrentScene().Destroy(modeButton2);
 	}
 	else {
-		show();
-		s.GetPlayerData()->pause();
+		modeButton2 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources\\button\\modeButton_2.png"));
+		I.resize(modeButton2, 80, 80);
+		modeButton2->transform->SetPosition(620, 220);
 	}
 }
 
@@ -200,7 +215,7 @@ void CraftTable::input()
 	buffer.append(" "); keyselect = 1;
 }
 	else if (InputManager::GetKeyDown(VK_RETURN)&&craftmode) {
-		playerData->CreateWord(buffer);
+		playerData->createWord(buffer);
 		buffer.clear();
 	}
 	else if (InputManager::GetKeyDown(VK_RETURN) && !craftmode) {
@@ -266,8 +281,6 @@ void CraftTable::input()
 
 	}
 	if (keyselect) {
-		
-			//std::cout << buffer.size() << std::endl;
 			keyselect = 0;
 			int C_STR_BUFFER_SIZE = buffer.size() + 1;
 			wchar_t* result = new wchar_t[buffer.size() + 1];
@@ -281,17 +294,14 @@ void CraftTable::input()
 			char b1[15];
 			sprintf_s(b1, 15, "%ls", a1);
 			String result1(b1);
-	//	std::cout << "r1:" << result1 << "\n";
 
 			wchar_t a2[15];
 			swprintf(a2, sizeof(a2) / sizeof(wchar_t), L"%c", result[1]);
 			char b2[15];
 			sprintf_s(b2, 15, "%ls", a2);
 			String result2(b2);
-			//std::cout << "r2:" << result2 << "\n";
 			String str;
-			str = playerData->Merge(result1, result2);
-			//std::cout << "str:" << str << "\n";
+			str = playerData->merge(result1, result2);
 			if (str != "null") {
 				buffer.erase(buffer.find(result1), buffer.size());
 				buffer.append(str);
@@ -306,27 +316,7 @@ void CraftTable::input()
 	int C_STR_BUFFER_SIZE = buffer.size() + 1;
 	wchar_t* result = new wchar_t[buffer.size() + 1];
 	MultiByteToWideChar(CP_ACP, NULL, buffer.c_str(), -1, result, buffer.size());
-	//std::cout << buffer.size() << std::endl;
-	/*if (buffer.size() > 6) {
-
-			buffer.erase(buffer.size() - 1);
-			buffer.erase(buffer.size() - 1);
-
-	}*/
 	updateText();
-	if (wordbutton->col2.Intersected(InputManager::GetMouseVector2())) {
-		HCURSOR hCursor = LoadCursor(0, IDC_HAND);
-		hCursor = SetCursor(hCursor);
-	}
-	if (wordbutton->col2.Intersected(InputManager::GetMouseVector2()) && InputManager::GetMyKeyState(VK_LBUTTON) == 1) {
-		craftmode = !craftmode;
-		if (craftmode) {
-			printf("dest");
-		}
-		else {
-			GameScene& s = (GameScene&)Scene::GetCurrentScene();
-		}
-	}
 }
 
 void CraftTable::updateText()
@@ -341,7 +331,7 @@ void CraftTable::updateText()
 		Scene::GetCurrentScene().Destroy(wordText);
 	moeumText = new FontObject(playerData->sprintMoeum(), 800, 700);
 	jaeumText = new FontObject(playerData->sprintJaeum(), 100, 700);
-	wordText = new FontObject(playerData->sprintword(), 300, 750);
+	wordText = new FontObject(playerData->sprintWord(), 300, 750);
 	insertText = new FontObject(buffer, 450, 350);
 	insertText->transform->SetScale(4, 4);
 	insertText->font->fontWeight = DWRITE_FONT_WEIGHT_HEAVY;
