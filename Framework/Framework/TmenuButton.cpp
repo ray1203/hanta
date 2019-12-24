@@ -15,7 +15,8 @@ void TmenuButton::Update()
 	}
 	if (col.Intersected(InputManager::GetMouseVector2())&&flag&&InputManager::GetMyKeyState(VK_LBUTTON) == -1) {
 		for (int i = 0; i < 12; i++) {
-			b[i] = (TowerButton*)s.PushBackGameObject(new TowerButton(s.GetPlayerData()->towerTable[i].path, i+1, 19, i));
+			b[i] = (TowerButton*)s.PushBackGameObject(new TowerButton(s.GetPlayerData()->towerTable[i].path, 40, 40, i));
+			b[i]->transform->SetPosition((i+1) * 40 + 20, 780);
 		}
 		flag = 0;
 	}

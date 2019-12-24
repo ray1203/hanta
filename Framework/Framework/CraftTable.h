@@ -21,7 +21,6 @@ public:
 	virtual void Update();
 	FontObject* jaeumText;
 	FontObject* moeumText;
-	FontObject* eumjulText;
 	FontObject* wordText;
 	FontObject* insertText;
 	MakeTowerButton* makeTowerBtn;

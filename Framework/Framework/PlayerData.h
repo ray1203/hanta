@@ -103,8 +103,11 @@ public:
 	bool isPause;
 	int over = 0;
 
-	int money;
+	GameObject* heart;
+	GameObject* coin;
+
 	int life;
+	int money;
 	int ls, ms;//life_lan money_lan
 	GameObject* remainlife[10];
 	GameObject* remainmoney[10];

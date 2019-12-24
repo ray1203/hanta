@@ -32,6 +32,13 @@ void CraftTable::show() {
 	I.resize(background, 1280, 800);
 	background->transform->SetPosition(640, 400);
 
+	s.Destroy(s.GetPlayerData()->coin);
+	s.GetPlayerData()->coin = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources\\ui\\coin.png"));
+	I.resize(s.GetPlayerData()->coin, 45, 45);
+	s.GetPlayerData()->coin->transform->SetPosition(940, 80);
+
+	s.GetPlayerData()->changeMoney(0);
+
 	jaeumButton = (JaeumButton*)s.PushBackGameObject(new JaeumButton(L"resources\\button\\jaeumButton.png", 80, 80, playerData));
 	I.resize(jaeumButton, 160, 100);
 	jaeumButton->transform->SetPosition(220, 620);
@@ -52,6 +59,12 @@ void CraftTable::show() {
 	I.resize(gameButton, 80, 80);
 	gameButton->transform->SetPosition(640, 40);
 
+	if (!craftmode) {
+		modeButton2 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources\\button\\modeButton_2.png"));
+		I.resize(modeButton2, 80, 80);
+		modeButton2->transform->SetPosition(620, 220);
+	}
+
 	updateText();
 }
 void CraftTable::hide() {
@@ -63,7 +76,8 @@ void CraftTable::hide() {
 	Scene::GetCurrentScene().Destroy(modeButton);
 	Scene::GetCurrentScene().Destroy(makeTowerBtn);
 	Scene::GetCurrentScene().Destroy(gameButton);
-	Scene::GetCurrentScene().Destroy(wordText);
+	if(!craftmode)
+		Scene::GetCurrentScene().Destroy(modeButton2);
 	deleteText();
 }
 
@@ -73,15 +87,19 @@ void CraftTable::deleteText()
 		Scene::GetCurrentScene().Destroy(jaeumText);
 	if (moeumText != nullptr)
 		Scene::GetCurrentScene().Destroy(moeumText);
+	if (wordText != nullptr)
+		Scene::GetCurrentScene().Destroy(wordText);
 	if (insertText != nullptr)
 		Scene::GetCurrentScene().Destroy(insertText);
 
-	moeumText = new FontObject("", 1100, 600);
-	jaeumText = new FontObject("", 100, 600);
-	insertText = new FontObject("", 600, 400);
+	moeumText = new FontObject("", 800, 700);
+	jaeumText = new FontObject("", 100, 700);
+	wordText = new FontObject("", 300, 750);
+	insertText = new FontObject("", 450, 350);
 
 	Scene::GetCurrentScene().PushBackGameObject(jaeumText);
 	Scene::GetCurrentScene().PushBackGameObject(moeumText);
+	Scene::GetCurrentScene().PushBackGameObject(wordText);
 	Scene::GetCurrentScene().PushBackGameObject(insertText);
 }
 

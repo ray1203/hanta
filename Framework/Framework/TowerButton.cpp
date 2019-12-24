@@ -5,10 +5,9 @@
 #include "Tower.h"
 #include "ImageResize.h"
 ImageResize r;
-TowerButton::TowerButton(const wchar_t* path, int x, int y,int t)
-	:GameObject(path), col2(*transform, 40.0f, 40.0f), t(t)
+TowerButton::TowerButton(const wchar_t* path, float colwidth, float colheight, int t)
+	:Button(path, colwidth, colheight), t(t)
 {
-	transform->SetPosition(x * 40 + 20, y * 40 + 20);
 }
 TowerButton::~TowerButton(){
 	Scene::GetCurrentScene().Destroy(text);
@@ -23,11 +22,11 @@ void TowerButton::Update()
 		text = new FontObject(std::to_string(scene.GetPlayerData()->myTower[t]), transform->position.x - 5, transform->position.y - 37);
 		Scene::GetCurrentScene().PushBackGameObject(text);
 	}
-	if (col2.Intersected(InputManager::GetMouseVector2())) {
+	if (col.Intersected(InputManager::GetMouseVector2())) {
 		HCURSOR hCursor = LoadCursor(0, IDC_HAND);
 		hCursor = SetCursor(hCursor);
 	}
-	if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col2.Intersected(InputManager::GetMouseVector2())) {
+	if (InputManager::GetMyKeyState(VK_LBUTTON) == 1 && col.Intersected(InputManager::GetMouseVector2())) {
 		range = 600;
 		if (scene.GetPlayerData()->myTower[t] > 0) {
 			tower = (Tower*)scene.PushBackGameObject(
