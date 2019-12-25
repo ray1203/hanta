@@ -51,7 +51,9 @@ void CraftTable::show() {
 	gameButton = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\button\\gameButton.png"));
 	I.resize(gameButton, 80, 80);
 	gameButton->transform->SetPosition(640, 40);
-
+	db = (DicButton*)s.PushBackGameObject(new DicButton(L"resources\\dicicon.png", 60, 60));
+	I.resize(db, 60, 60);
+	db->transform->SetPosition(1230, 30);
 	updateText();
 }
 void CraftTable::hide() {
@@ -64,6 +66,7 @@ void CraftTable::hide() {
 	Scene::GetCurrentScene().Destroy(makeTowerBtn);
 	Scene::GetCurrentScene().Destroy(gameButton);
 	Scene::GetCurrentScene().Destroy(wordText);
+	Scene::GetCurrentScene().Destroy(db);
 	deleteText();
 }
 
@@ -341,6 +344,7 @@ void CraftTable::updateText()
 	jaeumText = new FontObject(playerData->sprintJaeum(), 100, 700);
 	wordText = new FontObject(playerData->sprintWord(), 300, 750);
 	insertText = new FontObject(buffer, 450, 350);
+	
 	insertText->transform->SetScale(4, 4);
 	
 	Scene::GetCurrentScene().PushBackGameObject(jaeumText);

@@ -102,7 +102,8 @@ public:
 
 	bool isPause;
 	int over = 0;
-
+	int nowdic = 0;
+	int showdic = 0;
 	int money;
 	int life;
 	int ls, ms;//life_lan money_lan

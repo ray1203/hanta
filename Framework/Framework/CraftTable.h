@@ -10,6 +10,7 @@
 #include "FontObject.h"
 #include "MakeTowerButton.h"
 #include<conio.h>
+#include"DicButton.h"
 //#include "Scene.h"
 typedef std::string String;
 class CraftTable :
@@ -30,6 +31,7 @@ public:
 	JaeumButton* jaeumButton;
 	MoeumButton* moeumButton;
 	GameObject* gameButton;
+	DicButton* db;
 	int isjaja = 0;
 	int ismomo = 0;
 	int mouemselect = 0;

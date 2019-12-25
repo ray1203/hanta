@@ -33,6 +33,7 @@ void GameScene::Initialize()
 	b = (TmenuButton*)PushBackGameObject(new TmenuButton(L"resources\\button\\towerButton.png", 40, 40));
 	I.resize(b, 40, 40);
 	b->transform->SetPosition(20, 780);
+
 }
 
 PlayerData* GameScene::GetPlayerData()

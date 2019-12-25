@@ -111,6 +111,8 @@
     <ClCompile Include="TmenuButton.cpp" />
     <ClCompile Include="TowerButton.cpp" />
     <ClCompile Include="ModeButton.cpp" />
+    <ClCompile Include="DicButton.cpp" />
+    <ClCompile Include="conbutton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -205,6 +207,8 @@
     <ClInclude Include="TmenuButton.h" />
     <ClInclude Include="TowerButton.h" />
     <ClInclude Include="ModeButton.h" />
+    <ClInclude Include="DicButton.h" />
+    <ClInclude Include="conbutton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Math.inl">
