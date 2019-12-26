@@ -30,38 +30,38 @@ void DicButton::Update() {
 		}
 		if (lastdic == 1) {
 			s.Destroy(con);
-			con = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\개념.png", 200, 50, 1));
+			con = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\개념.png", 200, 50, 1));
 			con->transform->SetPosition(145, 140);
 		}
 		if (lastdic == 2) {
 			s.Destroy(nat);
-			nat = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\자연.png", 200, 50, 2));
+			nat = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\자연.png", 200, 50, 2));
 			nat->transform->SetPosition(345, 140);
 		}
 		if (lastdic == 3) {
 			s.Destroy(hum);
-			hum = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\인공.png", 200, 50, 3));
+			hum = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\인공.png", 200, 50, 3));
 			hum->transform->SetPosition(545, 140);
 		}
 		if (lastdic == 4) {
 			s.Destroy(fan);
-			fan = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\환상.png", 200, 50, 4));
+			fan = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\환상.png", 200, 50, 4));
 			fan->transform->SetPosition(745, 140);
 		}
 		if (lastdic == 5) {
 			s.Destroy(pow);
-			pow = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\힘.png", 200, 50, 5));
+			pow = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\힘.png", 200, 50, 5));
 			pow->transform->SetPosition(945, 140);
 		}
 		if (lastdic == 6) {
 			s.Destroy(no);
-			no = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\무계열.png", 200, 50, 6));
+			no = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\무계열.png", 200, 50, 6));
 			no->transform->SetPosition(1130, 140);
 		}
 		lastdic = playdata->nowdic;
 		if (lastdic == 1) {
 			s.Destroy(con);
-			con = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\개념s.png", 200, 50, 1));
+			con = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\개념s.png", 200, 50, 1));
 			onselect = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\onselect.png"));
 			con->transform->SetPosition(145, 140);
 			onselect->transform->SetPosition(145, 165);
@@ -69,35 +69,35 @@ void DicButton::Update() {
 		}
 		if (lastdic == 2) {
 			s.Destroy(nat);
-			nat = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\자연s.png", 200, 50, 2));
+			nat = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\자연s.png", 200, 50, 2));
 			onselect = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\onselect.png"));
 			nat->transform->SetPosition(345, 140);
 			onselect->transform->SetPosition(345, 165);
 		}
 		if (lastdic == 3) {
 			s.Destroy(hum);
-			hum = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\인공s.png", 200, 50, 3));
+			hum = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\인공s.png", 200, 50, 3));
 			onselect = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\onselect.png"));
 			hum->transform->SetPosition(545, 140);
 			onselect->transform->SetPosition(545, 165);
 		}
 		if (lastdic == 4) {
 			s.Destroy(fan);
-			fan = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\환상s.png", 200, 50, 4));
+			fan = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\환상s.png", 200, 50, 4));
 			onselect = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\onselect.png"));
 			fan->transform->SetPosition(745, 140);
 			onselect->transform->SetPosition(745, 165);
 		}
 		if (lastdic == 5) {
 			s.Destroy(pow);
-			pow = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\힘s.png", 200, 50, 5));
+			pow = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\힘s.png", 200, 50, 5));
 			onselect = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\onselect.png"));
 			pow->transform->SetPosition(945, 140);
 			onselect->transform->SetPosition(945, 165);
 		}
 		if (lastdic == 6) {
 			s.Destroy(no);
-			no = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\무계열s.png", 200, 50, 6));
+			no = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\무계열s.png", 200, 50, 6));
 			onselect = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\onselect.png"));
 			no->transform->SetPosition(1130, 140);
 			onselect->transform->SetPosition(1130, 165);
@@ -124,12 +124,12 @@ void DicButton::OnClick()
 	
 
 		g = (GameObject*)s.PushBackGameObject(new GameObject(L"resources\\dictionary.png"));
-		con = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\개념.png", 200, 50, 1));
-		nat = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\자연.png", 200, 50, 2));
-		hum = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\인공.png", 200, 50, 3));
-		fan = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\환상.png", 200, 50, 4));
-		pow = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\힘.png", 200, 50, 5));
-		no = (conbutton*)s.PushBackGameObject(new conbutton(L"resources\\무계열.png", 200, 50, 6));
+		con = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\개념.png", 200, 50, 1));
+		nat = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\자연.png", 200, 50, 2));
+		hum = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\인공.png", 200, 50, 3));
+		fan = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\환상.png", 200, 50, 4));
+		pow = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\힘.png", 200, 50, 5));
+		no = (ConButton*)s.PushBackGameObject(new ConButton(L"resources\\무계열.png", 200, 50, 6));
 
 		g->transform->SetPosition(640, 420);
 		con->transform->SetPosition(145, 140);

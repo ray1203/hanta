@@ -1,8 +1,8 @@
 #pragma once
 #include "Button.h"
 #include "PlayerData.h"
-#include"conbutton.h"
-#include"FontObject.h"
+#include "ConButton.h"
+#include "FontObject.h"
 class DicButton :
 	public Button
 {
@@ -15,12 +15,12 @@ public:
 
 	PlayerData* playdata;
 	GameObject* onselect;
-	conbutton* con;
-	conbutton* nat;
+	ConButton* con;
+	ConButton* nat;
 	GameObject* g;
-	conbutton* hum;
-	conbutton* fan;
-	conbutton* pow;
-	conbutton* no;
+	ConButton* hum;
+	ConButton* fan;
+	ConButton* pow;
+	ConButton* no;
 	FontObject* dic;
 };
