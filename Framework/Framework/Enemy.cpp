@@ -30,11 +30,11 @@ void Enemy::Update() {
 		double cx = (this->transform->position.x - 20) / 40;
 		double cy = (this->transform->position.y - 20) / 40;
 		int dx[4] = { 1,-1,0,0 }, dy[4] = { 0,0,1,-1 };
+		GameScene& s = (GameScene&)Scene::GetCurrentScene();
 		if (cx == bx && cy == by) {
 			for (int i = 0; i < 4; i++) {
 				if (cx + dx[i] >= 0 && cx + dx[i] < 32 && cy + dy[i] >= 0 && cy + dy[i] < 20) {
-					GameScene g;
-					if (g.map[(int)cy + dy[i]][(int)cx + dx[i]] == 1 && (cx + dx[i] != ax || cy + dy[i] != ay)) {
+					if (s.map[(int)cy + dy[i]][(int)cx + dx[i]] == 1 && (cx + dx[i] != ax || cy + dy[i] != ay)) {
 						ax = bx;
 						ay = by;
 						bx += dx[i];
@@ -46,7 +46,6 @@ void Enemy::Update() {
 			}
 		}
 		else if (ax == 30 && ay == 1) {
-			GameScene& s = (GameScene&)Scene::GetCurrentScene();
 			s.GetPlayerData()->changeLife(-1);
 			Destroy();
 		}
