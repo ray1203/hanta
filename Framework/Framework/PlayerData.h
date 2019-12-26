@@ -103,6 +103,9 @@ public:
 	bool isPause;
 	int over = 0;
 
+	int nowdic = 0;
+	int showdic = 0;
+
 	GameObject* heart;
 	GameObject* coin;
 

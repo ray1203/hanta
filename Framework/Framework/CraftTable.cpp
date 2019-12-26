@@ -59,6 +59,10 @@ void CraftTable::show() {
 	I.resize(gameButton, 80, 80);
 	gameButton->transform->SetPosition(640, 40);
 
+	dicButton = (DicButton*)s.PushBackGameObject(new DicButton(L"resources\\dicicon.png", 80, 80));
+	I.resize(dicButton, 80, 80);
+	dicButton->transform->SetPosition(60, 60);
+
 	if (!craftmode) {
 		modeButton2 = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources\\button\\modeButton_2.png"));
 		I.resize(modeButton2, 80, 80);
@@ -76,6 +80,7 @@ void CraftTable::hide() {
 	Scene::GetCurrentScene().Destroy(modeButton);
 	Scene::GetCurrentScene().Destroy(makeTowerBtn);
 	Scene::GetCurrentScene().Destroy(gameButton);
+	Scene::GetCurrentScene().Destroy(dicButton);
 	if(!craftmode)
 		Scene::GetCurrentScene().Destroy(modeButton2);
 	deleteText();
@@ -124,27 +129,21 @@ void CraftTable::input()
 	}
 	else if (InputManager::GetKeyDown(0x52) && InputManager::GetMyKeyState(VK_SHIFT)) {
 		buffer.append("あ"); keyselect = 1;
-
 	}
 	else if (InputManager::GetKeyDown(0x52)) {
 		buffer.append("ぁ"); keyselect = 1;
-
 	}
 	else if (InputManager::GetKeyDown(0x53)) {
 		buffer.append("い"); keyselect = 1;
-
 	}
 	else if (InputManager::GetKeyDown(0x45) && InputManager::GetMyKeyState(VK_SHIFT)) {
 		buffer.append("え"); keyselect = 1;
-
 	}
 	else if (InputManager::GetKeyDown(0x45)) {
 		buffer.append("ぇ"); keyselect = 1;
-
 	}
 	else if (InputManager::GetKeyDown(0x46)) {
 		buffer.append("ぉ"); keyselect = 1;
-
 	}
 	else if (InputManager::GetKeyDown(0x41)) {
 		buffer.append("け"); keyselect = 1;
@@ -186,15 +185,13 @@ void CraftTable::input()
 		buffer.append("ぞ"); keyselect = 1;
 	}
 
+
 	else if (InputManager::GetKeyDown(0x4B)) {
 		buffer.append("た"); keyselect = 1;
 	}
-
 	else if (InputManager::GetKeyDown(0x49)) {
 		buffer.append("ち"); keyselect = 1;
 	}
-
-
 	else if (InputManager::GetKeyDown(0x4A)) {
 		buffer.append("っ"); keyselect = 1;
 	}
@@ -207,7 +204,6 @@ void CraftTable::input()
 	else if (InputManager::GetKeyDown(0x59)) {
 		buffer.append("に"); keyselect = 1;
 	}
-
 	else if (InputManager::GetKeyDown(0x4E)) {
 		buffer.append("ぬ"); keyselect = 1;
 	}
@@ -220,7 +216,6 @@ void CraftTable::input()
 	else if (InputManager::GetKeyDown(0x4C)) {
 		buffer.append("び"); keyselect = 1;
 	}
-
 	else if (InputManager::GetKeyDown(0x4F) && InputManager::GetMyKeyState(VK_SHIFT)) {
 		buffer.append("ぢ"); keyselect = 1;
 	}

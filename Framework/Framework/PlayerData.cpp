@@ -647,11 +647,12 @@ void PlayerData::changeLife(int changelife)
 {
 	life += changelife;
 	int k = pow(10, (int)log10(life));
-	for (int i = 0; k > 0; i++) {
+	int i = 0;
+	for (; k > 0; i++) {
 		Scene::GetCurrentScene().Destroy(remainlife[i]);
 		remainlife[i] = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[(life / k) % 10]));
 		remainlife[i]->transform->position.x = 1000 + 31 * i;
-		remainlife[i]->transform->position.y = 75;
+		remainlife[i]->transform->position.y = 30;
 		k /= 10;
 	}
 	if (life == 0) {
@@ -660,17 +661,24 @@ void PlayerData::changeLife(int changelife)
 		OverButton* b = (OverButton*)Scene::GetCurrentScene().PushBackGameObject(new OverButton(L"resources\\button\\overButton.png", 1280, 800));
 		b->transform->SetPosition(640, 400);
 	}
+	else if ((int)log10(life) != (int)log10(life - changelife)) {
+		Scene::GetCurrentScene().Destroy(remainlife[i]);
+	}
 }
 
 void PlayerData::changeMoney(int changemoney)
 {
 	money += changemoney;
-	int k = pow(10, (int)log10(money));
-	for (int i = 0; k > 0; i++) {
+	int k = money == 0 ? 1 : pow(10, (int)log10(money));
+	int i = 0;
+	for (; k > 0; i++) {
 		Scene::GetCurrentScene().Destroy(remainmoney[i]);
 		remainmoney[i] = (GameObject*)Scene::GetCurrentScene().PushBackGameObject(new GameObject(number[(money / k) % 10]));
 		remainmoney[i]->transform->position.x = 1000 + 31 * i;
 		remainmoney[i]->transform->position.y = 75;
 		k /= 10;
+	}
+	if ((int)log10(money) != (int)log10(money - changemoney) && money != 0) {
+		Scene::GetCurrentScene().Destroy(remainmoney[i]);
 	}
 }

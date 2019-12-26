@@ -10,13 +10,15 @@ CraftButton::CraftButton(const wchar_t* path,  float colwidth, float colheight, 
 void CraftButton::OnClick()
 {
 	GameScene& s = (GameScene&)Scene::GetCurrentScene();
-	if (isActive) {
-		s.GetCraftTable()->hide();
-		s.GetPlayerData()->resume();
+	if (!s.GetPlayerData()->showdic) {
+		if (isActive) {
+			s.GetCraftTable()->hide();
+			s.GetPlayerData()->resume();
+		}
+		else {
+			s.GetCraftTable()->show();
+			s.GetPlayerData()->pause();
+		}
+		isActive = !isActive;
 	}
-	else {
-		s.GetCraftTable()->show();
-		s.GetPlayerData()->pause();
-	}
-	isActive = !isActive;
 }

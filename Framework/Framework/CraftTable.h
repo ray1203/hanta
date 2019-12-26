@@ -9,8 +9,8 @@
 #include "InputManager.h"
 #include "FontObject.h"
 #include "MakeTowerButton.h"
-#include<conio.h>
-//#include "Scene.h"
+#include "DicButton.h"
+//#include <conio.h>
 typedef std::string String;
 class CraftTable :
 	public GameObject
@@ -29,6 +29,7 @@ public:
 	JaeumButton* jaeumButton;
 	MoeumButton* moeumButton;
 	GameObject* gameButton;
+	DicButton* dicButton;
 	int isjaja = 0;
 	int ismomo = 0;
 	int mouemselect = 0;
